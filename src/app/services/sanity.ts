@@ -59,3 +59,29 @@ export async function getStoresAndCategories() {
   const posts = await client.fetch(query);
   return posts;
 }
+
+export async function getStoreBySlug(slug: string) {
+  const query = `*[_type == "store" && slug.current == "${slug}"]{
+    _id,
+    title,
+    slug,
+    _createdAt,
+    _updatedAt,
+    productsOrServices[]{
+      _key,
+      name,
+      description,
+      price,
+      isProduct,
+      whatsappContact,
+      category->{
+        _ref,
+        _type
+      },
+      "image": image.asset->url,
+    }
+  }`;
+
+  const posts = await client.fetch(query);
+  return posts[0];
+};
