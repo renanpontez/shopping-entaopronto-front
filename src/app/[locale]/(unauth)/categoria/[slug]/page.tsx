@@ -7,7 +7,7 @@ type Params = {
   slug: string;
 };
 
-const StoreByCategoryPage = ({ params }: { params: Promise<Params> }) => {
+const StoresByCategoryPage = ({ params }: { params: Promise<Params> }) => {
   const resolvedParams = use(params);
   const { slug } = resolvedParams;
   const [stores, setStores] = useState<SanityStoresRespose[] | undefined>();
@@ -48,4 +48,4 @@ const StoreByCategoryPage = ({ params }: { params: Promise<Params> }) => {
     </div>
   );
 };
-export default StoreByCategoryPage;
+export default StoresByCategoryPage;
