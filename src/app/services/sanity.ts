@@ -6,6 +6,7 @@ const storeQuery = `*[_type == "store"]{
   slug,
   _createdAt,
   _updatedAt,
+  category,
   productsOrServices[]{
     _key,
     name,
@@ -13,10 +14,6 @@ const storeQuery = `*[_type == "store"]{
     price,
     isProduct,
     whatsappContact,
-    category->{
-      _ref,
-      _type
-    },
     "image": image.asset->url,
   }
 }`;
@@ -84,4 +81,26 @@ export async function getStoreBySlug(slug: string) {
 
   const posts = await client.fetch(query);
   return posts[0];
+};
+
+export async function getStoresByCategorieSlug(slug: string) {
+  const query = `*[_type == "store" && category._ref == "${slug}"]{
+  _id,
+  title,
+  slug,
+  _createdAt,
+  _updatedAt,
+  category,
+  productsOrServices[]{
+    _key,
+    name,
+    description,
+    price,
+    isProduct,
+    whatsappContact,
+    "image": image.asset->url,
+  }
+}`;
+  const posts = await client.fetch(query);
+  return posts;
 };
