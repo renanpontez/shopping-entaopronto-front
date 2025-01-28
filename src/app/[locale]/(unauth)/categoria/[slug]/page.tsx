@@ -1,5 +1,5 @@
 'use client';
-import type { SanityStoresRespose } from '@/types/sanity';
+import type { SanityStoreRespose } from '@/types/sanity';
 import { getStoresByCategorieSlug } from '@/app/services/sanity';
 import { use, useEffect, useState } from 'react';
 
@@ -10,12 +10,12 @@ type Params = {
 const StoresByCategoryPage = ({ params }: { params: Promise<Params> }) => {
   const resolvedParams = use(params);
   const { slug } = resolvedParams;
-  const [stores, setStores] = useState<SanityStoresRespose[] | undefined>();
+  const [stores, setStores] = useState<SanityStoreRespose[] | undefined>();
   const [error, setError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    getStoresByCategorieSlug(slug).then((res: SanityStoresRespose[]) => {
+    getStoresByCategorieSlug(slug).then((res: SanityStoreRespose[]) => {
       setStores(res);
     }).catch(() => {
       setError(true);

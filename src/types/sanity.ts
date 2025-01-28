@@ -14,7 +14,7 @@ type Category = {
   _type: string;
 };
 
-export type SanityStoresRespose = {
+export type SanityStoreRespose = {
   title: string;
   productsOrServices: ProductsOrServices[];
   category: Category;
@@ -38,7 +38,7 @@ type SEO = {
   image: string;
 };
 
-export type SanityCategoriesResponse = {
+export type SanityCategoryResponse = {
   _id: string;
   _createdAt: string;
   _updatedAt: string;

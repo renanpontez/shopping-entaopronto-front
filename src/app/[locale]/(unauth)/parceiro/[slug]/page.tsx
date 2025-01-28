@@ -1,5 +1,5 @@
 'use client';
-import type { SanityStoresRespose } from '@/types/sanity';
+import type { SanityStoreRespose } from '@/types/sanity';
 import { getStoreBySlug } from '@/app/services/sanity';
 import { use, useEffect, useState } from 'react';
 
@@ -10,7 +10,7 @@ type Params = {
 const StorePage = ({ params }: { params: Promise<Params> }) => {
   const resolvedParams = use(params);
   const { slug } = resolvedParams;
-  const [store, setStore] = useState<SanityStoresRespose | undefined>();
+  const [store, setStore] = useState<SanityStoreRespose | undefined>();
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {

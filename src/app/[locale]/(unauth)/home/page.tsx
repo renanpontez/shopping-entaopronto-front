@@ -1,11 +1,11 @@
 'use client';
-import type { SanityCategoriesResponse, SanityStoresRespose } from '@/types/sanity';
+import type { SanityCategoryResponse, SanityStoreRespose } from '@/types/sanity';
 import { getStoresAndCategories } from '@/app/services/sanity';
 import { useEffect, useState } from 'react';
 
 const HomePage = () => {
-  const [stores, setStores] = useState<SanityStoresRespose[]>([]);
-  const [categories, setCategories] = useState<SanityCategoriesResponse[]>([]);
+  const [stores, setStores] = useState<SanityStoreRespose[]>([]);
+  const [categories, setCategories] = useState<SanityCategoryResponse[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
