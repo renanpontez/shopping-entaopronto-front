@@ -1,8 +1,3 @@
-/**
- * Renders a page that displays a list of categories fetched from Sanity.
- * The page shows a loading state while the categories are being fetched, and then
- * displays the category titles and descriptions.
- */
 'use client';
 import type { SanityCategoriesResponse } from '@/types/sanity';
 import { getCategories } from '@/app/services/sanity';
