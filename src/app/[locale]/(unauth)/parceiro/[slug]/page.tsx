@@ -11,15 +11,29 @@ const StorePage = ({ params }: { params: Promise<Params> }) => {
   const resolvedParams = use(params);
   const { slug } = resolvedParams;
   const [store, setStore] = useState<SanityStoresRespose | undefined>();
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     getStoreBySlug(slug).then((res) => {
+      if (!res) {
+        setError(true);
+        return;
+      }
       setStore(res);
     });
   }, [slug]);
 
+  if (error) {
+    return (
+      <div>
+        <h1>Nenhuma loja encontrada</h1>
+        <p>A loja que você buscou parece não existir...</p>
+      </div>
+    );
+  }
+
   if (!store) {
-    return <div>Loading...</div>;
+    return <div>Carregando...</div>;
   }
 
   return (

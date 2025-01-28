@@ -20,7 +20,7 @@ const HomePage = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Carregando...</div>;
   }
 
   return (
