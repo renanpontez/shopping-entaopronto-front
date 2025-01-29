@@ -1,7 +1,7 @@
 {
-  "name": "next-js-boilerplate",
+  "name": "shopping-entaopronto-front",
   "version": "3.61.0",
-  "author": "Ixartz (https://github.com/ixartz)",
+  "author": "Agility Creative (agilitycreative.com)",
   "scripts": {
     "dev:spotlight": "spotlight-sidecar",
     "dev:next": "next dev",
