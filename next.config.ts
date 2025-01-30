@@ -16,6 +16,9 @@ export default withSentryConfig(
       eslint: {
         dirs: ['.'],
       },
+      images: {
+        domains: ['cdn.sanity.io'],
+      },
       poweredByHeader: false,
       reactStrictMode: true,
       serverExternalPackages: ['@electric-sql/pglite'],
