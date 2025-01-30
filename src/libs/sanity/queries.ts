@@ -81,17 +81,20 @@ export const storesByCategorySlugQuery = defineQuery(`
     _id,
     title,
     slug,
-    _createdAt,
-    _updatedAt,
-    category,
+    "category": category->title,
     productsOrServices[]{
       _key,
-      name,
+      title,
       description,
       price,
-      isProduct,
-      whatsappContact,
       "image": image.asset->url
+    },
+    about,
+    "image": image.asset->url,
+    contact {
+      address,
+      phone,
+      email
     }
-  }
+  } 
 `);
