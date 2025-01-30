@@ -9,6 +9,7 @@ export type StoreSchemaResponse = {
     description: string;
     price: number;
     image: string;
+    whatsappContact: number;
   }[];
   about: string;
   image: string;
@@ -22,9 +23,25 @@ export type StoreSchemaResponse = {
 export type CategorySchema = {
   _id: string;
   title: string;
-  slug: string;
+  slug: {
+    current: string;
+  };
   description: string;
-  icon: string;
+  productsOrServices: {
+    _key: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+  }[];
+  about: string;
+  image: string;
+  contact: {
+    address: string;
+    phone: string;
+    email: string;
+  };
+  category: string;
 };
 
 export type Link = {
