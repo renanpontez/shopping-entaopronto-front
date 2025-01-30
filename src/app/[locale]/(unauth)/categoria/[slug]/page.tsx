@@ -1,51 +1,42 @@
-'use client';
-import type { SanityStoreRespose } from '@/types/sanity';
-import { getStoresByCategorieSlug } from '@/app/services/sanity';
-import { use, useEffect, useState } from 'react';
+import type { CategorySchema } from '@/libs/sanity/types';
+import { sanityFetch } from '@/libs/sanity/live';
+import { categoriesQuery, storesQuery } from '@/libs/sanity/queries';
 
-type Params = {
-  slug: string;
-};
+export default async function StoresByCategoryPage() {
+  const categoriesRes = await sanityFetch({
+    query: categoriesQuery,
+  }) as { data: CategorySchema[] };
 
-const StoresByCategoryPage = ({ params }: { params: Promise<Params> }) => {
-  const resolvedParams = use(params);
-  const { slug } = resolvedParams;
-  const [stores, setStores] = useState<SanityStoreRespose[] | undefined>();
-  const [error, setError] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const categories = categoriesRes?.data as CategorySchema[];
 
-  useEffect(() => {
-    getStoresByCategorieSlug(slug).then((res: SanityStoreRespose[]) => {
-      setStores(res);
-    }).catch(() => {
-      setError(true);
-    }).finally(() => {
-      setIsLoading(false);
-    });
-  }, [slug]);
+  const storeRes = await sanityFetch({
+    query: storesQuery,
+  }) as { data: CategorySchema[] };
+
+  const stores = storeRes?.data as CategorySchema[];
 
   return (
-    <div>
-      { isLoading && (
-        <div>Carregando...</div>
-      )}
-      {
-        error && (
-          <div>
-            <h1>Houve um erro ao encontrar lojas desta categoria</h1>
+    <>
+      <h1>Stores By Category</h1>
+      <div>
+        <h4>Categorias</h4>
+        {categories.map(category => (
+          <div key={category._id}>
+            <h2>{category.title}</h2>
+            <p>{category.description}</p>
           </div>
-        )
-      }
-      { stores && !isLoading && (
-        <div className="border-2 border-gray-500 p-4">
-          {stores.map(store => (
-            <div key={store._id}>
-              <h1>{store.title}</h1>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+        ))}
+
+        <hr />
+
+        <h4>Lojas Cadastradas</h4>
+        {stores.map(store => (
+          <div key={store._id}>
+            <h2>{store.title}</h2>
+            <p>{store.description}</p>
+          </div>
+        ))}
+      </div>
+    </>
   );
-};
-export default StoresByCategoryPage;
+}

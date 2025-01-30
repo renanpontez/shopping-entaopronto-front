@@ -1,27 +1,13 @@
-'use client';
-import type { SanityCategoryResponse, SanityStoreRespose } from '@/types/sanity';
-import { getStoresAndCategories } from '@/app/services/sanity';
-import { useEffect, useState } from 'react';
+import type { CategorySchema } from '@/libs/sanity/types';
+import { sanityFetch } from '@/libs/sanity/live';
+import { storesAndCategoriesQuery } from '@/libs/sanity/queries';
 
-const HomePage = () => {
-  const [stores, setStores] = useState<SanityStoreRespose[]>([]);
-  const [categories, setCategories] = useState<SanityCategoryResponse[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export default async function HomePage() {
+  const response = await sanityFetch({
+    query: storesAndCategoriesQuery,
+  }) as { data: { stores: CategorySchema[]; categories: CategorySchema[] } };
 
-  useEffect(() => {
-    getStoresAndCategories()
-      .then((res) => {
-        setStores(res.stores);
-        setCategories(res.categories);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
-
-  if (isLoading) {
-    return <div>Carregando...</div>;
-  }
+  const { stores, categories } = response.data;
 
   return (
     <div>
@@ -52,6 +38,7 @@ const HomePage = () => {
               ))
             )}
       </div>
+
       <div className="mt-10">
         <h1>Categories</h1>
         {categories.length === 0
@@ -68,6 +55,4 @@ const HomePage = () => {
       </div>
     </div>
   );
-};
-
-export default HomePage;
+}

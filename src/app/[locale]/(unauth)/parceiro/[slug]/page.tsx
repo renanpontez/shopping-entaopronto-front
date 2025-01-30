@@ -1,39 +1,30 @@
-'use client';
-import type { SanityStoreRespose } from '@/types/sanity';
-import { getStoreBySlug } from '@/app/services/sanity';
-import { use, useEffect, useState } from 'react';
+import type { CategorySchema } from '@/libs/sanity/types';
+import { sanityFetch } from '@/libs/sanity/live';
+import { storeBySlugQuery } from '@/libs/sanity/queries';
 
 type Params = {
-  slug: string;
+  params: {
+    slug: string;
+  };
 };
 
-const StorePage = ({ params }: { params: Promise<Params> }) => {
-  const resolvedParams = use(params);
-  const { slug } = resolvedParams;
-  const [store, setStore] = useState<SanityStoreRespose | undefined>();
-  const [error, setError] = useState<boolean>(false);
+export default async function StorePage({ params }: Params) {
+  const { slug } = params;
 
-  useEffect(() => {
-    getStoreBySlug(slug).then((res) => {
-      if (!res) {
-        setError(true);
-        return;
-      }
-      setStore(res);
-    });
-  }, [slug]);
+  const storeRes = await sanityFetch({
+    query: storeBySlugQuery,
+    params: { slug },
+  }) as { data: CategorySchema };
 
-  if (error) {
+  const store = storeRes?.data;
+
+  if (!store) {
     return (
       <div>
         <h1>Nenhuma loja encontrada</h1>
         <p>A loja que você buscou parece não existir...</p>
       </div>
     );
-  }
-
-  if (!store) {
-    return <div>Carregando...</div>;
   }
 
   return (
@@ -48,6 +39,4 @@ const StorePage = ({ params }: { params: Promise<Params> }) => {
       ))}
     </div>
   );
-};
-
-export default StorePage;
+}

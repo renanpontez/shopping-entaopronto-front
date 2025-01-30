@@ -1,47 +1,42 @@
-'use client';
-import type { SanityStoreRespose } from '@/types/sanity';
-import { getStores } from '@/app/services/sanity';
-import { useEffect, useState } from 'react';
+import type { CategorySchema } from '@/libs/sanity/types';
+import { sanityFetch } from '@/libs/sanity/live';
+import { storesQuery } from '@/libs/sanity/queries';
 
-const StoresPage = () => {
-  const [stores, setStores] = useState<SanityStoreRespose[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export default async function StoresPage() {
+  const storesRes = await sanityFetch({
+    query: storesQuery,
+  }) as { data: CategorySchema[] };
 
-  useEffect(() => {
-    getStores().then((res) => {
-      setStores(res);
-    }).finally(() => setIsLoading(false));
-  }, []);
+  const stores = storesRes?.data as CategorySchema[];
+
+  if (!stores || stores.length === 0) {
+    return (
+      <div>
+        <h1 className="text-3xl font-bold">Lojas</h1>
+        <div>Nenhuma loja encontrada...</div>
+      </div>
+    );
+  }
+
   return (
     <div>
-      {isLoading
-        ? (
-            <div>Carregando lojas...</div>
-          )
-        : (<h1 className="text-3xl font-bold">Lojas</h1>)}
-      { stores.length === 0 && !isLoading
-        ? (
-            <div>Nenhuma loja encontrada...</div>
-          )
-        : (
-            <div className="flex gap-4">
-              {stores.map(store => (
-                <div key={store._id} className="border-2 border-gray-500 p-4">
-                  <h2>{store.title}</h2>
-                  <p>
-                    {store.productsOrServices?.map(product => (
-                      <div key={product._key}>
-                        <h3>{product.name}</h3>
-                        <p>{product.description}</p>
-                        <p>{product.price}</p>
-                      </div>
-                    ))}
-                  </p>
+      <h1 className="text-3xl font-bold">Lojas</h1>
+      <div className="flex gap-4">
+        {stores.map(store => (
+          <div key={store._id} className="border-2 border-gray-500 p-4">
+            <h2>{store.title}</h2>
+            <p>
+              {store.productsOrServices?.map(product => (
+                <div key={product._key}>
+                  <h3>{product.name}</h3>
+                  <p>{product.description}</p>
+                  <p>{product.price}</p>
                 </div>
               ))}
-            </div>
-          )}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
-};
-export default StoresPage;
+}
