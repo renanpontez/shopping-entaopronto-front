@@ -19,16 +19,6 @@ export default withSentryConfig(
       poweredByHeader: false,
       reactStrictMode: true,
       serverExternalPackages: ['@electric-sql/pglite'],
-
-      // Adicione o proxy para lidar com CORS
-      async rewrites() {
-        return [
-          {
-            source: '/api/sanity/:path*',
-            destination: 'https://2eyv6txa.apicdn.sanity.io/:path*', // URL do Sanity
-          },
-        ];
-      },
     }),
   ),
   {
