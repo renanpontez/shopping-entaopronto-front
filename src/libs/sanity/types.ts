@@ -9,6 +9,7 @@ export type StoreSchemaResponse = {
     description: string;
     price: number;
     image: string;
+    whatsappContact: number;
   }[];
   about: string;
   image: string;
