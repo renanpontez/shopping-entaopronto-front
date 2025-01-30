@@ -3,6 +3,7 @@ import { DemoBadge } from '@/components/DemoBadge';
 import arcjet, { detectBot, request } from '@/libs/Arcjet';
 import { Env } from '@/libs/Env';
 import { routing } from '@/libs/i18nNavigation';
+import { SanityLive } from '@/libs/sanity/live';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -95,6 +96,7 @@ export default async function RootLayout(props: {
           {props.children}
 
           <DemoBadge />
+          <SanityLive />
         </NextIntlClientProvider>
       </body>
     </html>
