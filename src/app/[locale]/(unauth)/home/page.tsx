@@ -13,7 +13,7 @@ export default async function HomePage() {
     <div>
       <div>
         <h1>Stores</h1>
-        {stores.length === 0
+        {stores.length
           ? (
               <div>Nenhuma loja encontrada...</div>
             )
@@ -21,7 +21,7 @@ export default async function HomePage() {
               stores.map(store => (
                 <div key={store._id} className="border-1 p-4">
                   <h1>{store.title}</h1>
-                  {store.productsOrServices.length === 0
+                  {store.productsOrServices.length
                     ? (
                         <div>Nenhum produto disponível</div>
                       )
@@ -41,7 +41,7 @@ export default async function HomePage() {
 
       <div className="mt-10">
         <h1>Categories</h1>
-        {categories.length === 0
+        {categories.length
           ? (
               <div>Nenhuma categoria encontrada...</div>
             )

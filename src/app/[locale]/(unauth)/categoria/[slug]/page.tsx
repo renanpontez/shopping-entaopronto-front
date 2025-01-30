@@ -3,15 +3,12 @@ import { sanityFetch } from '@/libs/sanity/live';
 import { storesByCategorySlugQuery } from '@/libs/sanity/queries';
 import Image from 'next/image';
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function StoresByCategoryPage({ params }: Params) {
-  const { slug } = params;
-
+export default async function StoresByCategoryPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = (await params).slug;
   const storesRes = await sanityFetch({
     query: storesByCategorySlugQuery,
     params: { slug },

@@ -2,15 +2,12 @@ import type { CategorySchema } from '@/libs/sanity/types';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storeBySlugQuery } from '@/libs/sanity/queries';
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function StorePage({ params }: Params) {
-  const { slug } = params;
-
+export default async function StorePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = (await params).slug;
   const storeRes = await sanityFetch({
     query: storeBySlugQuery,
     params: { slug },
