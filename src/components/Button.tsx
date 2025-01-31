@@ -5,20 +5,20 @@ type ButtonVariant = 'Link' | 'white' | 'primary' | 'secondary' | 'warning' | 'e
 type ButtonProps = {
   children?: string | React.ReactNode;
   onClick: () => void;
-  outLine?: boolean;
+  isOutlined?: boolean;
   color: ButtonVariant;
   Icon?: React.ReactNode;
-  Loading: boolean;
+  isLoading: boolean;
   classNames?: string;
 };
 
 export const Button = ({
   children,
   onClick,
-  outLine = false,
+  isOutlined = false,
   color = 'primary',
   Icon,
-  Loading = false,
+  isLoading = false,
   classNames,
 }: ButtonProps) => {
   const baseClasses = 'rounded-full font-normal p-3.5 hover:brightness-85 disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
@@ -26,10 +26,10 @@ export const Button = ({
   const variantClasses = {
     Link: 'text-gray hover:opacity-90 ',
     white: 'text-black bg-white hover:bg-opacity-90',
-    primary: outLine
+    primary: isOutlined
       ? 'text-black border border-primary hover:bg-primary hover:text-white'
       : 'bg-primary text-white hover:bg-opacity-90',
-    secondary: outLine
+    secondary: isOutlined
       ? 'text-black border border-secondary hover:bg-secondary hover:text-white'
       : 'bg-secondary text-white hover:bg-opacity-90',
     warning: 'bg-warning text-white hover:bg-opacity-90',
@@ -40,8 +40,8 @@ export const Button = ({
     baseClasses,
     variantClasses[color as ButtonVariant],
     {
-      'opacity-50 cursor-not-allowed': Loading,
-      'bg-transparent': outLine || color === 'Link',
+      'opacity-50 cursor-not-allowed': isLoading,
+      'bg-transparent': isOutlined || color === 'Link',
     },
     {
       'px-5 py-3': !!children,
@@ -53,13 +53,13 @@ export const Button = ({
     <button
       type="button"
       onClick={onClick}
-      disabled={Loading}
+      disabled={isLoading}
       className={buttonClasses}
     >
       <span className="flex items-center justify-center gap-2.5">
-        {!Loading ? children : 'Carregando...'}
-        {Icon && !Loading && <span className="size-3 flex items-center justify-center">{Icon}</span>}
-        {Loading && <span className="animate-spin rounded-full size-2.5 border-2 border-b-transparent border-r-transparent" />}
+        {children}
+        {Icon && !isLoading && <span className="size-3 flex items-center justify-center">{Icon}</span>}
+        {isLoading ? (<span className="animate-spin rounded-full size-2.5 border-2 border-b-transparent border-r-transparent" />) : (<>{Icon && <span className="size-3 flex items-center justify-center">{Icon}</span>}</>)}
       </span>
     </button>
   );

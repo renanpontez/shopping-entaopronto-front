@@ -12,10 +12,10 @@ const meta: Meta<typeof Button> = {
       control: 'select',
       options: ['Link', 'white', 'primary', 'secondary', 'warning', 'error'],
     },
-    outLine: {
+    isOutlined: {
       control: 'boolean',
     },
-    Loading: {
+    isLoading: {
       control: 'boolean',
     },
   },
@@ -29,7 +29,7 @@ export const Primary: Story = {
     children: 'Primary Button',
     color: 'primary',
     Icon: <GrCart />,
-    Loading: false,
+    isLoading: false,
   },
 };
 
@@ -38,7 +38,7 @@ export const Secondary: Story = {
     children: 'Secondary Button',
     color: 'secondary',
     Icon: <GrCart />,
-    Loading: false,
+    isLoading: false,
   },
 };
 
@@ -47,17 +47,17 @@ export const Warning: Story = {
     children: 'Warning Button',
     color: 'warning',
     Icon: <GrCart />,
-    Loading: false,
+    isLoading: false,
   },
 };
 
-export const OutlinePrimary: Story = {
+export const OutlinedPrimary: Story = {
   args: {
-    children: 'Outline Primary',
+    children: 'Outlined Primary',
     color: 'primary',
-    outLine: true,
+    isOutlined: true,
     Icon: <GrCart />,
-    Loading: false,
+    isLoading: false,
   },
 };
 
@@ -66,7 +66,7 @@ export const LoadingState: Story = {
     children: 'Loading Button',
     color: 'primary',
     Icon: <GrCart />,
-    Loading: true,
+    isLoading: true,
   },
 };
 
@@ -75,6 +75,6 @@ export const LinkButton: Story = {
     children: 'Link Button',
     color: 'Link',
     Icon: <GrCart />,
-    Loading: false,
+    isLoading: false,
   },
 };
