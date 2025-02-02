@@ -8,9 +8,9 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    color: {
+    variant: {
       control: 'select',
-      options: ['Link', 'white', 'primary', 'secondary', 'warning', 'error'],
+      options: ['link', 'white', 'primary', 'secondary', 'warning', 'error'],
     },
     isOutlined: {
       control: 'boolean',
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Button>;
 export const Primary: Story = {
   args: {
     children: 'Primary Button',
-    color: 'primary',
+    variant: 'primary',
     Icon: <GrCart />,
     isLoading: false,
   },
@@ -36,7 +36,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     children: 'Secondary Button',
-    color: 'secondary',
+    variant: 'secondary',
     Icon: <GrCart />,
     isLoading: false,
   },
@@ -45,7 +45,7 @@ export const Secondary: Story = {
 export const Warning: Story = {
   args: {
     children: 'Warning Button',
-    color: 'warning',
+    variant: 'warning',
     Icon: <GrCart />,
     isLoading: false,
   },
@@ -54,7 +54,7 @@ export const Warning: Story = {
 export const OutlinedPrimary: Story = {
   args: {
     children: 'Outlined Primary',
-    color: 'primary',
+    variant: 'primary',
     isOutlined: true,
     Icon: <GrCart />,
     isLoading: false,
@@ -64,7 +64,7 @@ export const OutlinedPrimary: Story = {
 export const LoadingState: Story = {
   args: {
     children: 'Loading Button',
-    color: 'primary',
+    variant: 'primary',
     Icon: <GrCart />,
     isLoading: true,
   },
@@ -73,7 +73,7 @@ export const LoadingState: Story = {
 export const LinkButton: Story = {
   args: {
     children: 'Link Button',
-    color: 'Link',
+    variant: 'link',
     Icon: <GrCart />,
     isLoading: false,
   },

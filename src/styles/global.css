@@ -1,11 +1,36 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #268657;
-  --color-secondary: #582ba5;
+  --font-display: 'Montserrat';
+
+  --font-size: 16px;
+
+  --color-primary: #58994a;
+  --color-primary-dark: #58844f;
+  --color-secondary: #747579;
+  --color-secondary-dark: #595a60;
   --color-gray: #324434;
   --color-error: #ba3e4a;
   --color-warning: #ba843e;
   --color-dark: #414141;
   --color-darkLight: #41414180;
+}
+
+@layer components {
+  section {
+    width: 100%;
+    padding: 2rem 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  /* Confirm if it works and if there's a better approach */
+  * {
+    transition: all 0.2ms ease-out;
+  }
+  *:hover {
+    transition: all 0.4ms ease-in;
+  }
 }

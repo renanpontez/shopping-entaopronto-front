@@ -23,10 +23,10 @@ export async function generateMetadata(props: IIndexProps) {
 export default async function Index(props: IIndexProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const t = await getTranslations({
-    locale,
-    namespace: 'Index',
-  });
+  // const t = await getTranslations({
+  //   locale,
+  //   namespace: 'Index',
+  // });
 
   const categoriesRes = await sanityFetch({
     query: categoriesQuery,
@@ -39,27 +39,71 @@ export default async function Index(props: IIndexProps) {
   const stores = storeRes?.data as CategorySchema[];
 
   return (
-    <>
-      <h1>{t('meta_title')}</h1>
-      <div>
-        <h4>Categorias</h4>
-        {categories.map(category => (
-          <div key={category._id}>
-            <h2>{category.title}</h2>
-            <p>{category.description}</p>
+    <div className="flex flex-col gap-20 container">
+      <section>
+        <h3>Categorias</h3>
+        <ul>
+          {categories.map(category => (
+            <li key={category._id}>
+              {category.title}
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h3>Lojas</h3>
+        <ul>
+          {stores.map(store => (
+            <li key={store._id}>
+              {store.title}
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        {/* Quem somos */}
+        <div className="flex">
+          <div>
+            <h3>Quem Somos</h3>
+            <p>
+              O Shopping EntãoPronto é um marketplace inovador que conecta você a diversas lojas e
+              serviços exclusivos, garantindo a melhor experiência de compra online.
+            </p>
           </div>
-        ))}
-
-        <hr />
-
-        <h4>Lojas Cadastradas</h4>
-        {stores.map(store => (
-          <div key={store._id}>
-            <h2>{store.title}</h2>
-            <p>{store.description}</p>
+          <div>
+            <img src="/assets/images/hero-img.svg" alt="Quem Somos" />
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      </section>
+      <section>
+        {/* CTA Agility */}
+        <div className="flex gap-10">
+          <div>
+            <h3>Transforme seu negócio com a Agility</h3>
+            <p>
+              Quer levar sua loja para o digital e alcançar novos clientes? A Agility tem a solução
+              ideal para você!
+            </p>
+          </div>
+          <div>
+            <button>Saiba mais</button>
+          </div>
+        </div>
+      </section>
+      <section>
+        {/* Contato */}
+        <div>
+          <h3>Entre em Contato</h3>
+          <p>Fale conosco para tirar dúvidas ou saber mais sobre como podemos ajudar.</p>
+
+          <form className="flex flex-col">
+            <input type="text" placeholder="Nome" />
+            <input type="email" placeholder="E-mail" />
+            <textarea placeholder="Mensagem" />
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      </section>
+    </div>
   );
 };
