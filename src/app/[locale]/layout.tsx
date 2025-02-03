@@ -6,8 +6,14 @@ import { routing } from '@/libs/i18nNavigation';
 import { SanityLive } from '@/libs/sanity/live';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
+import { Montserrat } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import '@/styles/global.css';
+
+const montserratFont = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   icons: [
@@ -87,7 +93,7 @@ export default async function RootLayout(props: {
   // which dynamically adds a `style` attribute to the body tag.
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={montserratFont.className}>
       <body suppressHydrationWarning>
         <NextIntlClientProvider
           locale={locale}

@@ -12,17 +12,17 @@ export const BaseTemplate = (props: {
   const t = useTranslations('BaseTemplate');
 
   const MENU_LINKS_MOCK = [
-    { label: 'Home', href: '/' },
-    { label: 'Categorias', href: '/Categorias' },
-    { label: 'Parceiros', href: '/Parceiros' },
-    { label: 'Contato', href: '/Contato' },
+    { label: 'Início', href: '/' },
+    { label: 'Categorias', href: '/categorias' },
+    { label: 'Parceiros', href: '/parceiros' },
+    { label: 'Contato', href: '/contato' },
   ];
 
   return (
     <div className="w-full antialiased">
       <header className="w-full bg-green-800 text-white py-10 from-primary to-primaryDark bg-linear-[160deg] from-[-10%] to-150%">
         <Container>
-          <div className="flex flex-row justify-between">
+          <div className="flex flex-row justify-between items-center">
             <div className="relative w-auto h-full">
               <Image
                 src="/assets/images/entao-pronto-logo-white.svg"
@@ -98,24 +98,72 @@ export const BaseTemplate = (props: {
 
         <main>{props.children}</main>
 
-        <footer className="border-t border-gray-300 py-8 py-30 container">
-          {`© Copyright ${new Date().getFullYear()} ${AppConfig.name}. `}
-          {t.rich('made_with', {
-            author: () => (
-              <a
-                href="https://creativedesignsguru.com"
-                className="text-blue-700 hover:border-b-2 hover:border-blue-700"
-              >
-                CreativeDesignsGuru
-              </a>
-            ),
-          })}
-          {/*
-           * PLEASE READ THIS SECTION
-           * I'm an indie maker with limited resources and funds, I'll really appreciate if you could have a link to my website.
-           * The link doesn't need to appear on every pages, one link on one page is enough.
-           * For example, in the `About` page. Thank you for your support, it'll mean a lot to me.
-           */}
+        <footer className="border-t border-gray-300 bg-primary text-white w-full">
+          <Container className="py-8 md:py-15">
+            {/* flex 4 columns */}
+            <div className="flex flex-col md:flex-row gap-10 justify-between">
+              <div className="flex flex-col gap-5 basis-1/4">
+                <div className=" gap-4 flex flex-col">
+                  <div className="relative w-auto h-full">
+                    <Image
+                      src="/assets/images/entao-pronto-logo-white.svg"
+                      alt="Logo"
+                      layout="intrinsic"
+                      width={120}
+                      height={20}
+                      className="h-auto w-auto"
+                    />
+                  </div>
+
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+
+                </div>
+              </div>
+              <div className="flex flex-col gap-5 basis-1/4 ">
+              </div>
+              <div className="flex flex-col gap-5 basis-1/4 ">
+                <h3>Menu</h3>
+                <ul>
+                  {MENU_LINKS_MOCK.map(({ label, href }) => (
+                    <li key={href}>
+                      <a href={href}>{label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex flex-col gap-5 basis-1/4 ">
+                <h3>Contato</h3>
+                <ul>
+                  <li>
+                    <a href="mailto:test@email.com">
+                      Email
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tel:+5511999999999">
+                      Telefone
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </Container>
+          <div className="py-5 bg-primary-700 w-full flex justify-center">
+            <em className="text-sm">
+              {`© Copyright ${new Date().getFullYear()} ${AppConfig.name}. `}
+              {t.rich('made_with', {
+                author: () => (
+                  <a
+                    href="https://agilitycreative.com"
+                    className="text-blue-700 hover:border-b-2 hover:border-blue-700"
+                  >
+                    Agility Creative
+                  </a>
+                ),
+              })}
+            </em>
+          </div>
         </footer>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-type ButtonVariant = 'link' | 'white' | 'white-outlined' | 'primary' | 'primary-dark' | 'primary-outlined' | 'secondary' | 'secondary-outlined' | 'warning' | 'error';
+type ButtonVariant = 'link' | 'white' | 'white-outlined' | 'primary' | 'primary-700' | 'primary-outlined' | 'secondary' | 'secondary-outlined' | 'warning' | 'error';
 
 type ButtonProps = {
   children?: string | React.ReactNode;
@@ -28,7 +28,7 @@ export const Button = ({
   const baseClasses = 'rounded-full font-normal p-3.5 hover:brightness-85 disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
 
   const stylesByVariant = {
-    'primary-dark': 'bg-primary-dark text-white',
+    'primary-700': 'bg-primary-700 text-white',
     'primary-outlined': 'text-primary border border-primary hover:bg-primary hover:text-white',
     'primary': 'bg-primary text-white',
     'secondary': 'bg-secondary text-white hover:bg-secondary-dark',

@@ -1,4 +1,4 @@
-import type { CategorySchema } from '@/libs/sanity/types';
+import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storeBySlugQuery } from '@/libs/sanity/queries';
 
@@ -11,7 +11,7 @@ export default async function StorePage({
   const storeRes = await sanityFetch({
     query: storeBySlugQuery,
     params: { slug },
-  }) as { data: CategorySchema };
+  }) as { data: StoreSchemaResponse };
 
   const store = storeRes?.data;
 
@@ -29,7 +29,7 @@ export default async function StorePage({
       <h1>{store.title}</h1>
       {store.productsOrServices?.map(product => (
         <div key={product._key}>
-          <h2>{product.name}</h2>
+          <h2>{product.title}</h2>
           <p>{product.description}</p>
           <p>{product.price}</p>
         </div>
