@@ -19,7 +19,7 @@ type InputProps = BaseProps &
 export const Input = ({ label, placeholder, type, isInvalid, value, rows = 5, onChange, ...props }: InputProps) => {
   const inputId = `input-${label.toLowerCase().replace(/\s+/g, '-')}`;
 
-  const baseClasses = `px-3 py-2 text-dark border placeholder-darkLight cursor-pointer ${isInvalid ? 'border-error' : ''}`;
+  const baseClasses = `px-3 py-2 text-dark border placeholder:text-darkLight placeholder:text-sm cursor-pointer ${isInvalid ? 'border-error' : ''}`;
 
   return (
     <div className="min-w-60">
