@@ -3,6 +3,7 @@
 
 @theme {
   --font-size: 16px;
+  --font-primary: 'Montserrat', sans-serif;
 
   --color-primary-200: #c4e0a1;
   --color-primary-300: #a3d18b;
@@ -16,8 +17,8 @@
   --color-gray: #324434;
   --color-error: #ba3e4a;
   --color-warning: #ba843e;
-
-  --font-primary: 'Montserrat', sans-serif;
+  --color-darkLight: #41414180;
+  --color-dark: #414141;
 }
 
 @layer components {

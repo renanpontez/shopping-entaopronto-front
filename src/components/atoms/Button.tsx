@@ -1,11 +1,20 @@
 import classnames from 'classnames';
 
-type ButtonVariant = 'link' | 'white' | 'white-outlined' | 'primary' | 'primary-700' | 'primary-outlined' | 'secondary' | 'secondary-outlined' | 'warning' | 'error';
+type ButtonVariant =
+  | 'link'
+  | 'white'
+  | 'white-outlined'
+  | 'primary'
+  | 'primary-dark'
+  | 'primary-outlined'
+  | 'secondary'
+  | 'secondary-outlined'
+  | 'warning'
+  | 'error';
 
 type ButtonProps = {
   children?: string | React.ReactNode;
   onClick?: () => void;
-  isOutlined?: boolean;
   variant: ButtonVariant;
   Icon?: React.ReactNode;
   isLoading?: boolean;
@@ -17,7 +26,6 @@ type ButtonProps = {
 export const Button = ({
   children,
   onClick,
-  isOutlined = false,
   variant = 'primary',
   Icon,
   isLoading = false,
@@ -25,18 +33,21 @@ export const Button = ({
   type = 'button',
   href,
 }: ButtonProps) => {
-  const baseClasses = 'rounded-full font-normal p-3.5 hover:brightness-85 disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
+  const baseClasses
+    = 'rounded-full font-normal p-3.5 hover:brightness-85 disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
 
   const stylesByVariant = {
-    'primary-700': 'bg-primary-700 text-white',
+    'primary-dark': 'bg-primary-700 text-white',
     'primary-outlined': 'text-primary border border-primary hover:bg-primary hover:text-white',
     'primary': 'bg-primary text-white',
     'secondary': 'bg-secondary text-white hover:bg-secondary-dark',
-    'secondary-outlined': 'text-secondary border border-secondary hover:bg-secondary hover:text-white',
+    'secondary-outlined':
+      'text-secondary border border-secondary hover:bg-secondary hover:text-white',
     'warning': 'bg-warning text-white',
     'error': 'bg-error text-white',
     'white': 'bg-white text-black',
-    'white-outlined': 'text-white border border-white hover:bg-white hover:text-black',
+    'white-outlined':
+      'text-black border border-dark hover:bg-white hover:text-black',
     'link': 'text-gray',
   };
 
@@ -45,7 +56,7 @@ export const Button = ({
     stylesByVariant[variant as ButtonVariant],
     {
       'opacity-50 cursor-not-allowed': isLoading,
-      'bg-transparent': isOutlined || variant === 'link',
+      'bg-transparent': variant === 'link',
     },
     {
       'px-5 py-3': !!children,
@@ -65,8 +76,17 @@ export const Button = ({
     >
       <span className="flex items-center justify-center gap-2.5">
         {children}
-        {Icon && !isLoading && <span className="size-3 flex items-center justify-center">{Icon}</span>}
-        {isLoading ? (<span className="animate-spin rounded-full size-2.5 border-2 border-b-transparent border-r-transparent" />) : (<>{Icon && <span className="size-3 flex items-center justify-center">{Icon}</span>}</>)}
+        {isLoading
+          ? (
+              <span className="animate-spin rounded-full size-2.5 border-2 border-b-transparent border-r-transparent" />
+            )
+          : (
+              Icon && (
+                <span className="size-3 flex items-center justify-center">
+                  {Icon}
+                </span>
+              )
+            )}
       </span>
     </Tag>
   );
