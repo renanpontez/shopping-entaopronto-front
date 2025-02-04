@@ -5,7 +5,6 @@ type ButtonVariant = 'link' | 'white' | 'white-outlined' | 'primary' | 'primary-
 type ButtonProps = {
   children?: string | React.ReactNode;
   onClick?: () => void;
-  isOutlined?: boolean;
   variant: ButtonVariant;
   Icon?: React.ReactNode;
   isLoading?: boolean;
@@ -17,7 +16,6 @@ type ButtonProps = {
 export const Button = ({
   children,
   onClick,
-  isOutlined = false,
   variant = 'primary',
   Icon,
   isLoading = false,
@@ -36,7 +34,7 @@ export const Button = ({
     'warning': 'bg-warning text-white',
     'error': 'bg-error text-white',
     'white': 'bg-white text-black',
-    'white-outlined': 'text-white border border-white hover:bg-white hover:text-black',
+    'white-outlined': 'text-black border border-dark hover:bg-white hover:text-black',
     'link': 'text-gray',
   };
 
@@ -45,7 +43,7 @@ export const Button = ({
     stylesByVariant[variant as ButtonVariant],
     {
       'opacity-50 cursor-not-allowed': isLoading,
-      'bg-transparent': isOutlined || variant === 'link',
+      'bg-transparent': variant === 'link',
     },
     {
       'px-5 py-3': !!children,
@@ -65,8 +63,13 @@ export const Button = ({
     >
       <span className="flex items-center justify-center gap-2.5">
         {children}
-        {Icon && !isLoading && <span className="size-3 flex items-center justify-center">{Icon}</span>}
-        {isLoading ? (<span className="animate-spin rounded-full size-2.5 border-2 border-b-transparent border-r-transparent" />) : (<>{Icon && <span className="size-3 flex items-center justify-center">{Icon}</span>}</>)}
+        {isLoading
+          ? (
+              <span className="animate-spin rounded-full size-2.5 border-2 border-b-transparent border-r-transparent" />
+            )
+          : (
+              Icon && <span className="size-3 flex items-center justify-center">{Icon}</span>
+            )}
       </span>
     </Tag>
   );
