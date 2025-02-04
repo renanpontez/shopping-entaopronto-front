@@ -14,11 +14,14 @@
   --color-primary-800: #2f4c1b;
   --color-secondary: #747579;
   --color-secondary-dark: #595a60;
+  --color-gray-300: #f2f2f2;
+  --color-gray-400: #a1a1a1;
   --color-gray: #324434;
   --color-error: #ba3e4a;
   --color-warning: #ba843e;
   --color-darkLight: #41414180;
   --color-dark: #414141;
+  --color-backdrop: #000000b0;
 }
 
 @layer components {

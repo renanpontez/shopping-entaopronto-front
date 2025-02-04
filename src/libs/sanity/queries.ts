@@ -10,7 +10,7 @@ export const storesQuery = defineQuery(`
   *[_type == "store"]{
     _id,
     title,
-    slug,
+    "slug": slug.current,
     "category": category->,
     productsOrServices[]{
       _key,
@@ -29,35 +29,11 @@ export const storesQuery = defineQuery(`
   }     
 `);
 
-// export const storesAndCategoriesQuery = defineQuery(`{
-//   "stores": *[_type == "store"]{
-//     _id,
-//     title,
-//     slug,
-//     "category": category->title,
-//     productsOrServices[]{
-//       _key,
-//       title,
-//       description,
-//       price,
-//       "image": image.asset->url
-//     },
-//     about,
-//     "image": image.asset->url,
-//     contact {
-//       address,
-//       phone,
-//       email
-//     }
-//   },
-//   "categories": *[_type == "category"]
-// }`);
-
 export const storeBySlugQuery = defineQuery(`
   *[_type == "store" && slug.current == $slug][0]{
     _id,
     title,
-    slug,
+    "slug": slug.current,
     _createdAt,
     _updatedAt,
     productsOrServices[]{
@@ -80,7 +56,7 @@ export const storesByCategorySlugQuery = defineQuery(`
   *[_type == "store" && category._ref == $slug]{
     _id,
     title,
-    slug,
+    "slug": slug.current,
     "category": category->title,
     productsOrServices[]{
       _key,

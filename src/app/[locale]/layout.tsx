@@ -4,6 +4,7 @@ import arcjet, { detectBot, request } from '@/libs/Arcjet';
 import { Env } from '@/libs/Env';
 import { routing } from '@/libs/i18nNavigation';
 import { SanityLive } from '@/libs/sanity/live';
+import classNames from 'classnames';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Montserrat } from 'next/font/google';
@@ -93,7 +94,7 @@ export default async function RootLayout(props: {
   // which dynamically adds a `style` attribute to the body tag.
 
   return (
-    <html lang={locale} className={montserratFont.className}>
+    <html lang={locale} className={classNames(montserratFont.className, 'scroll-smooth')}>
       <body suppressHydrationWarning>
         <NextIntlClientProvider
           locale={locale}
