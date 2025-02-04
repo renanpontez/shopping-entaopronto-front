@@ -1,6 +1,16 @@
 import classnames from 'classnames';
 
-type ButtonVariant = 'link' | 'white' | 'white-outlined' | 'primary' | 'primary-dark' | 'primary-outlined' | 'secondary' | 'secondary-outlined' | 'warning' | 'error';
+type ButtonVariant =
+  | 'link'
+  | 'white'
+  | 'white-outlined'
+  | 'primary'
+  | 'primary-dark'
+  | 'primary-outlined'
+  | 'secondary'
+  | 'secondary-outlined'
+  | 'warning'
+  | 'error';
 
 type ButtonProps = {
   children?: string | React.ReactNode;
@@ -23,18 +33,22 @@ export const Button = ({
   type = 'button',
   href,
 }: ButtonProps) => {
-  const baseClasses = 'rounded-full font-normal p-3.5 hover:brightness-85 disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
+  const baseClasses
+    = 'rounded-full font-normal p-3.5 hover:brightness-85 disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
 
   const stylesByVariant = {
     'primary-dark': 'bg-primary-dark text-white',
-    'primary-outlined': 'text-primary border border-primary hover:bg-primary hover:text-white',
+    'primary-outlined':
+      'text-primary border border-primary hover:bg-primary hover:text-white',
     'primary': 'bg-primary text-white',
     'secondary': 'bg-secondary text-white hover:bg-secondary-dark',
-    'secondary-outlined': 'text-secondary border border-secondary hover:bg-secondary hover:text-white',
+    'secondary-outlined':
+      'text-secondary border border-secondary hover:bg-secondary hover:text-white',
     'warning': 'bg-warning text-white',
     'error': 'bg-error text-white',
     'white': 'bg-white text-black',
-    'white-outlined': 'text-black border border-dark hover:bg-white hover:text-black',
+    'white-outlined':
+      'text-black border border-dark hover:bg-white hover:text-black',
     'link': 'text-gray',
   };
 
@@ -68,7 +82,11 @@ export const Button = ({
               <span className="animate-spin rounded-full size-2.5 border-2 border-b-transparent border-r-transparent" />
             )
           : (
-              Icon && <span className="size-3 flex items-center justify-center">{Icon}</span>
+              Icon && (
+                <span className="size-3 flex items-center justify-center">
+                  {Icon}
+                </span>
+              )
             )}
       </span>
     </Tag>

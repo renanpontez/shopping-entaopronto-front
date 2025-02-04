@@ -1,4 +1,5 @@
 import type { CategorySchema } from '@/libs/sanity/types';
+import { ContactUs } from '@/components/sections/Contact/ContactUsSection';
 import { sanityFetch } from '@/libs/sanity/live';
 import { categoriesQuery, storesQuery } from '@/libs/sanity/queries';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -92,17 +93,7 @@ export default async function Index(props: IIndexProps) {
       </section>
       <section>
         {/* Contato */}
-        <div>
-          <h3>Entre em Contato</h3>
-          <p>Fale conosco para tirar dúvidas ou saber mais sobre como podemos ajudar.</p>
-
-          <form className="flex flex-col">
-            <input type="text" placeholder="Nome" />
-            <input type="email" placeholder="E-mail" />
-            <textarea placeholder="Mensagem" />
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
+        <ContactUs />
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from '@/components/atoms/Button';
 import Container from '@/components/Container';
 import { AppConfig } from '@/utils/AppConfig';
 import { useTranslations } from 'next-intl';

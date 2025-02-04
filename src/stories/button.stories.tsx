@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { GrCart } from 'react-icons/gr';
 
-import { Button } from '../components/Button';
+import { Button } from '../components/atoms/Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
