@@ -23,7 +23,7 @@ const SelectInput = ({ options, placeholder, setState }: { options: string[]; pl
           Icon={<MdKeyboardArrowDown />}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <span className="text-gray-400">{selectedOption || placeholder}</span>
+          <span className="text-secondary-dark">{selectedOption || placeholder}</span>
         </Button>
       )}
       {isOpen && (
