@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Button } from './Button';
 
-const SelectInput = ({ options, placeholder, setState }: { options: string[]; placeholder: string; setState: (option: string) => void }) => {
+export const SelectInput = ({ options, placeholder, setState }: { options: string[]; placeholder: string; setState: (option: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -66,4 +66,3 @@ const SelectInput = ({ options, placeholder, setState }: { options: string[]; pl
     </div>
   );
 };
-export default SelectInput;
