@@ -4,7 +4,7 @@ import classnames from 'classnames';
 type InputVariant = 'white-outlined' | 'secondary-outlined';
 
 type BaseProps = {
-  label: string;
+  label?: string;
   placeholder: string;
   isInvalid?: boolean;
   value: string;
@@ -33,7 +33,7 @@ export const Input = ({
   variant = 'white-outlined',
   ...props
 }: InputProps) => {
-  const inputId = `input-${label.toLowerCase().replace(/\s+/g, '-')}`;
+  const inputId = `input-${label?.toLowerCase().replace(/\s+/g, '-')}`;
 
   const stylesByVariant = {
     'white-outlined': {
