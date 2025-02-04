@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { GrCart } from 'react-icons/gr';
 
-import { Button } from '../components/Button';
+import { Button } from '../components/atoms/Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -10,13 +10,25 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['link', 'white', 'primary', 'secondary', 'warning', 'error'],
-    },
-    isOutlined: {
-      control: 'boolean',
+      options: [
+        'link',
+        'white',
+        'white-outlined',
+        'primary',
+        'primary-dark',
+        'primary-outlined',
+        'secondary',
+        'secondary-outlined',
+        'warning',
+        'error',
+      ],
     },
     isLoading: {
       control: 'boolean',
+    },
+    type: {
+      control: 'select',
+      options: ['button', 'submit', 'link'],
     },
   },
 };
@@ -33,10 +45,55 @@ export const Primary: Story = {
   },
 };
 
+export const PrimaryDark: Story = {
+  args: {
+    children: 'Primary Dark Button',
+    variant: 'primary-dark',
+    Icon: <GrCart />,
+    isLoading: false,
+  },
+};
+
+export const PrimaryOutlined: Story = {
+  args: {
+    children: 'Primary Outlined',
+    variant: 'primary-outlined',
+    Icon: <GrCart />,
+    isLoading: false,
+  },
+};
+
 export const Secondary: Story = {
   args: {
     children: 'Secondary Button',
     variant: 'secondary',
+    Icon: <GrCart />,
+    isLoading: false,
+  },
+};
+
+export const SecondaryOutlined: Story = {
+  args: {
+    children: 'Secondary Outlined',
+    variant: 'secondary-outlined',
+    Icon: <GrCart />,
+    isLoading: false,
+  },
+};
+
+export const White: Story = {
+  args: {
+    children: 'White Button',
+    variant: 'white',
+    Icon: <GrCart />,
+    isLoading: false,
+  },
+};
+
+export const WhiteOutlined: Story = {
+  args: {
+    children: 'White Outlined',
+    variant: 'white-outlined',
     Icon: <GrCart />,
     isLoading: false,
   },
@@ -51,17 +108,16 @@ export const Warning: Story = {
   },
 };
 
-export const OutlinedPrimary: Story = {
+export const Error: Story = {
   args: {
-    children: 'Outlined Primary',
-    variant: 'primary',
-    isOutlined: true,
+    children: 'Error Button',
+    variant: 'error',
     Icon: <GrCart />,
     isLoading: false,
   },
 };
 
-export const LoadingState: Story = {
+export const Loading: Story = {
   args: {
     children: 'Loading Button',
     variant: 'primary',
@@ -70,11 +126,12 @@ export const LoadingState: Story = {
   },
 };
 
-export const LinkButton: Story = {
+export const Link: Story = {
   args: {
     children: 'Link Button',
     variant: 'link',
     Icon: <GrCart />,
-    isLoading: false,
+    type: 'link',
+    href: '#',
   },
 };

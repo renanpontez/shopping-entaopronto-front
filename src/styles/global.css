@@ -12,6 +12,8 @@
   --color-gray: #324434;
   --color-error: #ba3e4a;
   --color-warning: #ba843e;
+  --color-dark: #414141;
+  --color-darkLight: #41414180;
 }
 
 @layer components {
