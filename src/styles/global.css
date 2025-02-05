@@ -34,16 +34,6 @@
     font-size: 2.5rem;
     font-weight: 700;
   }
-  h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-dark);
-  }
-  h5 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--color-dark);
-  }
   * {
     transition: all 0.2ms ease-out;
   }

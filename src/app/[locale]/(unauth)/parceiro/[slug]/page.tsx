@@ -2,6 +2,7 @@ import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import Container from '@/components/Container';
 import { ProductAndServiceCard } from '@/components/ProductAndServiceCard';
 import { StoreHero } from '@/components/StoreHero';
+import Typography from '@/components/Typography';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storeBySlugQuery } from '@/libs/sanity/queries';
 
@@ -21,8 +22,8 @@ export default async function StorePage({
   if (!store) {
     return (
       <div>
-        <h1>Nenhuma loja encontrada</h1>
-        <p>A loja que você buscou parece não existir...</p>
+        <Typography variant="h1">Nenhuma loja encontrada</Typography>
+        <Typography variant="body" tag="p">A loja que você buscou parece não existir...</Typography>
       </div>
     );
   }
