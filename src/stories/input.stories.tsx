@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Input } from '@/components/atoms/Input';
 import { GrSearch } from 'react-icons/gr';
-import { Input } from '../components/Input';
 
-const meta: Meta<typeof Input> = {
+const meta: Meta<typeof Input.Field> = {
   title: 'Components/Input',
-  component: Input,
+  component: Input.Field,
   tags: ['autodocs'],
   argTypes: {
     label: { control: 'text' },
@@ -16,15 +16,11 @@ const meta: Meta<typeof Input> = {
     isInvalid: { control: 'boolean' },
     value: { control: 'text' },
     icon: { control: 'boolean' },
-    variant: {
-      control: 'select',
-      options: ['white-outlined', 'secondary-outlined'],
-    },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof Input.Field>;
 
 export const Default: Story = {
   args: {
@@ -32,8 +28,7 @@ export const Default: Story = {
     placeholder: 'Enter your username',
     type: 'text',
     value: '',
-    variant: 'white-outlined',
-    onChange: () => {},
+    onChange: () => { },
   },
 };
 
@@ -43,8 +38,7 @@ export const SecondaryOutlined: Story = {
     placeholder: 'Enter your username',
     type: 'text',
     value: '',
-    variant: 'secondary-outlined',
-    onChange: () => {},
+    onChange: () => { },
   },
 };
 
@@ -55,7 +49,7 @@ export const WithError: Story = {
     type: 'email',
     value: '',
     isInvalid: true,
-    onChange: () => {},
+    onChange: () => { },
   },
 };
 
@@ -65,7 +59,7 @@ export const Password: Story = {
     placeholder: 'Enter your password',
     type: 'password',
     value: '',
-    onChange: () => {},
+    onChange: () => { },
   },
 };
 
@@ -75,7 +69,7 @@ export const Number: Story = {
     placeholder: 'Enter your age',
     type: 'number',
     value: '',
-    onChange: () => {},
+    onChange: () => { },
   },
 };
 
@@ -86,7 +80,6 @@ export const Search: Story = {
     type: 'search',
     value: '',
     icon: <GrSearch />,
-    onChange: () => {},
-    variant: 'secondary-outlined',
+    onChange: () => { },
   },
 };

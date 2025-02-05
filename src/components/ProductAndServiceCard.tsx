@@ -3,7 +3,7 @@
 import { formatCurrency } from '@/utils/formatCurrencyBRL';
 import { openWhatsAppChat } from '@/utils/openWhatsAppChat';
 import Image, { type StaticImageData } from 'next/image';
-import { Button } from './Button';
+import { Button } from './atoms/Button';
 
 type ProductAndServiceProps = {
   name: string;

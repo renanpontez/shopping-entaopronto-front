@@ -1,17 +1,30 @@
-'use client';
-
 import { useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { Button } from './Button';
+import { Button } from './atoms/Button';
 
-export const SelectInput = ({ options, placeholder, setState }: { options: string[]; placeholder: string; setState: (option: string) => void }) => {
+type OptionType = {
+  label: string;
+  value: string;
+};
+
+type SelectInputType = {
+  options: OptionType[];
+  placeholder: string;
+  onOptionSelected: (option: string) => void;
+  selectedOption: string;
+};
+
+export const SelectInput = ({
+  options,
+  placeholder,
+  onOptionSelected,
+  selectedOption,
+}: SelectInputType) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
 
   const handleSelect = (option: string) => {
-    setState(option);
+    onOptionSelected(option);
     setIsOpen(false);
-    setSelectedOption(option);
   };
 
   return (
@@ -28,21 +41,21 @@ export const SelectInput = ({ options, placeholder, setState }: { options: strin
       )}
       {isOpen && (
         <ul onMouseLeave={() => setIsOpen(false)} className="absolute w-full mt-2 bg-white border border-darkLight rounded-md shadow-lg max-h-60 overflow-y-auto z-10">
-          {options.map((option: string) => (
+          {options.map((option: OptionType) => (
             <li
-              key={option}
+              key={option.value}
               className="p-2 cursor-pointer hover:bg-gray-100"
               role="option"
               aria-selected={false}
               tabIndex={0}
-              onClick={() => handleSelect(option)}
+              onClick={() => handleSelect(option.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  handleSelect(option);
+                  handleSelect(option.value);
                 }
               }}
             >
-              {option}
+              {option.label}
             </li>
           ))}
           { selectedOption && (

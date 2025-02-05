@@ -15,7 +15,7 @@ const meta: Meta<typeof SelectInput> = {
       control: 'text',
       description: 'Placeholder text when no option is selected',
     },
-    setState: {
+    onOptionSelected: {
       action: 'selected',
       description: 'Callback function when an option is selected',
     },
@@ -27,28 +27,27 @@ type Story = StoryObj<typeof SelectInput>;
 
 export const Default: Story = {
   args: {
-    options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+    options: [
+      { label: 'Option 1', value: 'option1' },
+      { label: 'Option 2', value: 'option2' },
+      { label: 'Option 3', value: 'option3' },
+      { label: 'Option 4', value: 'option4' },
+    ],
     placeholder: 'Select an option',
-    setState: (option: string) => (option),
+    onOptionSelected: (option: string) => (option),
   },
 };
 
 export const WithManyOptions: Story = {
   args: {
     options: [
-      'Option 1',
-      'Option 2',
-      'Option 3',
-      'Option 4',
-      'Option 5',
-      'Option 6',
-      'Option 7',
-      'Option 8',
-      'Option 9',
-      'Option 10',
+      { label: 'Option 1', value: 'option1' },
+      { label: 'Option 2', value: 'option2' },
+      { label: 'Option 3', value: 'option3' },
+      { label: 'Option 4', value: 'option4' },
     ],
     placeholder: 'Select from many options',
-    setState: (option: string) => (option),
+    onOptionSelected: (option: string) => (option),
   },
 };
 
@@ -56,6 +55,6 @@ export const Empty: Story = {
   args: {
     options: [],
     placeholder: 'No options available',
-    setState: (option: string) => (option),
+    onOptionSelected: (option: string) => (option),
   },
 };
