@@ -1,19 +1,14 @@
 import type { CategorySchema, StoreSchemaResponse } from '@/libs/sanity/types';
+import { Button } from '@/components/atoms/Button';
 import { Hero } from '@/components/atoms/Header/Hero';
 import Container from '@/components/Container';
-import Loader from '@/components/Loader';
+import { CategoryList } from '@/components/sections/Category/CategoryList';
 import { ContactUs } from '@/components/sections/Contact/ContactUsSection';
+import { StoreList } from '@/components/sections/Store/StoreList';
 import Typography from '@/components/Typography';
 import { sanityFetch } from '@/libs/sanity/live';
 import { categoriesQuery, storesQuery } from '@/libs/sanity/queries';
-import { buildStoreUrl } from '@/utils/URLs';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FaRegClock } from 'react-icons/fa';
-import SVG from 'react-inlinesvg';
-
-const COMPANY_PLACEHOLDER = '/assets/images/company-placeholder.svg';
 
 type IIndexProps = {
   params: Promise<{ locale: string }>;
@@ -52,76 +47,24 @@ export default async function Index(props: IIndexProps) {
 
   return (
     <>
-      <Hero />
+      <Hero title="Conecte-se sua marca ao Shopping EntãoPronto" />
       <div className="flex flex-col gap-8">
         <section>
           <Container className="flex flex-col gap-10">
             <Typography variant="h3">Categorias mais procuradas</Typography>
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-8 justify-around w-full">
-              {categories.concat(categories.concat(categories.concat(categories))).map(category => (
-                <li key={category._id + new Date().toISOString() + Math.random()}>
-                  <Link href={`/categoria/${category.slug.current}`} className="block flex flex-row gap-5 items-center hover:border-primary border border-transparent pr-4 rounded-lg">
-                    <div className="bg-primary text-white p-4 rounded-lg aspect-square">
-                      <SVG src={category?.icon?.svg} fontSize={36} style={{ margin: 'auto 0' }} loader={<Loader />} />
-                    </div>
-                    <div className="flex flex-col gap-0">
-                      <Typography variant="h5">{category.title}</Typography>
-                      {category.subCategories?.length && (
-                        <Typography variant="body" tag="span">
-                          {category.subCategories?.length}
-                          {' '}
-                          sub-categorias
-                        </Typography>
-                      )}
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <CategoryList categories={categories} />
+            <div className="w-full flex justify-center">
+              <Button href="/categorias" variant="primary" type="link"> Ver todas as categorias</Button>
+            </div>
           </Container>
         </section>
         <section id="Parceiros">
           <Container className="flex flex-col gap-10">
             <Typography variant="h3">Parceiros em destaque</Typography>
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {stores.map(store => (
-                <li key={store._id} className="shadow-md rounded-lg hover:shadow-lg">
-                  <Link href={buildStoreUrl(store.slug)}>
-                    <div className="bg-[url(/assets/images/background-texture.svg)] bg-cover w-full relative h-48 rounded-t-lg items-center flex">
-                      <div className="size-24 relative mx-auto">
-                        <Image
-                          src={store.image ?? COMPANY_PLACEHOLDER}
-                          alt={store.title}
-                          fill
-                          objectFit="cover"
-                          className="rounded-full shadow-sm border-2 border-primary-700"
-                        />
-                      </div>
-                    </div>
-                    <div className="p-4 flex flex-col gap-4">
-                      <Typography variant="h5">
-                        {store.title}
-                      </Typography>
-                      <div className="flex flex-col gap-1">
-                        <div className="flex flex-row gap-2 items-center">
-                          <SVG src={store.category.icon.svg} fontSize={16} className="text-primary-600 w-6" />
-                          <Typography variant="body">
-                            {store.category.title}
-                          </Typography>
-                        </div>
-                        <div className="flex flex-row gap-2 items-center">
-                          <FaRegClock size="16" className="text-primary-600 w-6" />
-                          <Typography variant="body">
-                            Parceiro há 2 anos
-                          </Typography>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-
-                </li>
-              ))}
-            </ul>
+            <StoreList stores={stores} />
+            <div className="w-full flex justify-center">
+              <Button href="/parceiros" variant="primary" type="link"> Ver todas os parceiros</Button>
+            </div>
           </Container>
         </section>
         <section>
