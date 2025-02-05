@@ -5,7 +5,7 @@ export type StoreSchemaResponse = {
   category: string;
   productsOrServices: {
     _key: string;
-    title: string;
+    name: string;
     description: string;
     price: number;
     image: string;

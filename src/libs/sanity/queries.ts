@@ -14,7 +14,7 @@ export const storesQuery = defineQuery(`
     "category": category->title,
     productsOrServices[]{
       _key,
-      title,
+      name,
       description,
       price,
       "image": image.asset->url
@@ -37,7 +37,7 @@ export const storesAndCategoriesQuery = defineQuery(`{
     "category": category->title,
     productsOrServices[]{
       _key,
-      title,
+      name,
       description,
       price,
       "image": image.asset->url
@@ -58,20 +58,20 @@ export const storeBySlugQuery = defineQuery(`
     _id,
     title,
     slug,
-    _createdAt,
-    _updatedAt,
+    "category": category->title,
     productsOrServices[]{
       _key,
       name,
       description,
       price,
-      isProduct,
-      whatsappContact,
-      category->{
-        _ref,
-        _type
-      },
       "image": image.asset->url
+    },
+    about,
+    "image": image.asset->url,
+    contact {
+      address,
+      phone,
+      email
     }
   }
 `);
@@ -84,7 +84,7 @@ export const storesByCategorySlugQuery = defineQuery(`
     "category": category->title,
     productsOrServices[]{
       _key,
-      title,
+      name,
       description,
       price,
       "image": image.asset->url
