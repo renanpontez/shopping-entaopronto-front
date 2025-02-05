@@ -80,5 +80,6 @@ export type StoreSchemaResponse = {
     address: string;
     phone: string;
     email: string;
+    instagram: string;
   };
 };

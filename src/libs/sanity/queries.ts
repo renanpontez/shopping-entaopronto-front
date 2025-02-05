@@ -24,7 +24,8 @@ export const storesQuery = defineQuery(`
     contact {
       address,
       phone,
-      email
+      email,
+      instagram
     }
   }     
 `);
@@ -47,7 +48,8 @@ export const storesAndCategoriesQuery = defineQuery(`{
     contact {
       address,
       phone,
-      email
+      email,
+      instagram
     }
   },
   "categories": *[_type == "category"]
@@ -72,7 +74,8 @@ export const storeBySlugQuery = defineQuery(`
     contact {
       address,
       phone,
-      email
+      email,
+      instagram
     }
   }
 `);
@@ -95,7 +98,8 @@ export const storesByCategorySlugQuery = defineQuery(`
     contact {
       address,
       phone,
-      email
+      email,
+      instagram
     }
   } 
 `);

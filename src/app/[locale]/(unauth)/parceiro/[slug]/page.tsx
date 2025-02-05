@@ -1,6 +1,9 @@
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import Container from '@/components/Container';
 import { ProductAndServiceCard } from '@/components/ProductAndServiceCard';
+import { AboutUs } from '@/components/sections/Contact/AboutUsSection';
+import { ContactInfo } from '@/components/sections/Contact/ContactInfoSection';
+import { ContactUs } from '@/components/sections/Contact/ContactUsSection';
 import { CtaAgility1 } from '@/components/sections/Cta/CtaAgilitySection1';
 import { CtaAgility2 } from '@/components/sections/Cta/CtaAgilitySection2';
 import { StoreHero } from '@/components/StoreHero';
@@ -31,10 +34,12 @@ export default async function StorePage({
   }
 
   return (
-    <div>
-      <StoreHero background={[store.image, store.image, store.image]} title={store.title} description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac imperdiet metus, quis dapibus dui. " logo={store.image} />
-      <Container>
-        <section>
+    <div className="bg-backGround">
+      <section id="StoreHero" className="pt-0">
+        <StoreHero background={[store.image, store.image, store.image]} title={store.title} description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac imperdiet metus, quis dapibus dui. " logo={store.image} />
+      </section>
+      <section id="Products">
+        <Container className="flex flex-wrap justify-center lg:justify-start">
           {store.productsOrServices?.map(product => (
             <ProductAndServiceCard
               key={`id-${product.name}`}
@@ -45,10 +50,25 @@ export default async function StorePage({
               whatsappContact={product.whatsappContact}
             />
           ))}
+        </Container>
+      </section>
+      <section id="CtaAgility1">
+        <CtaAgility1 />
+      </section>
+
+      <Container className="space-y-16 lg:max-w-[835px]">
+        <section id="About-us">
+          <AboutUs />
+        </section>
+        <section id="Contact" className="flex gap-8 flex-col sm:flex-row flex-wrap justify-between items-start sm:items-baseline">
+          {/* TODO: <ContactInfo email={store.contact.email} phone={store.contact.phone} address={store.contact.address} instagram={store.contact.instagram} /> */}
+          <ContactInfo />
+          {/* TODO: <ContactUs email={store.contact.email} /> */}
+          <ContactUs />
         </section>
       </Container>
-      <CtaAgility1 />
       <CtaAgility2 />
+
     </div>
   );
 }

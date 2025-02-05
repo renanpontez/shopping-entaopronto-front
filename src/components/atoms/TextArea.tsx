@@ -3,8 +3,8 @@ import { Input } from '@/components/atoms/Input';
 import classNames from 'classnames';
 
 type TextAreaProps = {
-  value: string;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
   rows?: number;
   isInvalid?: boolean;
@@ -25,7 +25,7 @@ export const TextArea = ({
   const elementId = `input-${Math.random().toString(36).substring(7)}`;
 
   const textAreaBaseStyles = classNames(
-    'px-3 py-2 cursor-pointer placeholder:text-darkLight placeholder:text-sm rounded-xl w-full',
+    'px-3 py-2 cursor-pointer placeholder:text-darkLight bg-white border border-gray-350 placeholder:text-sm rounded-xl w-full',
     {
       'border-error': isInvalid,
     },
