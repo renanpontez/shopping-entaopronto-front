@@ -22,6 +22,7 @@
   --color-darkLight: #41414180;
   --color-dark: #414141;
   --color-backdrop: #000000b0;
+  --color-grayLight: #cbcbcb;
 }
 
 @layer components {

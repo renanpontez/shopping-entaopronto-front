@@ -1,6 +1,8 @@
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import Container from '@/components/Container';
 import { ProductAndServiceCard } from '@/components/ProductAndServiceCard';
+import { CtaAgility1 } from '@/components/sections/Cta/CtaAgilitySection1';
+import { CtaAgility2 } from '@/components/sections/Cta/CtaAgilitySection2';
 import { StoreHero } from '@/components/StoreHero';
 import Typography from '@/components/Typography';
 import { sanityFetch } from '@/libs/sanity/live';
@@ -45,6 +47,8 @@ export default async function StorePage({
           ))}
         </section>
       </Container>
+      <CtaAgility1 />
+      <CtaAgility2 />
     </div>
   );
 }

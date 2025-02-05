@@ -21,7 +21,7 @@ export const ProductAndServiceCard = ({ name, description, price, image, discoun
   return (
     <div className="max-w-96 ">
       <Image src={image} className="rounded-lg max-h-64" alt={`alt-image-${name}`} width={382} height={269} />
-      <Typography variant="h4" className="pt-2 pb-1">
+      <Typography variant="h4" className="pt-2 pb-1 text-dark">
         {name}
       </Typography>
       <Typography variant="bodySmall" tag="p" className=" text-secondary">{description}</Typography>
