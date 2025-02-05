@@ -1,23 +1,19 @@
-export type StoreSchemaResponse = {
+export type SEOSChema = {
+  title: string;
+  description: string;
+  image: string;
+  slug: string;
+};
+
+export type SubCategorySchema = {
   _id: string;
   title: string;
-  slug: string;
-  category: string;
-  productsOrServices: {
-    _key: string;
-    title: string;
-    description: string;
-    price: number;
-    image: string;
-    whatsappContact: number;
-  }[];
-  about: string;
-  image: string;
-  contact: {
-    address: string;
-    phone: string;
-    email: string;
+  slug: {
+    current: string;
   };
+  description: string;
+  image: string;
+  icon: { svg: string };
 };
 
 export type CategorySchema = {
@@ -27,21 +23,9 @@ export type CategorySchema = {
     current: string;
   };
   description: string;
-  productsOrServices: {
-    _key: string;
-    name: string;
-    description: string;
-    price: number;
-    image: string;
-  }[];
-  about: string;
-  image: string;
-  contact: {
-    address: string;
-    phone: string;
-    email: string;
-  };
-  category: string;
+  seo: SEOSChema;
+  subCategories: SubCategorySchema[];
+  icon: { svg: string };
 };
 
 export type Link = {
@@ -59,4 +43,26 @@ export type Link = {
     _weak?: boolean;
   };
   openInNewTab?: boolean;
+};
+
+export type StoreSchemaResponse = {
+  _id: string;
+  title: string;
+  slug: string;
+  category: CategorySchema;
+  productsOrServices: {
+    _key: string;
+    title: string;
+    description: string;
+    price: number;
+    image: string;
+    whatsappContact: number;
+  }[];
+  about: string;
+  image: string;
+  contact: {
+    address: string;
+    phone: string;
+    email: string;
+  };
 };
