@@ -14,6 +14,7 @@ type ButtonVariant =
 
 type ButtonProps = {
   children?: string | React.ReactNode;
+  className?: string;
   onClick?: () => void;
   variant: ButtonVariant;
   Icon?: React.ReactNode;
@@ -29,7 +30,7 @@ export const Button = ({
   variant = 'primary',
   Icon,
   isLoading = false,
-  classNames,
+  className,
   type = 'button',
   href,
 }: ButtonProps) => {
@@ -37,9 +38,8 @@ export const Button = ({
     = 'rounded-full font-normal p-3.5 hover:brightness-85 disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
 
   const stylesByVariant = {
-    'primary-dark': 'bg-primary-dark text-white',
-    'primary-outlined':
-      'text-primary border border-primary hover:bg-primary hover:text-white',
+    'primary-dark': 'bg-primary-700 text-white',
+    'primary-outlined': 'text-primary border border-primary hover:bg-primary hover:text-white',
     'primary': 'bg-primary text-white',
     'secondary': 'bg-secondary text-white hover:bg-secondary-dark',
     'secondary-outlined':
@@ -48,7 +48,7 @@ export const Button = ({
     'error': 'bg-error text-white',
     'white': 'bg-white text-black',
     'white-outlined':
-      'text-black border border-dark hover:bg-white hover:text-black',
+      'text-white border border-white hover:bg-white hover:text-black',
     'link': 'text-gray',
   };
 
@@ -62,7 +62,7 @@ export const Button = ({
     {
       'px-5 py-3': !!children,
     },
-    classNames,
+    className,
   );
 
   const Tag = type === 'link' ? 'a' : 'button';

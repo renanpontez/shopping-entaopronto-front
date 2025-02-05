@@ -1,0 +1,75 @@
+{
+  "RootLayout": {
+    "home_link": "Início",
+    "about_link": "Sobre",
+    "counter_link": "Contador",
+    "portfolio_link": "Portfólio",
+    "sign_in_link": "Entrar",
+    "sign_up_link": "Cadastrar"
+  },
+  "BaseTemplate": {
+    "description": "Código inicial para o seu Boilerplate Next.js com Tailwind CSS",
+    "made_with": "Feito em parceria com <author></author>."
+  },
+  "Index": {
+    "meta_title": "Apresentação do Boilerplate Next.js",
+    "meta_description": "O Boilerplate Next.js é o código inicial perfeito para o seu projeto. Construa sua aplicação React com o framework Next.js.",
+    "sponsors_title": "Patrocinadores"
+  },
+  "Counter": {
+    "meta_title": "Contador",
+    "meta_description": "Um exemplo de operação com banco de dados",
+    "loading_counter": "Carregando contador...",
+    "security_powered_by": "Segurança, detecção de bots e limitação de taxa fornecidos por"
+  },
+  "CounterForm": {
+    "presentation": "O contador é armazenado no banco de dados e incrementado pelo valor que você fornecer.",
+    "label_increment": "Incrementar por",
+    "button_increment": "Incrementar"
+  },
+  "CurrentCount": {
+    "count": "Contagem: {count}"
+  },
+  "About": {
+    "meta_title": "Sobre",
+    "meta_description": "Descrição da página Sobre",
+    "about_paragraph": "Bem-vindo à nossa página Sobre! Somos uma equipe de indivíduos apaixonados dedicados a criar softwares incríveis.",
+    "translation_powered_by": "Tradução fornecida por"
+  },
+  "Portfolio": {
+    "meta_title": "Portfólio",
+    "meta_description": "Bem-vindo à minha página de portfólio!",
+    "presentation": "Bem-vindo à minha página de portfólio! Aqui você encontrará uma coleção cuidadosamente selecionada dos meus trabalhos e conquistas. Através deste portfólio, pretendo mostrar minha expertise, criatividade e o valor que posso agregar aos seus projetos.",
+    "portfolio_name": "Portfólio {name}",
+    "error_reporting_powered_by": "Relatórios de erro fornecidos por",
+    "coverage_powered_by": "Cobertura de código fornecida por"
+  },
+  "PortfolioSlug": {
+    "meta_title": "Portfólio {slug}",
+    "meta_description": "Descrição do portfólio {slug}",
+    "header": "Portfólio {slug}",
+    "content": "Criei um conjunto de materiais promocionais e elementos de branding para um evento corporativo. Desenvolvi um tema visualmente unificado, incluindo um logotipo, cartazes, banners e recursos digitais. Integrei a identidade da marca do cliente, adicionando uma abordagem contemporânea e inovadora. Recebi respostas positivas dos participantes do evento, resultando em um evento bem-sucedido com maior engajamento e visibilidade da marca.",
+    "log_management_powered_by": "Gerenciamento de logs fornecido por"
+  },
+  "SignIn": {
+    "meta_title": "Entrar",
+    "meta_description": "Faça login na sua conta de forma simples e fácil com nosso processo de login amigável."
+  },
+  "SignUp": {
+    "meta_title": "Cadastrar",
+    "meta_description": "Crie uma conta sem esforço através do nosso processo de cadastro intuitivo."
+  },
+  "Dashboard": {
+    "meta_title": "Painel",
+    "hello_message": "Olá {email}!",
+    "alternative_message": "Quer construir seu SaaS mais rápido usando a mesma stack? Experimente <url></url>."
+  },
+  "UserProfile": {
+    "meta_title": "Perfil do Usuário"
+  },
+  "DashboardLayout": {
+    "dashboard_link": "Painel",
+    "user_profile_link": "Gerenciar sua conta",
+    "sign_out": "Sair"
+  }
+}

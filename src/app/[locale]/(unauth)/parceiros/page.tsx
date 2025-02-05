@@ -1,13 +1,13 @@
-import type { CategorySchema } from '@/libs/sanity/types';
+import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storesQuery } from '@/libs/sanity/queries';
 
 export default async function StoresPage() {
   const storesRes = await sanityFetch({
     query: storesQuery,
-  }) as { data: CategorySchema[] };
+  }) as { data: StoreSchemaResponse[] };
 
-  const stores = storesRes?.data as CategorySchema[];
+  const stores = storesRes?.data as StoreSchemaResponse[];
 
   if (!stores || stores.length === 0) {
     return (

@@ -10,8 +10,8 @@ export const storesQuery = defineQuery(`
   *[_type == "store"]{
     _id,
     title,
-    slug,
-    "category": category->title,
+    "slug": slug.current,
+    "category": category->,
     productsOrServices[]{
       _key,
       name,
@@ -57,8 +57,9 @@ export const storeBySlugQuery = defineQuery(`
   *[_type == "store" && slug.current == $slug][0]{
     _id,
     title,
-    slug,
-    "category": category->title,
+    "slug": slug.current,
+    _createdAt,
+    _updatedAt,
     productsOrServices[]{
       _key,
       name,
@@ -80,7 +81,7 @@ export const storesByCategorySlugQuery = defineQuery(`
   *[_type == "store" && category._ref == $slug]{
     _id,
     title,
-    slug,
+    "slug": slug.current,
     "category": category->title,
     productsOrServices[]{
       _key,
