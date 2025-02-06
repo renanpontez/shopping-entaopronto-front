@@ -2,31 +2,41 @@
 
 import { formatCurrency } from '@/utils/formatCurrencyBRL';
 import { openWhatsAppChat } from '@/utils/openWhatsAppChat';
-import Image, { type StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Button } from './atoms/Button';
 import Typography from './Typography';
 
 type ProductAndServiceProps = {
   name: string;
+  storeName: string;
   description: string;
   price: number;
   discount?: number;
-  image: string | StaticImageData;
-  whatsappContact: number;
+  image: string ;
+  whatsappContact: string;
 };
 
-export const ProductAndServiceCard = ({ name, description, price, image, discount, whatsappContact }: ProductAndServiceProps) => {
+export const ProductOrServiceCard = ({ name, description, price, image, discount, whatsappContact, storeName }: ProductAndServiceProps) => {
   const formatedPrice = formatCurrency(price);
-  const whatsAppMagge = `Olá, me interessei pelo ${name}, ${description} e ${formatedPrice} e gostaria de saber mais sobre o produto.`;
+  const whatsAppMessage = `Olá, estava navegando no Shopping EntãoPronto e encontrei a/o ${storeName}.
+
+  Gostaria de mais informações sobre o seguinte produto/serviço:
+  ${name}
+  ${description}
+  ${formatedPrice}`;
+
+  const handleContactStore = () => openWhatsAppChat(whatsappContact, whatsAppMessage);
+
   return (
-    <div className="max-w-96 ">
-      <Image src={image} className="rounded-lg max-h-64" alt={`alt-image-${name}`} width={382} height={269} />
+    <div className="flex flex-col">
+      <Image src={image} className="rounded-lg max-h-64" alt={`Product: ${name} image`} width={382} height={269} />
       <Typography variant="h4" className="pt-2 pb-1 text-dark">
         {name}
       </Typography>
       <Typography variant="bodySmall" tag="p" className=" text-secondary">{description}</Typography>
       <div className="flex flex-wrap gap-2 mt-6 justify-between items-end">
         <div>
+          {/* TODO: REMOVE THIS WHEN DISCOUNT IS AVAIBLE ON SANITY RESPONSE */}
           {discount
             ? (
                 <span className="text-xs font-light line-through">
@@ -43,8 +53,7 @@ export const ProductAndServiceCard = ({ name, description, price, image, discoun
             {formatedPrice}
           </span>
         </div>
-        {' '}
-        <Button variant="primary" onClick={() => openWhatsAppChat(whatsappContact, whatsAppMagge)}>Quero contratar</Button>
+        <Button variant="primary" onClick={handleContactStore}>Quero contratar</Button>
       </div>
     </div>
   );

@@ -30,31 +30,6 @@ export const storesQuery = defineQuery(`
   }     
 `);
 
-export const storesAndCategoriesQuery = defineQuery(`{
-  "stores": *[_type == "store"]{
-    _id,
-    title,
-    slug,
-    "category": category->title,
-    productsOrServices[]{
-      _key,
-      name,
-      description,
-      price,
-      "image": image.asset->url
-    },
-    about,
-    "image": image.asset->url,
-    contact {
-      address,
-      phone,
-      email,
-      instagram
-    }
-  },
-  "categories": *[_type == "category"]
-}`);
-
 export const storeBySlugQuery = defineQuery(`
   *[_type == "store" && slug.current == $slug][0]{
     _id,

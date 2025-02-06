@@ -6,7 +6,7 @@ import Image from 'next/image';
 export const AboutUs = () => {
   return (
     <div className="flex gap-5 sm:gap-16 flex-wrap items-center justify-center lg:flex-nowrap">
-      <Image alt="agility-about-us-image" className="w-auto h-full rounded-lg object-fill" src={AgilityAboutUsImage} width={370} height={290} />
+      <Image alt="" aria-hidden="true" className="w-auto h-full rounded-lg object-fill" src={AgilityAboutUsImage} width={370} height={290} />
       <div>
         <Typography variant="h3" className="pb-4 text-dark">
           QUEM SOMOS

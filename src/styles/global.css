@@ -21,12 +21,14 @@
   --color-error: #ba3e4a;
   --color-warning: #ba843e;
   --color-darkLight: #41414180;
+  --color-darker: #0b0b0b;
+  --color-purple: #8734b3;
   --color-dark: #414141;
   --color-grayDark: #4d4d4d;
   --color-backdrop: #000000b0;
   --color-grayLight: #cbcbcb;
   --color-orange: #ff9100;
-  --color-backGround: #ebebeb;
+  --color-gray-200: #ebebeb;
 }
 
 @layer components {
