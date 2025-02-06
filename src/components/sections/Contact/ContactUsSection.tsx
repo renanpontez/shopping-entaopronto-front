@@ -6,7 +6,7 @@ import { openWhatsAppChat } from '@/utils/openWhatsAppChat';
 import { useState } from 'react';
 
 type ContactUsProps = {
-  whatsappContact: string;
+  whatsappContact?: string;
 };
 
 export const ContactUs = ({ whatsappContact }: ContactUsProps) => {
@@ -19,7 +19,7 @@ export const ContactUs = ({ whatsappContact }: ContactUsProps) => {
     const messageFormated = `Olá! Estou entrando em contato pelo site da Shopping EntãoPronto.
     Me chamo ${name} de ${email} e gostaria de saber mais sobre: ${message}
     `;
-    openWhatsAppChat(whatsappContact, messageFormated);
+    whatsappContact && openWhatsAppChat(whatsappContact, messageFormated);
   };
 
   return (

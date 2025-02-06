@@ -49,6 +49,7 @@ export default async function Index(props: IIndexProps) {
     query: storesQuery,
   }) as { data: StoreSchemaResponse[] };
   const stores = storeRes?.data as StoreSchemaResponse[];
+  const shopEntaoProntoContact = process.env.NEXT_PUBLIC_ENTAOPRONTO_WPP_CONTACT;
 
   return (
     <>
@@ -156,8 +157,7 @@ export default async function Index(props: IIndexProps) {
         </section>
         <section>
           {/* Contato */}
-          {/* TODO: Implementar número real */}
-          <ContactUs whatsappContact="+558599999999" />
+          <ContactUs whatsappContact={shopEntaoProntoContact} />
         </section>
       </div>
     </>

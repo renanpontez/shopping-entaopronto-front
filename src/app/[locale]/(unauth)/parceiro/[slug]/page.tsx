@@ -21,7 +21,6 @@ export default async function StorePage({
     query: storeBySlugQuery,
     params: { slug },
   }) as { data: StoreSchemaResponse };
-
   const store = storeRes?.data;
 
   if (!store) {
@@ -32,6 +31,8 @@ export default async function StorePage({
       </div>
     );
   }
+
+  const shopEntaoProntoContact = process.env.NEXT_PUBLIC_ENTAOPRONTO_WPP_CONTACT;
 
   return (
     <div className="bg-gray-200">
@@ -104,8 +105,7 @@ export default async function StorePage({
         <section id="Contact" className="flex gap-8 flex-col sm:flex-row flex-wrap justify-between items-start sm:items-baseline">
           {/* TODO: <ContactInfo email={store.contact.email} phone={store.contact.phone} address={store.contact.address} instagram={store.contact.instagram} /> */}
           <ContactInfo />
-          {/* TODO: Implementar número real */}
-          <ContactUs whatsappContact="+5585999999999" />
+          <ContactUs whatsappContact={shopEntaoProntoContact} />
         </section>
       </Container>
       <CtaAgility variant="purple" />
