@@ -104,8 +104,8 @@ export default async function StorePage({
         <section id="Contact" className="flex gap-8 flex-col sm:flex-row flex-wrap justify-between items-start sm:items-baseline">
           {/* TODO: <ContactInfo email={store.contact.email} phone={store.contact.phone} address={store.contact.address} instagram={store.contact.instagram} /> */}
           <ContactInfo />
-          {/* TODO: <ContactUs email={store.contact.email} /> */}
-          <ContactUs />
+          {/* TODO: Implementar número real */}
+          <ContactUs whatsappContact="+5585999999999" />
         </section>
       </Container>
       <CtaAgility variant="purple" />

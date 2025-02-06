@@ -156,7 +156,8 @@ export default async function Index(props: IIndexProps) {
         </section>
         <section>
           {/* Contato */}
-          <ContactUs />
+          {/* TODO: Implementar número real */}
+          <ContactUs whatsappContact="+558599999999" />
         </section>
       </div>
     </>
