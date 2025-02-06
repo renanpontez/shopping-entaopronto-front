@@ -28,7 +28,7 @@ export default async function StoresPage() {
             <p>
               {store.productsOrServices?.map(product => (
                 <div key={product._key}>
-                  <h3>{product.title}</h3>
+                  <h3>{product.name}</h3>
                   <p>{product.description}</p>
                   <p>{product.price}</p>
                 </div>

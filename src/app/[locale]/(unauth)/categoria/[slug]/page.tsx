@@ -40,7 +40,7 @@ export default async function StoresByCategoryPage({
                   {item.image && (
                     <Image src={item.image} alt="store-image" width={300} height={300} className="w-full h-48 object-cover rounded-md" />
                   )}
-                  <h4 className="font-bold mt-2">{item.title}</h4>
+                  <h4 className="font-bold mt-2">{item.name}</h4>
                   <p className="text-gray-600">{item.description}</p>
                   <p className="font-semibold mt-2">
                     R$

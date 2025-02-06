@@ -8,12 +8,7 @@ export type SEOSChema = {
 export type SubCategorySchema = {
   _id: string;
   title: string;
-  slug: {
-    current: string;
-  };
-  description: string;
   image: string;
-  icon: { svg: string };
 };
 
 export type CategorySchema = {
@@ -52,11 +47,11 @@ export type StoreSchemaResponse = {
   category: CategorySchema;
   productsOrServices: {
     _key: string;
-    title: string;
+    name: string;
     description: string;
     price: number;
     image: string;
-    whatsappContact: number;
+    whatsappContact: string;
   }[];
   about: string;
   image: string;
@@ -64,5 +59,6 @@ export type StoreSchemaResponse = {
     address: string;
     phone: string;
     email: string;
+    instagram: string;
   };
 };
