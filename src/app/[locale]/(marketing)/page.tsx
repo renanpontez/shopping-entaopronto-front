@@ -9,6 +9,7 @@ import Typography from '@/components/Typography';
 import { sanityFetch } from '@/libs/sanity/live';
 import { categoriesQuery, storesQuery } from '@/libs/sanity/queries';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import Image from 'next/image';
 
 type IIndexProps = {
   params: Promise<{ locale: string }>;
@@ -44,6 +45,7 @@ export default async function Index(props: IIndexProps) {
     query: storesQuery,
   }) as { data: StoreSchemaResponse[] };
   const stores = storeRes?.data as StoreSchemaResponse[];
+  const shopEntaoProntoContact = process.env.NEXT_PUBLIC_ENTAOPRONTO_WPP_CONTACT;
 
   return (
     <>
@@ -78,7 +80,7 @@ export default async function Index(props: IIndexProps) {
               </p>
             </div>
             <div>
-              <img src="/assets/images/hero-img.svg" alt="Quem Somos" />
+              <Image src="/assets/images/hero-img.svg" alt="Quem Somos" />
             </div>
           </div>
         </section>
@@ -93,13 +95,13 @@ export default async function Index(props: IIndexProps) {
               </p>
             </div>
             <div>
-              <button>Saiba mais</button>
+              <button type="button">Saiba mais</button>
             </div>
           </div>
         </section>
         <section>
           {/* Contato */}
-          <ContactUs />
+          <ContactUs whatsappContact={shopEntaoProntoContact} />
         </section>
       </div>
     </>

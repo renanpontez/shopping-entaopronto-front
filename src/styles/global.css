@@ -15,13 +15,20 @@
   --color-secondary: #747579;
   --color-secondary-dark: #595a60;
   --color-gray-300: #f2f2f2;
+  --color-gray-350: #bcbcbc;
   --color-gray-400: #a1a1a1;
   --color-gray: #324434;
   --color-error: #ba3e4a;
   --color-warning: #ba843e;
   --color-darkLight: #41414180;
+  --color-darker: #0b0b0b;
+  --color-purple: #8734b3;
   --color-dark: #414141;
+  --color-grayDark: #4d4d4d;
   --color-backdrop: #000000b0;
+  --color-grayLight: #cbcbcb;
+  --color-orange: #ff9100;
+  --color-gray-200: #ebebeb;
 }
 
 @layer components {
@@ -34,7 +41,6 @@
     font-size: 2.5rem;
     font-weight: 700;
   }
-  /* Confirm if it works and if there's a better approach */
   * {
     transition: all 0.2ms ease-out;
   }

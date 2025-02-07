@@ -7,10 +7,9 @@ export type BaseProps = {
   placeholder: string;
   isInvalid?: boolean;
   isDisabled?: boolean;
-  value: string;
-  rows?: number;
+  value?: string;
   icon?: React.ReactNode;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type: React.InputHTMLAttributes<HTMLInputElement>['type'];
 };
 
@@ -32,7 +31,7 @@ export const InputField = ({
   const inputId = useId();
 
   const inputBaseStyles = classnames(
-    'px-3 py-2 cursor-pointer placeholder:text-darkLight placeholder:text-sm rounded-full w-full',
+    'px-3 py-2 cursor-pointer bg-white placeholder:text-darkLight border border-gray-350 placeholder:text-sm rounded-full w-full',
     {
       'border-error': isInvalid,
       'pr-10': icon,
