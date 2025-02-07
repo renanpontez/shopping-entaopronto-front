@@ -23,7 +23,7 @@ export default async function StoresPage() {
 
   return (
     <>
-      <Hero title="Todos os parceiros" variant="minimal" />
+      <Hero.Minimal title="Todos os parceiros" />
       <section>
         <Container>
           <StoreList stores={stores} />

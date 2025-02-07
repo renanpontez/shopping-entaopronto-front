@@ -47,7 +47,7 @@ export default async function Index(props: IIndexProps) {
 
   return (
     <>
-      <Hero title="Conecte-se sua marca ao Shopping EntãoPronto" />
+      <Hero.Primary title="Conecte-se sua marca ao Shopping EntãoPronto" />
       <div className="flex flex-col gap-8">
         <section>
           <Container className="flex flex-col gap-10">

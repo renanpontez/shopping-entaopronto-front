@@ -23,7 +23,7 @@ export default async function CategoriesPage() {
 
   return (
     <>
-      <Hero title="Todas as categorias" variant="minimal" />
+      <Hero.Minimal title="Todas as categorias" />
       <section>
         <Container>
           <CategoryList categories={categories} />
