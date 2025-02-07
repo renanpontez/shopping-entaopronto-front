@@ -1,4 +1,7 @@
 import type { CategorySchema } from '@/libs/sanity/types';
+import { Hero } from '@/components/atoms/Header/Hero';
+import Container from '@/components/Container';
+import { CategoryList } from '@/components/sections/Category/CategoryList';
 import { sanityFetch } from '@/libs/sanity/live';
 import { categoriesQuery } from '@/libs/sanity/queries';
 
@@ -19,16 +22,14 @@ export default async function CategoriesPage() {
   }
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold">Categorias</h1>
-      <div className="border-2 border-gray-500 p-4">
-        {categories.map(category => (
-          <div key={category._id}>
-            <h2>{category.title}</h2>
-            <p>{category.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+      <Hero.Minimal title="Todas as categorias" />
+      <section>
+        <Container>
+          <CategoryList categories={categories} />
+        </Container>
+        <Container className="py-50 my-50" />
+      </section>
+    </>
   );
 }
