@@ -65,6 +65,7 @@
     "**/*.tsx",
     ".storybook/*.ts",
     ".next/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "src/components/sections/Cta/CtaAgility.tsx"
   ]
 }

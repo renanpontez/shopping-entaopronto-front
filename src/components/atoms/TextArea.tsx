@@ -1,6 +1,6 @@
-import type { ChangeEvent, TextareaHTMLAttributes } from 'react';
 import { Input } from '@/components/atoms/Input';
 import classNames from 'classnames';
+import { type ChangeEvent, type TextareaHTMLAttributes, useId } from 'react';
 
 type TextAreaProps = {
   value?: string;
@@ -22,7 +22,7 @@ export const TextArea = ({
   label,
   ...props
 }: TextAreaProps) => {
-  const elementId = `input-${Math.random().toString(36).substring(7)}`;
+  const elementId = useId();
 
   const textAreaBaseStyles = classNames(
     'px-3 py-2 cursor-pointer placeholder:text-darkLight bg-white border border-gray-350 placeholder:text-sm rounded-xl w-full',
