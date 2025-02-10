@@ -1,7 +1,7 @@
 import type { CategorySchema } from '@/libs/sanity/types';
-import { Hero } from '@/components/atoms/Header/Hero';
 import Container from '@/components/Container';
 import { CategoryList } from '@/components/sections/Category/CategoryList';
+import { Hero } from '@/components/sections/Hero/Hero';
 import { sanityFetch } from '@/libs/sanity/live';
 import { categoriesQuery } from '@/libs/sanity/queries';
 

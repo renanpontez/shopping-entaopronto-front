@@ -13,7 +13,7 @@ export const CategoryList = ({ categories }: Props) => {
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-8 justify-around w-full">
       {categories.concat(categories.concat(categories.concat(categories))).map(category => (
         <li key={category._id + new Date().toISOString() + Math.random()}>
-          <Link href={`/categoria/${category.slug.current}`} className="flex flex-row gap-5 items-center hover:border-primary border border-transparent pr-4 rounded-lg">
+          <Link href={`/categoria/${category.slug}`} className="flex flex-row gap-5 items-center hover:border-primary border border-transparent pr-4 rounded-lg">
             <div className="bg-primary text-white p-4 rounded-lg aspect-square">
               <SVG src={category?.icon?.svg} fontSize={36} style={{ margin: 'auto 0' }} loader={<Loader />} />
             </div>
@@ -24,6 +24,13 @@ export const CategoryList = ({ categories }: Props) => {
                   {category.subCategories?.length}
                   {' '}
                   sub-categorias
+                </Typography>
+              )}
+              {!Number.isNaN(category.storesCount) && (
+                <Typography variant="body" tag="span">
+                  {category.storesCount}
+                  {' '}
+                  parceiros
                 </Typography>
               )}
             </div>

@@ -1,6 +1,6 @@
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
-import { Hero } from '@/components/atoms/Header/Hero';
 import Container from '@/components/Container';
+import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storesQuery } from '@/libs/sanity/queries';

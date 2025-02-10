@@ -60,12 +60,12 @@ export const MobileNavbar = ({ mainNav }: Props) => {
         </Button>
       </div>
 
-      <div className={classNames('fixed top-0 right-0', {
+      <div className={classNames('fixed top-0 right-0 z-50', {
         block: isOpened,
         hidden: !isOpened,
       })}
       >
-        <div className="backdrop bg-backdrop size-full z-10 left-0 top-0 fixed" />
+        <div className="backdrop bg-backdrop size-full left-0 top-0 fixed" />
         <div className="relative bg-white z-50 h-screen p-6 w-[80vw]" ref={navbarWrapperRef}>
           <div className="relative w-full mt-1 mb-3 flex flex-row justify-between items-center">
             <Image

@@ -1,15 +1,17 @@
 import type { CategorySchema, StoreSchemaResponse } from '@/libs/sanity/types';
 import { Button } from '@/components/atoms/Button';
-import { Hero } from '@/components/atoms/Header/Hero';
 import Container from '@/components/Container';
 import { CategoryList } from '@/components/sections/Category/CategoryList';
+import { AboutUs } from '@/components/sections/Contact/AboutUsSection';
+import { ContactInfo } from '@/components/sections/Contact/ContactInfoSection';
 import { ContactUs } from '@/components/sections/Contact/ContactUsSection';
+import { CtaAgility } from '@/components/sections/Cta/CtaAgility';
+import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import Typography from '@/components/Typography';
 import { sanityFetch } from '@/libs/sanity/live';
 import { categoriesQuery, storesQuery } from '@/libs/sanity/queries';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Image from 'next/image';
 
 type IIndexProps = {
   params: Promise<{ locale: string }>;
@@ -70,40 +72,20 @@ export default async function Index(props: IIndexProps) {
           </Container>
         </section>
         <section>
-          {/* Quem somos */}
-          <div className="flex">
-            <div>
-              <h3>Quem Somos</h3>
-              <p>
-                O Shopping EntãoPronto é um marketplace inovador que conecta você a diversas lojas e
-                serviços exclusivos, garantindo a melhor experiência de compra online.
-              </p>
-            </div>
-            <div>
-              <Image src="/assets/images/hero-img.svg" alt="Quem Somos" />
-            </div>
-          </div>
+          <Container>
+            <AboutUs />
+          </Container>
         </section>
-        <section>
-          {/* CTA Agility */}
-          <div className="flex gap-10">
-            <div>
-              <h3>Transforme seu negócio com a Agility</h3>
-              <p>
-                Quer levar sua loja para o digital e alcançar novos clientes? A Agility tem a solução
-                ideal para você!
-              </p>
-            </div>
-            <div>
-              <button type="button">Saiba mais</button>
-            </div>
-          </div>
-        </section>
-        <section>
-          {/* Contato */}
-          <ContactUs whatsappContact={shopEntaoProntoContact} />
+
+        <section id="Contact">
+          <Container className="flex gap-8 flex-col sm:flex-row justify-between items-start sm:items-baseline py-10">
+            <ContactInfo />
+            <ContactUs whatsappContact={shopEntaoProntoContact} />
+          </Container>
         </section>
       </div>
+
+      <CtaAgility variant="purple" />
     </>
   );
 };

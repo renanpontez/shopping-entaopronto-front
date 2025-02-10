@@ -21,6 +21,7 @@ export type CategorySchema = {
   seo: SEOSChema;
   subCategories: SubCategorySchema[];
   icon: { svg: string };
+  storesCount: number;
 };
 
 export type Link = {
