@@ -39,19 +39,11 @@ export default async function StorePage({
       <section id="StoreHero" className="pt-0">
         <Hero.Store
           title={store.title}
-          description={store.about}
-          logoUrl={store.image}
+          logoUrl={store.logo}
         />
-        {/* <Banner
-          background={store.image}
-          title={store.title}
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac imperdiet metus, quis dapibus dui. "
-          logo={store.image}
-        /> */}
       </section>
       <section id="StoreHighlightedInfoSection">
         <Container className="flex justify-center gap-5 sm:justify-around items-center flex-wrap">
-
           <StoreTag
             title="Frete Grátis"
             description="Lorem ipsum dolor sit amet dolor it"
@@ -105,7 +97,7 @@ export default async function StorePage({
 
       <Container className="space-y-16">
         <section id="About-us">
-          <AboutUs />
+          <AboutUs imageUrl={store.aboutImage} about={store.about} />
         </section>
         <section id="Contact" className="flex gap-8 flex-col sm:flex-row flex-wrap justify-between items-start sm:items-baseline">
           {/* TODO: <ContactInfo email={store.contact.email} phone={store.contact.phone} address={store.contact.address} instagram={store.contact.instagram} /> */}

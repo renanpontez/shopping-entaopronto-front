@@ -23,7 +23,7 @@ export const ContactUs = ({ whatsappContact }: ContactUsProps) => {
   };
 
   return (
-    <form className="space-y-3 sm:w-auto w-[500px]" onSubmit={handleSubmit}>
+    <form className="space-y-3 sm:w-auto w-full md:w-[500px]" onSubmit={handleSubmit}>
       <Input.Field
         type="text"
         label="Nome"

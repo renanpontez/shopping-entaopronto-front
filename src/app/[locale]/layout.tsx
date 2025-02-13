@@ -92,7 +92,6 @@ export default async function RootLayout(props: {
 
   // The `suppressHydrationWarning` attribute in <body> is used to prevent hydration errors caused by Sentry Overlay,
   // which dynamically adds a `style` attribute to the body tag.
-
   return (
     <html lang={locale} className={classNames(montserratFont.className, 'scroll-smooth')}>
       <body suppressHydrationWarning>
@@ -101,7 +100,6 @@ export default async function RootLayout(props: {
           messages={messages}
         >
           {props.children}
-
           <DemoBadge />
           <SanityLive />
         </NextIntlClientProvider>

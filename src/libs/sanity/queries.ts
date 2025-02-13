@@ -1,17 +1,30 @@
 import { defineQuery } from 'next-sanity';
 
-/* Settings */
+/* Shared */
+export const seoFields = `{
+  title,
+  description,
+  "image": image.asset->url,
+  keywords
+}`;
+
 export const settingsQuery = defineQuery(`*[_type == "settings"][0]`);
 
 /* Categories */
 const categoryFields = `
-  ...,
-  "slug": slug.current
+  title,
+  description,
+  "slug": slug.current,
+  "icon": icon.svg,
+  "seo": ${seoFields}
 `;
 
-export const categoriesQuery = defineQuery(`*[_type == "category"] {
+export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title asc) {
   ${categoryFields},
-  "storesCount": count(*[_type == "store" && references(^._id)])
+  "storesCount": count(*[_type == "store" && references(^._id)]),
+  subCategories[]->{
+    ${categoryFields}
+  },
 }`);
 export const categoriesBySlugQuery = defineQuery(`*[_type == "category"  && slug.current == $slug][0] { ${categoryFields} }`);
 
@@ -20,7 +33,8 @@ const storeFields = `{
   _id,
   title,
   "slug": slug.current,
-  "category": category->,
+  "logo": logo.asset->url,
+  categories[]->{ ${categoryFields} },
   productsOrServices[]{
     _key,
     name,
@@ -28,8 +42,8 @@ const storeFields = `{
     price,
     "image": image.asset->url
   },
-  about,
-  "image": image.asset->url,
+  about[],
+  "aboutImage": aboutImage.asset->url,
   contact {
     address,
     phone,
@@ -41,3 +55,12 @@ const storeFields = `{
 export const storesQuery = defineQuery(`*[_type == "store"] ${storeFields}`);
 export const storeBySlugQuery = defineQuery(`*[_type == "store" && slug.current == $slug][0] ${storeFields}`);
 export const storesByCategoryIdQuery = defineQuery(`*[_type == "store" && category._ref == $categoryId] ${storeFields}`);
+
+export const siteSettingsFields = `{
+  aboutUs {
+    description,
+    "image": image.asset->url
+  }
+}`;
+
+export const siteSettingsQuery = defineQuery(`*[_type == "siteSettings"][0] ${siteSettingsFields}`);

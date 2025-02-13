@@ -8,7 +8,12 @@ import SVG from 'react-inlinesvg';
 
 const COMPANY_PLACEHOLDER = '/assets/images/company-placeholder.svg';
 
-export const StoreList = ({ stores }: { stores: StoreSchemaResponse[] }) => {
+type Props = {
+  stores: StoreSchemaResponse[];
+  limit?: number;
+};
+
+export const StoreList = ({ stores, limit }: Props) => {
   if (!stores.length) {
     return (
       <Typography variant="body">
@@ -18,13 +23,13 @@ export const StoreList = ({ stores }: { stores: StoreSchemaResponse[] }) => {
   }
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      {stores.map(store => (
+      {stores?.slice(0, limit).map(store => (
         <li key={store._id} className="shadow-md rounded-lg hover:shadow-lg">
           <Link href={buildStoreUrl(store.slug)}>
-            <div className="bg-[url(/assets/images/background-texture.svg)] bg-cover w-full relative h-48 rounded-t-lg items-center flex">
+            <div className="bg-[url(/assets/images/background-texture.svg)] bg-cover w-full relative py-8 rounded-t-lg items-center flex">
               <div className="size-24 relative mx-auto">
                 <Image
-                  src={store.image ?? COMPANY_PLACEHOLDER}
+                  src={store.logo ?? COMPANY_PLACEHOLDER}
                   alt={store.title}
                   fill
                   objectFit="cover"
@@ -37,12 +42,16 @@ export const StoreList = ({ stores }: { stores: StoreSchemaResponse[] }) => {
                 {store.title}
               </Typography>
               <div className="flex flex-col gap-1">
-                <div className="flex flex-row gap-2 items-center">
-                  <SVG src={store.category.icon.svg} fontSize={16} className="text-primary-600 w-6" />
-                  <Typography variant="body">
-                    {store.category.title}
-                  </Typography>
-                </div>
+                {store?.categories?.map(category => (
+                  <div key={category._id} className="flex flex-row gap-2 items-center">
+                    {category?.icon && (
+                      <SVG src={category.icon} fontSize={16} className="text-primary-600 w-6 max-w-6" />
+                    )}
+                    <Typography variant="body">
+                      {category.title}
+                    </Typography>
+                  </div>
+                ))}
                 <div className="flex flex-row gap-2 items-center">
                   <FaRegClock size="16" className="text-primary-600 w-6" />
                   <Typography variant="body">
