@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from '@portabletext/types';
+
 export type SEOSChema = {
   title: string;
   description: string;
@@ -5,10 +7,20 @@ export type SEOSChema = {
   slug: string;
 };
 
+export type SiteSettingsSchema = {
+  aboutUs: {
+    image: string;
+    description: PortableTextBlock;
+  };
+};
+
 export type SubCategorySchema = {
   _id: string;
   title: string;
   image: string;
+  description: string;
+  seo: SEOSChema;
+  icon: string;
 };
 
 export type CategorySchema = {
@@ -19,8 +31,8 @@ export type CategorySchema = {
   };
   description: string;
   seo: SEOSChema;
-  subCategories: SubCategorySchema[];
-  icon: { svg: string };
+  subCategories?: SubCategorySchema[];
+  icon: string;
   storesCount: number;
 };
 
@@ -45,7 +57,7 @@ export type StoreSchemaResponse = {
   _id: string;
   title: string;
   slug: string;
-  category: CategorySchema;
+  categories: CategorySchema[];
   productsOrServices: {
     _key: string;
     name: string;
@@ -54,8 +66,9 @@ export type StoreSchemaResponse = {
     image: string;
     whatsappContact: string;
   }[];
-  about: string;
-  image: string;
+  about: PortableTextBlock;
+  logo: string;
+  aboutImage: string;
   contact: {
     address: string;
     phone: string;

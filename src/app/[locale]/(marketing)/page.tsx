@@ -1,4 +1,3 @@
-import type { CategorySchema, StoreSchemaResponse } from '@/libs/sanity/types';
 import { Button } from '@/components/atoms/Button';
 import Container from '@/components/Container';
 import { CategoryList } from '@/components/sections/Category/CategoryList';
@@ -9,8 +8,7 @@ import { CtaAgility } from '@/components/sections/Cta/CtaAgility';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import Typography from '@/components/Typography';
-import { sanityFetch } from '@/libs/sanity/live';
-import { categoriesQuery, storesQuery } from '@/libs/sanity/queries';
+import { getAllCategories, getAllStores, getSiteSettings } from '@/libs/sanity/fetcher';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type IIndexProps = {
@@ -37,16 +35,9 @@ export default async function Index(props: IIndexProps) {
   //   locale,
   //   namespace: 'Index',
   // });
-
-  const categoriesRes = await sanityFetch({
-    query: categoriesQuery,
-  }) as { data: CategorySchema[] };
-  const categories = categoriesRes?.data as CategorySchema[];
-
-  const storeRes = await sanityFetch({
-    query: storesQuery,
-  }) as { data: StoreSchemaResponse[] };
-  const stores = storeRes?.data as StoreSchemaResponse[];
+  const settings = await getSiteSettings();
+  const categories = await getAllCategories();
+  const stores = await getAllStores();
   const shopEntaoProntoContact = process.env.NEXT_PUBLIC_ENTAOPRONTO_WPP_CONTACT;
 
   return (
@@ -56,7 +47,7 @@ export default async function Index(props: IIndexProps) {
         <section>
           <Container className="flex flex-col gap-10">
             <Typography variant="h3">Categorias mais procuradas</Typography>
-            <CategoryList categories={categories} />
+            <CategoryList categories={categories} limit={8} />
             <div className="w-full flex justify-center">
               <Button href="/categorias" variant="primary" type="link"> Ver todas as categorias</Button>
             </div>
@@ -65,7 +56,7 @@ export default async function Index(props: IIndexProps) {
         <section id="Parceiros">
           <Container className="flex flex-col gap-10">
             <Typography variant="h3">Parceiros em destaque</Typography>
-            <StoreList stores={stores} />
+            <StoreList stores={stores} limit={6} />
             <div className="w-full flex justify-center">
               <Button href="/parceiros" variant="primary" type="link"> Ver todas os parceiros</Button>
             </div>
@@ -73,7 +64,10 @@ export default async function Index(props: IIndexProps) {
         </section>
         <section>
           <Container>
-            <AboutUs />
+            <AboutUs
+              about={settings.aboutUs?.description}
+              imageUrl={settings?.aboutUs?.image}
+            />
           </Container>
         </section>
 
