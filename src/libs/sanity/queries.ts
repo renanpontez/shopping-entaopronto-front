@@ -26,7 +26,8 @@ export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title
     ${categoryFields}
   },
 }`);
-export const categoriesBySlugQuery = defineQuery(`*[_type == "category"  && slug.current == $slug][0] { ${categoryFields} }`);
+
+export const categoriesBySlugQuery = defineQuery(`*[_type == "category"  && slug.current == $slug][0]`);
 
 /* Store */
 const storeFields = `{
@@ -34,7 +35,10 @@ const storeFields = `{
   title,
   "slug": slug.current,
   "logo": logo.asset->url,
-  categories[]->{ ${categoryFields} },
+  categories[]{ 
+   _ref,
+   _type, 
+   _key },
   productsOrServices[]{
     _key,
     name,
@@ -54,7 +58,7 @@ const storeFields = `{
 
 export const storesQuery = defineQuery(`*[_type == "store"] ${storeFields}`);
 export const storeBySlugQuery = defineQuery(`*[_type == "store" && slug.current == $slug][0] ${storeFields}`);
-export const storesByCategoryIdQuery = defineQuery(`*[_type == "store" && category._ref == $categoryId] ${storeFields}`);
+export const storesByCategoryIdQuery = defineQuery(`*[_type == "store" && categories[0]._ref == $categoryId] ${storeFields}`);
 
 export const siteSettingsFields = `{
   aboutUs {
