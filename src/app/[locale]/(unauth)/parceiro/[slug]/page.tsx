@@ -77,7 +77,7 @@ export default async function StorePage({
         </Container>
       </section>
       <section id="Products">
-        <Container className="flex flex-wrap justify-center lg:justify-start">
+        <Container className="flex flex-wrap gap-20 justify-around">
           {store.productsOrServices?.map(product => (
             <ProductOrServiceCard
               storeName={store.title}
