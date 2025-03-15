@@ -35,7 +35,10 @@ const storeFields = `{
   title,
   "slug": slug.current,
   "logo": logo.asset->url,
-  categories[]->{ ${categoryFields} },
+  categories[]{ 
+   _ref,
+   _type, 
+   _key },
   productsOrServices[]{
     _key,
     name,
