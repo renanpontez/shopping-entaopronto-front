@@ -1,10 +1,8 @@
-import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import Container from '@/components/Container';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import Typography from '@/components/Typography';
-import { sanityFetch } from '@/libs/sanity/live';
-import { categoriesBySlugQuery, storesByCategoryIdQuery } from '@/libs/sanity/queries';
+import { getCategoryBySlug, getStoresByCategoryId } from '@/libs/sanity/fetcher';
 
 export default async function StoresByCategoryPage({
   params,
@@ -12,14 +10,9 @@ export default async function StoresByCategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const categoryRes = await sanityFetch({
-    query: categoriesBySlugQuery,
-    params: { slug },
-  }) as { data: StoreSchemaResponse };
+  const categoryData = await getCategoryBySlug(slug);
 
-  const categoryData = categoryRes?.data;
-
-  if (!categoryData) {
+  if (!categoryData?._id) {
     return (
       <div>
         <h1>Nenhuma categoria encontrada</h1>
@@ -29,20 +22,16 @@ export default async function StoresByCategoryPage({
   }
 
   // Get stores by category
-  const storesRes = await sanityFetch({
-    query: storesByCategoryIdQuery,
-    params: { categoryId: categoryData._id },
-  }) as { data: StoreSchemaResponse[] };
-
-  const stores = storesRes?.data;
+  const stores = await getStoresByCategoryId(categoryData._id);
 
   return (
     <>
       <Hero.Primary title={categoryData.title} />
-
       <section>
-        <Container>
-          <Typography variant="h1" className="text-2xl mb-4">Lojas desta categoria</Typography>
+        <Container className="flex flex-col gap-10 pb-20">
+          <Typography variant="h1" className="text-2xl mb-4">
+            Lojas desta categoria
+          </Typography>
           <StoreList stores={stores} />
         </Container>
       </section>
