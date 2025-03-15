@@ -12,6 +12,7 @@ export const settingsQuery = defineQuery(`*[_type == "settings"][0]`);
 
 /* Categories */
 const categoryFields = `
+  _id,
   title,
   description,
   "slug": slug.current,
@@ -26,8 +27,7 @@ export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title
     ${categoryFields}
   },
 }`);
-
-export const categoriesBySlugQuery = defineQuery(`*[_type == "category"  && slug.current == $slug][0]`);
+export const categoryBySlugQuery = defineQuery(`*[_type == "category"  && slug.current == $slug][0] { ${categoryFields} }`);
 
 /* Store */
 const storeFields = `{
@@ -58,8 +58,9 @@ const storeFields = `{
 
 export const storesQuery = defineQuery(`*[_type == "store"] ${storeFields}`);
 export const storeBySlugQuery = defineQuery(`*[_type == "store" && slug.current == $slug][0] ${storeFields}`);
-export const storesByCategoryIdQuery = defineQuery(`*[_type == "store" && categories[0]._ref == $categoryId] ${storeFields}`);
+export const storesByCategoryIdQuery = defineQuery(`*[_type == "store" && $categoryId in categories[]._ref] ${storeFields}`);
 
+/* Site Settings */
 export const siteSettingsFields = `{
   aboutUs {
     description,
