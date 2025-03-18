@@ -55,6 +55,7 @@ export type Link = {
 
 export type StoreSchemaResponse = {
   _id: string;
+  _createdAt: string;
   title: string;
   slug: string;
   categories: CategorySchema[];

@@ -1,5 +1,6 @@
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import Typography from '@/components/Typography';
+import { getPartnershipDuration } from '@/utils/Helpers';
 import { buildStoreUrl } from '@/utils/URLs';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,6 +22,7 @@ export const StoreList = ({ stores, limit }: Props) => {
       </Typography>
     );
   }
+
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
       {stores?.slice(0, limit).map(store => (
@@ -55,7 +57,7 @@ export const StoreList = ({ stores, limit }: Props) => {
                 <div className="flex flex-row gap-2 items-center">
                   <FaRegClock size="16" className="text-primary-600 w-6" />
                   <Typography variant="body">
-                    Parceiro há 2 anos
+                    {getPartnershipDuration(store._createdAt)}
                   </Typography>
                 </div>
               </div>
