@@ -10,6 +10,7 @@ import { Hero } from '@/components/sections/Hero/Hero';
 import Typography from '@/components/Typography';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storeBySlugQuery } from '@/libs/sanity/queries';
+import { CONTACT } from '@/utils/Constants';
 
 export default async function StorePage({
   params,
@@ -31,8 +32,6 @@ export default async function StorePage({
       </div>
     );
   }
-
-  const shopEntaoProntoContact = process.env.NEXT_PUBLIC_ENTAOPRONTO_WPP_CONTACT;
 
   return (
     <div className="bg-gray-200">
@@ -80,8 +79,8 @@ export default async function StorePage({
         <Container className="flex flex-wrap gap-20 justify-around">
           {store.productsOrServices?.map(product => (
             <ProductOrServiceCard
+              key={product._key}
               storeName={store.title}
-              key={`id-${product.name}`}
               name={product.name}
               description={product.description}
               price={product.price}
@@ -100,9 +99,11 @@ export default async function StorePage({
           <AboutUs imageUrl={store.aboutImage} about={store.about} />
         </section>
         <section id="Contact" className="flex gap-8 flex-col sm:flex-row flex-wrap justify-between items-start sm:items-baseline">
-          {/* TODO: <ContactInfo email={store.contact.email} phone={store.contact.phone} address={store.contact.address} instagram={store.contact.instagram} /> */}
+          {/* TODO:
+            <ContactInfo email={store.contact.email} phone={store.contact.phone} address={store.contact.address} instagram={store.contact.instagram} />
+          */}
           <ContactInfo />
-          <ContactUs whatsappContact={shopEntaoProntoContact} />
+          <ContactUs whatsappPhoneNumber={CONTACT.shoppingPhoneNumber} />
         </section>
       </Container>
       <CtaAgility variant="purple" />

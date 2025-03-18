@@ -60,6 +60,7 @@ export type StoreSchemaResponse = {
   categories: CategorySchema[];
   productsOrServices: {
     _key: string;
+    _id: string;
     name: string;
     description: string;
     price: number;

@@ -10,6 +10,14 @@ type Props = {
 };
 
 export const CategoryList = ({ categories, limit = 12 }: Props) => {
+  if (!categories.length) {
+    return (
+      <Typography variant="body">
+        Nenhuma categoria foi cadastrada ainda nestes critérios
+      </Typography>
+    );
+  }
+
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 md:gap-8 justify-around w-full">
       {categories?.slice(0, limit)?.map(category => (

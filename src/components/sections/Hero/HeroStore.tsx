@@ -24,9 +24,11 @@ const HeroStore = ({
   >
     <div className="absolute inset-0 bg-black/60" />
     <div className="relative z-10">
-      <div className="flex justify-center my-10">
-        <Image src={logoUrl} alt="" aria-hidden="true" width={300} height={300} className="light object-cover rounded-xl w-24 h-24" />
-      </div>
+      {logoUrl && (
+        <div className="flex justify-center my-10">
+          <Image src={logoUrl} alt="" aria-hidden="true" width={300} height={300} className="light object-cover rounded-xl w-24 h-24" />
+        </div>
+      )}
       <Container className="flex flex-col gap-4 pb-1 items-center">
         <Typography variant="h2">
           {title}

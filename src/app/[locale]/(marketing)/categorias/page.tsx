@@ -12,15 +12,6 @@ export default async function CategoriesPage() {
 
   const categories = categoriesRes?.data as CategorySchema[];
 
-  if (!categories || categories.length === 0) {
-    return (
-      <div>
-        <h1 className="text-3xl font-bold">Categorias</h1>
-        <div>Nenhuma categoria encontrada...</div>
-      </div>
-    );
-  }
-
   return (
     <>
       <Hero.Minimal title="Todas as categorias" />
@@ -32,4 +23,11 @@ export default async function CategoriesPage() {
       </section>
     </>
   );
+}
+
+export async function generateMetadata() {
+  return {
+    title: 'Categorias | Shopping EntãoPronto!',
+    description: 'Uma lista de todas as categorias que os parceiros podem ser cadastrados no Shopping EntãoPronto',
+  };
 }

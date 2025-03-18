@@ -9,6 +9,7 @@ import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import Typography from '@/components/Typography';
 import { getAllCategories, getAllStores, getSiteSettings } from '@/libs/sanity/fetcher';
+import { CONTACT } from '@/utils/Constants';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type IIndexProps = {
@@ -38,7 +39,6 @@ export default async function Index(props: IIndexProps) {
   const settings = await getSiteSettings();
   const categories = await getAllCategories();
   const stores = await getAllStores();
-  const shopEntaoProntoContact = process.env.NEXT_PUBLIC_ENTAOPRONTO_WPP_CONTACT;
 
   return (
     <>
@@ -74,7 +74,7 @@ export default async function Index(props: IIndexProps) {
         <section id="Contact">
           <Container className="flex gap-8 flex-col sm:flex-row justify-between items-start sm:items-baseline py-10">
             <ContactInfo />
-            <ContactUs whatsappContact={shopEntaoProntoContact} />
+            <ContactUs whatsappPhoneNumber={CONTACT.shoppingPhoneNumber} />
           </Container>
         </section>
       </div>

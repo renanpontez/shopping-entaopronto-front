@@ -1,7 +1,7 @@
 'use client';
 
 import { formatCurrency } from '@/utils/formatCurrencyBRL';
-import { openWhatsAppChat } from '@/utils/openWhatsAppChat';
+import { getStoreWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
 import Image from 'next/image';
 import { Button } from './atoms/Button';
 import Typography from './Typography';
@@ -12,24 +12,26 @@ type ProductAndServiceProps = {
   description: string;
   price: number;
   discount?: number;
-  image: string ;
+  image: string;
   whatsappContact: string;
 };
 
 export const ProductOrServiceCard = ({ name, description, price, image, discount, whatsappContact, storeName }: ProductAndServiceProps) => {
-  const formatedPrice = formatCurrency(price);
-  const whatsAppMessage = `Olá, estava navegando no Shopping EntãoPronto e encontrei a/o ${storeName}.
-
-  Gostaria de mais informações sobre o seguinte produto/serviço:
-  ${name}
-  ${description}
-  ${formatedPrice}`;
-
+  const formattedPrice = formatCurrency(price);
+  const whatsAppMessage = getStoreWhatsAppMessage(storeName, name, description, formattedPrice);
   const handleContactStore = () => openWhatsAppChat(whatsappContact, whatsAppMessage);
 
   return (
     <div className="flex flex-col max-w-[382px]">
-      <Image src={image} className="rounded-lg max-h-64 object-cover" alt={`Product: ${name} image`} width={382} height={269} />
+      {image && (
+        <Image
+          src={image}
+          className="rounded-lg max-h-64 object-cover"
+          alt={`Product: ${name} image`}
+          width={382}
+          height={269}
+        />
+      )}
       <Typography variant="h4" className="pt-2 pb-1 text-dark">
         {name}
       </Typography>
@@ -37,20 +39,14 @@ export const ProductOrServiceCard = ({ name, description, price, image, discount
       <div className="flex flex-wrap gap-2 mt-6 justify-between items-end">
         <div>
           {/* TODO: REMOVE THIS WHEN DISCOUNT IS AVAIBLE ON SANITY RESPONSE */}
-          {discount
-            ? (
-                <span className="text-xs font-light line-through">
-                  {formatCurrency(discount)}
-                </span>
-              )
-            : (
-                <span className="text-sm font-extralight line-through">
-                  {formatCurrency(price * (1 + Math.random() * 0.8))}
-                </span>
-              )}
+          {discount && (
+            <span className="text-xs font-light line-through">
+              {formatCurrency(discount)}
+            </span>
+          )}
           <Typography variant="bodySmall" tag="p" className="italic">a partir de</Typography>
           <span className="text-2xl font-medium">
-            {formatedPrice}
+            {formattedPrice}
           </span>
         </div>
         <Button variant="primary" onClick={handleContactStore}>Quero contratar</Button>

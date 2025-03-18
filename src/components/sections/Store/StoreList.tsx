@@ -17,7 +17,7 @@ export const StoreList = ({ stores, limit }: Props) => {
   if (!stores.length) {
     return (
       <Typography variant="body">
-        Nenhuma loja encontrada
+        Nenhuma loja foi cadastrada ainda nestes critérios.
       </Typography>
     );
   }
