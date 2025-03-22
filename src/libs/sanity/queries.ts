@@ -13,7 +13,9 @@ export const settingsQuery = defineQuery(`*[_type == "settings"][0]`);
 /* Categories */
 const categoryFields = `
   _id,
+  _key,
   title,
+  icon,
   description,
   "slug": slug.current,
   "icon": icon.svg,
@@ -32,13 +34,11 @@ export const categoryBySlugQuery = defineQuery(`*[_type == "category"  && slug.c
 /* Store */
 const storeFields = `{
   _id,
+  _createdAt,
   title,
   "slug": slug.current,
   "logo": logo.asset->url,
-  categories[]{ 
-   _ref,
-   _type, 
-   _key },
+  categories[]->{ ${categoryFields}},
   productsOrServices[]{
     _key,
     name,

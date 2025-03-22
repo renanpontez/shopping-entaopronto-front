@@ -26,10 +26,10 @@ export default async function StoresByCategoryPage({
 
   return (
     <>
-      <Hero.Primary title={categoryData.title} />
+      <Hero.Minimal title={categoryData.title} />
       <section>
         <Container className="flex flex-col gap-10 pb-20">
-          <Typography variant="h1" className="text-2xl mb-4">
+          <Typography variant="h1" className="text-xl mb-4">
             Lojas desta categoria
           </Typography>
           <StoreList stores={stores} />

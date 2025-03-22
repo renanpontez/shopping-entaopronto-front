@@ -26,3 +26,22 @@ export const getI18nPath = (url: string, locale: string) => {
 
   return `/${locale}${url}`;
 };
+export const getPartnershipDuration = (startDate: string) => {
+  const start = new Date(startDate);
+  const now = new Date();
+
+  const diffInMilliseconds = now.getTime() - start.getTime();
+  const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+  if (diffInDays < 30) {
+    return `Parceiro há ${diffInDays}d`;
+  }
+
+  const diffInMonths = Math.floor(diffInDays / 30);
+  if (diffInMonths < 12) {
+    return `Parceiro há ${diffInMonths}m`;
+  }
+
+  const diffInYears = Math.floor(diffInMonths / 12);
+  return `Parceiro há ${diffInYears}a`;
+};

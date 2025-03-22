@@ -2,28 +2,30 @@
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { TextArea } from '@/components/atoms/TextArea';
-import { openWhatsAppChat } from '@/utils/openWhatsAppChat';
+import { getShoppingWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
 import { useState } from 'react';
 
 type ContactUsProps = {
-  whatsappContact?: string;
+  whatsappPhoneNumber?: string;
 };
 
-export const ContactUs = ({ whatsappContact }: ContactUsProps) => {
+export const ContactUs = ({ whatsappPhoneNumber }: ContactUsProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const messageFormated = `Olá! Estou entrando em contato pelo site da Shopping EntãoPronto.
-    Me chamo ${name} de ${email} e gostaria de saber mais sobre: ${message}
-    `;
-    whatsappContact && openWhatsAppChat(whatsappContact, messageFormated);
+  const handleSubmit = () => {
+    if (!whatsappPhoneNumber) {
+      // TODO: SHOW TOASTR ERROR
+      return;
+    };
+
+    const messageFormated = getShoppingWhatsAppMessage(name, email, message);
+    openWhatsAppChat(whatsappPhoneNumber, messageFormated);
   };
 
   return (
-    <form className="space-y-3 sm:w-auto w-full md:w-[500px]" onSubmit={handleSubmit}>
+    <form className="space-y-3 sm:w-auto w-full md:w-[500px]">
       <Input.Field
         type="text"
         label="Nome"
@@ -44,7 +46,7 @@ export const ContactUs = ({ whatsappContact }: ContactUsProps) => {
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
-      <Button variant="primary" type="submit">Entrar em contato</Button>
+      <Button variant="primary" type="submit" onClick={() => handleSubmit()}>Entrar em contato</Button>
     </form>
   );
 };

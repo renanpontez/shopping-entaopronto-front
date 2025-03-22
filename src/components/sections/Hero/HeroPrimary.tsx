@@ -14,14 +14,14 @@ const HeroPrimary = ({ title }: Props) => (
         <div className="flex flex-col gap-8 w-full md:w-4/5 lg:w-1/2 ">
           <Typography variant="h1">{title}</Typography>
           <Typography variant="body">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis rerum ab ipsam dolore dignissimos sint quaerat sed sint quaerat sed.
+            Seus clientes estão navegando e você pode aumentar a exposição da sua marca com o Shopping EntãoPronto. Conheça já!
           </Typography>
           <div className="flex flex-col md:flex-row gap-5 w-full">
-            <Button href="/contato" variant="white">
-              Cadastre sua marca
+            <Button href="#Parceiros" variant="white" type="link">
+              Conhecer parceiros
             </Button>
-            <Button href="#Parceiros" variant="white-outlined" type="link">
-              Ver mais
+            <Button href="/contato" variant="white-outlined">
+              Cadastre sua marca
             </Button>
           </div>
         </div>

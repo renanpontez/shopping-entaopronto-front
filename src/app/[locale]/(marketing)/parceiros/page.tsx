@@ -12,15 +12,6 @@ export default async function StoresPage() {
 
   const stores = storesRes?.data as StoreSchemaResponse[];
 
-  if (!stores || stores.length === 0) {
-    return (
-      <div>
-        <h1 className="text-3xl font-bold">Lojas</h1>
-        <div>Nenhuma loja encontrada...</div>
-      </div>
-    );
-  }
-
   return (
     <>
       <Hero.Minimal title="Todos os parceiros" />
@@ -32,4 +23,11 @@ export default async function StoresPage() {
       </section>
     </>
   );
+}
+
+export async function generateMetadata() {
+  return {
+    title: 'Parceiros | Shoppinh EntãoPronto!',
+    description: 'Uma lista de todos os parceiros cadastrados no Shopping EntãoPronto',
+  };
 }

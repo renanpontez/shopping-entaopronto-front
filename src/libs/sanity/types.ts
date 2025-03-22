@@ -55,11 +55,13 @@ export type Link = {
 
 export type StoreSchemaResponse = {
   _id: string;
+  _createdAt: string;
   title: string;
   slug: string;
   categories: CategorySchema[];
   productsOrServices: {
     _key: string;
+    _id: string;
     name: string;
     description: string;
     price: number;
