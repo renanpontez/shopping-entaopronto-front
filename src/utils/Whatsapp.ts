@@ -1,5 +1,5 @@
-export const openWhatsAppChat = (phoneNumber: string, message: string = '') => {
-  const cleanNumber = phoneNumber.replace(/\D/g, '');
+export const openWhatsAppChat = (phoneNumber?: string, message: string = '') => {
+  const cleanNumber = phoneNumber?.replace(/\D/g, '');
 
   const encodedMessage = encodeURIComponent(message);
 
@@ -28,4 +28,7 @@ export const getShoppingWhatsAppMessage = (userName: string, userEmail: string, 
 
 export const createStoreInfoWhatsAppMessage = `Olá,  Estou entrando em contato pelo site da Shopping EntãoPronto.
   Gostaria de saber mais sobre como cadastrar meu estabelecimento na EntãoPronto`;
+;
+
+export const getGeneralInfoWhatsAppMessage = `Olá,  Estou entrando em contato pelo site da Shopping EntãoPronto e gostaria de saber mais sobre a organização`;
 ;
