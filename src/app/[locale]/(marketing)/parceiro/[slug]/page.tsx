@@ -85,7 +85,7 @@ export default async function StorePage({
               description={product.description}
               price={product.price}
               image={product.image}
-              whatsappContact={product.whatsappContact}
+              whatsappContact={store.contact.phone}
             />
           ))}
         </Container>
