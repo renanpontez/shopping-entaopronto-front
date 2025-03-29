@@ -26,6 +26,6 @@ export const getShoppingWhatsAppMessage = (userName: string, userEmail: string, 
   return messageFormated;
 };
 
-export const createStoreInfoWhatsAppMessage = `Olá, estou entrando em contato pelo site da Shopping EntãoPronto e gostaria de saber mais sobre como cadastrar meu estabelecimento na EntãoPronto.`;
+export const createStoreInfoWhatsAppMessage = `Olá, estou entrando em contato pelo site Shopping EntãoPronto e gostaria de cadastrar meu estabelecimento no Shopping.`;
 
 export const getGeneralInfoWhatsAppMessage = `Olá, estou entrando em contato pelo site da Shopping EntãoPronto e gostaria de saber mais sobre a organização.`;
