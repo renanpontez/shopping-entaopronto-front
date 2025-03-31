@@ -1,6 +1,9 @@
+'use client';
 import { Button } from '@/components/atoms/Button';
 import Container from '@/components/Container';
 import Typography from '@/components/Typography';
+import { CONTACT } from '@/utils/Constants';
+import { createStoreInfoWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
 import Image from 'next/image';
 
 type Props = {
@@ -20,7 +23,7 @@ const HeroPrimary = ({ title }: Props) => (
             <Button href="#Parceiros" variant="white" type="link">
               Conhecer parceiros
             </Button>
-            <Button href="/contato" variant="white-outlined">
+            <Button onClick={() => openWhatsAppChat(CONTACT.shoppingPhoneNumber, createStoreInfoWhatsAppMessage)} variant="white-outlined">
               Cadastre sua marca
             </Button>
           </div>
