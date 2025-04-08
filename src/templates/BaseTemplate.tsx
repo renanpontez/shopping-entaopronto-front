@@ -45,7 +45,7 @@ export const BaseTemplate = ({
                     />
                   </div>
 
-                  <Typography variant="bodySmall">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </Typography>
+                  <Typography variant="bodySmall">Conectando talentos, acelerando negócios e criando soluções com propósito. </Typography>
 
                   <div className="flex flex-col gap-2">
                     <Typography variant="body">
