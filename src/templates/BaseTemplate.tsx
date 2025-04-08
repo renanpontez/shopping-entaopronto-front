@@ -6,7 +6,7 @@ import { AppConfig } from '@/utils/AppConfig';
 import { MENU_LINKS_MOCK } from '@/utils/URLs';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { FaInstagramSquare, FaLinkedin, FaYoutubeSquare } from 'react-icons/fa';
+import { FaFacebookSquare, FaInstagramSquare, FaYoutubeSquare } from 'react-icons/fa';
 
 type Props = {
   children: React.ReactNode;
@@ -52,14 +52,14 @@ export const BaseTemplate = ({
                       Siga nossas redes:
                     </Typography>
                     <div className="flex flex-row gap-2">
-                      <a href="https://www.instagram.com" className="text-gray-400 hover:text-primary">
-                        <FaInstagramSquare size="24" />
-                      </a>
-                      <a href="https://www.instagram.com" className="text-gray-400 hover:text-primary">
+                      <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/channel/UCSHPpJEgEoIMxWdmrEZIj7A" className="text-gray-400 hover:text-primary">
                         <FaYoutubeSquare size="24" />
                       </a>
-                      <a href="https://www.instagram.com" className="text-gray-400 hover:text-primary">
-                        <FaLinkedin size="24" />
+                      <a target="_blank" rel="noreferrer noopener" href="https://www.facebook.com/RedeEntaoPronto" className="text-gray-400 hover:text-primary">
+                        <FaFacebookSquare size="24" />
+                      </a>
+                      <a target="_blank" rel="noreferrer noopener" href="https://www.instagram.com/entaopronto.impacto/" className="text-gray-400 hover:text-primary">
+                        <FaInstagramSquare size="24" />
                       </a>
                     </div>
                   </div>
