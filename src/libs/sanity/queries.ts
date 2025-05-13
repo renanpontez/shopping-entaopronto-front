@@ -22,14 +22,7 @@ const categoryFields = `
   "seo": ${seoFields}
 `;
 
-export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title asc) {
-  ${categoryFields},
-  "storesCount": count(*[_type == "store" && references(^._id)]),
-  "fiftyPlusStoresCount": count(*[_type == "store" && references(^._id) && solution[fiftyPlus == true]]),
-  subCategories[]->{
-    ${categoryFields}
-  },
-}`);
+;
 
 export const categoryBySlugQuery = defineQuery(`*[_type == "category"  && slug.current == $slug][0] { ${categoryFields} }`);
 
@@ -58,6 +51,15 @@ const storeFields = `{
     instagram
   }
 }`;
+export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title asc) {
+  ${categoryFields},
+  "storesCount": count(*[_type == "store" && references(^._id)]),
+  "fiftyPlusStoresCount": count(*[_type == "store" && references(^._id) && count(solution[fiftyPlus == true]) > 0]),
+  "stores": *[_type == "store" && references(^._id)] ${storeFields},
+  subCategories[]->{
+    ${categoryFields}
+  },
+}`);
 
 export const storesQuery = defineQuery(`*[_type == "store"] ${storeFields}`);
 export const storeBySlugQuery = defineQuery(`*[_type == "store" && slug.current == $slug][0] ${storeFields}`);
@@ -72,6 +74,3 @@ export const siteSettingsFields = `{
 }`;
 
 export const siteSettingsQuery = defineQuery(`*[_type == "siteSettings"][0] ${siteSettingsFields}`);
-
-// Query para buscar lojas que possuem pelo menos 1 solution com fiftyPlus = true
-export const storesWithFiftyPlusQuery = defineQuery(`*[_type == "store" && solution[fiftyPlus == true]] ${storeFields}`);

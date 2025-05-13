@@ -35,6 +35,7 @@ export type CategorySchema = {
   icon: string;
   storesCount: number;
   fiftyPlusStoresCount: number;
+  stores: StoreSchemaResponse[];
 };
 
 export type Link = {
