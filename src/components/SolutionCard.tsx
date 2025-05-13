@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Button } from './atoms/Button';
 import Typography from './Typography';
 
-type ProductAndServiceProps = {
+type SolutionProps = {
   name: string;
   storeName: string;
   description: string;
@@ -16,7 +16,7 @@ type ProductAndServiceProps = {
   whatsappContact: string;
 };
 
-export const ProductOrServiceCard = ({ name, description, price, image, discount, whatsappContact, storeName }: ProductAndServiceProps) => {
+export const SolutionCard = ({ name, description, price, image, discount, whatsappContact, storeName }: SolutionProps) => {
   const formattedPrice = formatCurrency(price);
   const whatsAppMessage = getStoreWhatsAppMessage(storeName, name, description, formattedPrice);
   const handleContactStore = () => openWhatsAppChat(whatsappContact, whatsAppMessage);
