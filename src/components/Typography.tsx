@@ -1,6 +1,6 @@
 import React from 'react';
 
-type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'bodySmall' | 'caption' | 'overline';
+type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'bodySmall' | 'extraSmall' | 'caption' | 'overline';
 type Tag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
 type TypographyProps = {
@@ -21,6 +21,7 @@ const variantClasses: Record<Variant, string> = {
   h6: 'text-base font-bold  my-0! p-0  leading-tight',
   body: 'text-base font-normal leading-relaxed',
   bodySmall: 'text-sm font-normal leading-relaxed',
+  extraSmall: 'text-xs font-light leading-relaxed',
   caption: 'text-xs font-light italic',
   overline: 'text-xs font-bold uppercase tracking-wide',
 };

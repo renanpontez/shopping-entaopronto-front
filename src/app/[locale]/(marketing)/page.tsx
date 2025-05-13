@@ -1,4 +1,5 @@
 import { Button } from '@/components/atoms/Button';
+import FiftyPlus from '@/components/atoms/FiftyPlus';
 import Container from '@/components/Container';
 import { CategoryList } from '@/components/sections/Category/CategoryList';
 import { AboutUs } from '@/components/sections/Contact/AboutUsSection';
@@ -46,7 +47,17 @@ export default async function Index(props: IIndexProps) {
       <div className="flex flex-col gap-8">
         <section>
           <Container className="flex flex-col gap-10">
-            <Typography variant="h3">Categorias mais procuradas</Typography>
+            <span className="flex gap-3 flex-wrap justify-between">
+              {' '}
+              <Typography variant="h3">Categorias mais procuradas</Typography>
+              <Button variant="primary-outlined" href="/categorias?cinquenta-mais" type="link">
+                {' '}
+                <Typography variant="body">Buscar categorias com soluções </Typography>
+                {' '}
+                <FiftyPlus />
+              </Button>
+
+            </span>
             <CategoryList categories={categories} limit={8} />
             <div className="w-full flex justify-center">
               <Button href="/categorias" variant="primary" type="link"> Ver todas as categorias</Button>

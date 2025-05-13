@@ -22,13 +22,8 @@ const categoryFields = `
   "seo": ${seoFields}
 `;
 
-export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title asc) {
-  ${categoryFields},
-  "storesCount": count(*[_type == "store" && references(^._id)]),
-  subCategories[]->{
-    ${categoryFields}
-  },
-}`);
+;
+
 export const categoryBySlugQuery = defineQuery(`*[_type == "category"  && slug.current == $slug][0] { ${categoryFields} }`);
 
 /* Store */
@@ -39,11 +34,12 @@ const storeFields = `{
   "slug": slug.current,
   "logo": logo.asset->url,
   categories[]->{ ${categoryFields}},
-  productsOrServices[]{
+  solution[]{
     _key,
     name,
     description,
     price,
+    fiftyPlus,
     "image": image.asset->url
   },
   about[],
@@ -55,6 +51,15 @@ const storeFields = `{
     instagram
   }
 }`;
+export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title asc) {
+  ${categoryFields},
+  "storesCount": count(*[_type == "store" && references(^._id)]),
+  "fiftyPlusStoresCount": count(*[_type == "store" && references(^._id) && count(solution[fiftyPlus == true]) > 0]),
+  "stores": *[_type == "store" && references(^._id)] ${storeFields},
+  subCategories[]->{
+    ${categoryFields}
+  },
+}`);
 
 export const storesQuery = defineQuery(`*[_type == "store"] ${storeFields}`);
 export const storeBySlugQuery = defineQuery(`*[_type == "store" && slug.current == $slug][0] ${storeFields}`);
