@@ -30,9 +30,13 @@ export const StoreList = ({ stores, limit }: Props) => {
 
   if (!filteredStores.length) {
     return (
-      <Typography variant="body">
-        Nenhuma loja foi cadastrada ainda nestes critérios.
-      </Typography>
+      <div className="space-y-6">
+        <ToggleButton label="Apenas soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
+        <Typography variant="body">
+          Nenhuma loja foi cadastrada ainda nestes critérios.
+        </Typography>
+      </div>
+
     );
   }
 
