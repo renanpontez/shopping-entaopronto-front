@@ -25,10 +25,12 @@ const categoryFields = `
 export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title asc) {
   ${categoryFields},
   "storesCount": count(*[_type == "store" && references(^._id)]),
+  "fiftyPlusStoresCount": count(*[_type == "store" && references(^._id) && solution[fiftyPlus == true]]),
   subCategories[]->{
     ${categoryFields}
   },
 }`);
+
 export const categoryBySlugQuery = defineQuery(`*[_type == "category"  && slug.current == $slug][0] { ${categoryFields} }`);
 
 /* Store */
@@ -39,11 +41,12 @@ const storeFields = `{
   "slug": slug.current,
   "logo": logo.asset->url,
   categories[]->{ ${categoryFields}},
-  productsOrServices[]{
+  solution[]{
     _key,
     name,
     description,
     price,
+    fiftyPlus,
     "image": image.asset->url
   },
   about[],
@@ -69,3 +72,6 @@ export const siteSettingsFields = `{
 }`;
 
 export const siteSettingsQuery = defineQuery(`*[_type == "siteSettings"][0] ${siteSettingsFields}`);
+
+// Query para buscar lojas que possuem pelo menos 1 solution com fiftyPlus = true
+export const storesWithFiftyPlusQuery = defineQuery(`*[_type == "store" && solution[fiftyPlus == true]] ${storeFields}`);
