@@ -1,4 +1,5 @@
 import type { CategorySchema } from '@/libs/sanity/types';
+import FiftyPlus from '@/components/atoms/FiftyPlus';
 import Loader from '@/components/Loader';
 import Typography from '@/components/Typography';
 import Link from 'next/link';
@@ -41,6 +42,17 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
                   {' '}
                   parceiro(s)
                 </Typography>
+              )}
+              {!Number.isNaN(category.fiftyPlusStoresCount) && category.fiftyPlusStoresCount > 0 && (
+                <div className="flex items-center">
+                  <Typography variant="caption" tag="span">
+                    {category.fiftyPlusStoresCount}
+                    {' '}
+                    parceiro(s)
+                  </Typography>
+                  <FiftyPlus />
+                </div>
+
               )}
             </div>
           </Link>
