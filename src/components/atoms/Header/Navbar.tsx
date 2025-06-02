@@ -9,7 +9,7 @@ export const Navbar = (): React.ReactNode => {
         <ul className="flex flex-wrap gap-x-8 text-dark">
           {MENU_LINKS_MOCK.map(({ label, href }) => (
             <li key={href} className="flex">
-              <Link href={href} className="text-sm font-semibold uppercase hover:border-b-1 hover:border-white">{label}</Link>
+              <Link href={href} className="text-sm font-semibold uppercase hover:text-darker">{label}</Link>
             </li>
           ))}
         </ul>

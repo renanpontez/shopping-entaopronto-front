@@ -1,7 +1,6 @@
 import Container from '@/components/Container';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
-import Typography from '@/components/Typography';
 import { getCategoryBySlug, getStoresByCategoryId } from '@/libs/sanity/fetcher';
 
 export default async function StoresByCategoryPage({
@@ -29,10 +28,7 @@ export default async function StoresByCategoryPage({
       <Hero.Minimal title={categoryData.title} />
       <section>
         <Container className="flex flex-col gap-10 pb-20">
-          <Typography variant="h1" className="text-xl mb-4">
-            Lojas desta categoria
-          </Typography>
-          <StoreList stores={stores} />
+          <StoreList stores={stores} title="Lojas desta categoria" limit={6} />
         </Container>
       </section>
     </>

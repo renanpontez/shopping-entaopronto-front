@@ -4,6 +4,7 @@ import PortableTextRenderer from '@/components/atoms/PortableText';
 import Typography from '@/components/Typography';
 import AgilityAboutUsImage from '@/public/assets/images/agility-about-us.svg';
 import Image from 'next/image';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 type Props = {
   imageUrl?: string;
@@ -36,7 +37,10 @@ export const AboutUs = ({ about, imageUrl }: Props) => {
           )}
         </div>
         <div>
-          <Button variant="primary-outlined">Quero conhecer mais</Button>
+          <Button variant="primary-outlined" href="https://www.entaopronto.emp.br/">
+            Quero conhecer mais
+            <FaExternalLinkAlt size="14" className="ml-2" />
+          </Button>
         </div>
       </div>
     </div>
