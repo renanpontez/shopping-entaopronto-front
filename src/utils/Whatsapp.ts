@@ -1,5 +1,5 @@
-export const openWhatsAppChat = (phoneNumber: string, message: string = '') => {
-  const cleanNumber = phoneNumber.replace(/\D/g, '');
+export const openWhatsAppChat = (phoneNumber?: string, message: string = '') => {
+  const cleanNumber = phoneNumber?.replace(/\D/g, '');
 
   const encodedMessage = encodeURIComponent(message);
 
@@ -25,3 +25,7 @@ export const getShoppingWhatsAppMessage = (userName: string, userEmail: string, 
   `;
   return messageFormated;
 };
+
+export const createStoreInfoWhatsAppMessage = `Olá, estou entrando em contato pelo site Shopping EntãoPronto e gostaria de cadastrar meu estabelecimento no Shopping.`;
+
+export const getGeneralInfoWhatsAppMessage = `Olá, estou entrando em contato pelo site da Shopping EntãoPronto e gostaria de saber mais sobre a organização.`;

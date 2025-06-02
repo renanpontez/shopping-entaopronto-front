@@ -1,8 +1,11 @@
+'use client';
 import type { PortableTextBlock } from '@portabletext/types';
 import { Button } from '@/components/atoms/Button';
 import PortableTextRenderer from '@/components/atoms/PortableText';
 import Typography from '@/components/Typography';
 import AgilityAboutUsImage from '@/public/assets/images/agility-about-us.svg';
+import { CONTACT } from '@/utils/Constants';
+import { getGeneralInfoWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
 import Image from 'next/image';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
@@ -37,7 +40,7 @@ export const AboutUs = ({ about, imageUrl }: Props) => {
           )}
         </div>
         <div>
-          <Button variant="primary-outlined" href="https://www.entaopronto.emp.br/">
+          <Button variant="primary-outlined" onClick={() => openWhatsAppChat(CONTACT.shoppingPhoneNumber, getGeneralInfoWhatsAppMessage)}>
             Quero conhecer mais
             <FaExternalLinkAlt size="14" className="ml-2" />
           </Button>

@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/atoms/Button';
 import Container from '@/components/Container';
 import Typography from '@/components/Typography';
