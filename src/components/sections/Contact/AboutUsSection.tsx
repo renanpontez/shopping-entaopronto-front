@@ -7,6 +7,7 @@ import AgilityAboutUsImage from '@/public/assets/images/agility-about-us.svg';
 import { CONTACT } from '@/utils/Constants';
 import { getGeneralInfoWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
 import Image from 'next/image';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 type Props = {
   imageUrl?: string;
@@ -39,7 +40,10 @@ export const AboutUs = ({ about, imageUrl }: Props) => {
           )}
         </div>
         <div>
-          <Button variant="primary-outlined" onClick={() => openWhatsAppChat(CONTACT.shoppingPhoneNumber, getGeneralInfoWhatsAppMessage)}>Quero conhecer mais</Button>
+          <Button variant="primary-outlined" onClick={() => openWhatsAppChat(CONTACT.shoppingPhoneNumber, getGeneralInfoWhatsAppMessage)}>
+            Quero conhecer mais
+            <FaExternalLinkAlt size="14" className="ml-2" />
+          </Button>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ const HeroStore = ({
   // description,
 }: Props) => (
   <div
-    className="relative flex flex-col justify-center py-10 sm:py-16 w-full text-white text-center overflow-hidden bg-primary bg-cover bg-center"
+    className="relative pt-32 flex flex-col justify-center py-10 sm:py-16 w-full text-white text-center overflow-hidden bg-primary bg-cover bg-center"
     style={{ backgroundImage: `url(${backgroundUrl})` }}
   >
     <div className="absolute inset-0 bg-black/60" />

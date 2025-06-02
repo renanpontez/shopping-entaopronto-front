@@ -17,7 +17,7 @@ export default async function StoresPage() {
       <Hero.Minimal title="Todos os parceiros" />
       <section>
         <Container>
-          <StoreList stores={stores} />
+          <StoreList stores={stores} hideSidebar limit={-1} cols={3} />
         </Container>
         <Container className="py-50 my-50" />
       </section>

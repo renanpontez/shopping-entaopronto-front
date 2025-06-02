@@ -17,7 +17,7 @@ export default async function CategoriesPage() {
       <Hero.Minimal title="Todas as categorias" />
       <section>
         <Container>
-          <CategoryList categories={categories} />
+          <CategoryList categories={categories} limit={-1} />
         </Container>
         <Container className="py-50 my-50" />
       </section>
