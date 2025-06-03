@@ -30,12 +30,12 @@ export const CategoryList = ({ categories, limit = 9 }: Props) => {
             Encontre os melhores parceiros para o seu negócio com base em suas categorias.
           </Typography>
         </div>
-        <div className="lg:w-[70%] grid grid-cols-3 gap-4">
-          {categories?.slice(0, limit === -1 ? categories.length : limit + 1)?.map(category => (
+        <div className="lg:w-[70%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {categories?.slice(0, limit === -1 ? categories.length : limit)?.map(category => (
             <Link
               href={`/categoria/${category.slug}`}
               key={category._id}
-              className="group flex items-center  p-3 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100"
+              className="group flex items-center shadow-sm p-3 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100"
             >
               <div className="rounded-full p-5 transition-all duration-300">
                 <SVG
@@ -47,14 +47,14 @@ export const CategoryList = ({ categories, limit = 9 }: Props) => {
               <div>
                 <Typography
                   variant="body"
-                  className="font-medium text-dark group-hover:text-primary transition-all duration-300"
+                  className="font-semibold text-dark group-hover:text-primary transition-all duration-300"
                 >
                   {category.title}
                 </Typography>
                 {category.storesCount > 0 && (
                   <Typography
                     variant="caption"
-                    className="text-gray-500 mt-2"
+                    className="text-gray-500 mt-2 text-normal"
                   >
                     {category.storesCount}
                     {' '}

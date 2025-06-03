@@ -5,6 +5,7 @@ import { ContactInfo } from '@/components/sections/Contact/ContactInfoSection';
 import { ContactUs } from '@/components/sections/Contact/ContactUsSection';
 import { CtaAgility } from '@/components/sections/Cta/CtaAgility';
 import { Hero } from '@/components/sections/Hero/Hero';
+import PartnerLogos from '@/components/sections/Partner/PartnerLogos';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import { getAllCategories, getAllStores, getSiteSettings } from '@/libs/sanity/fetcher';
 import { CONTACT } from '@/utils/Constants';
@@ -47,9 +48,12 @@ export default async function Index(props: IIndexProps) {
         videoUrl="/assets/images/testt.mp4"
       />
       <div className="flex flex-col gap-8">
+        <section id="Parceiros">
+          <PartnerLogos stores={stores} />
+        </section>
         <section>
           <Container className="flex flex-col gap-10">
-            <CategoryList categories={categories} limit={8} />
+            <CategoryList categories={categories} limit={9} />
           </Container>
         </section>
         <section id="Parceiros">

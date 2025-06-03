@@ -52,11 +52,11 @@ export const StoreList = ({
           </div>
         )}
         <div className={`${hideSidebar ? 'w-full' : 'lg:w-[70%]'} grid ${gridCols[cols]} gap-6`}>
-          {stores?.slice(0, limit === -1 ? stores.length : limit + 1).map(store => (
+          {stores?.slice(0, limit === -1 ? stores.length : limit).map(store => (
             <Link
               href={buildStoreUrl(store.slug)}
               key={store._id}
-              className="group flex gap-7 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 border border-gray-100"
+              className="group flex gap-7 shadow-sm p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 border border-gray-100"
             >
               <div className="relative flex-shrink-0">
                 <Image

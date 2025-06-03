@@ -7,9 +7,9 @@ import { Navbar } from './Navbar';
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="absolute left-1/2 -translate-x-1/2 w-full container mx-auto">
-        <Container>
+    <header className="fixed top-3 left-0 right-0 z-50 w-full">
+      <Container>
+        <div className="w-full container mx-auto">
           <div className="flex flex-row justify-between items-center py-3 bg-white/90 backdrop-blur-sm mt-4 rounded-full shadow-lg px-10">
             <div className="relative w-auto h-full">
               <Link href="/">
@@ -25,8 +25,8 @@ export const Header = () => {
             <Navbar />
             <MobileNavbar mainNav={<MainNav />} />
           </div>
-        </Container>
-      </div>
+        </div>
+      </Container>
     </header>
   );
 };
