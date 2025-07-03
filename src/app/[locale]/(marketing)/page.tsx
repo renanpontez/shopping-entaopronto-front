@@ -1,5 +1,4 @@
 import { Button } from '@/components/atoms/Button';
-import FiftyPlus from '@/components/atoms/FiftyPlus';
 import Container from '@/components/Container';
 import { CategoryList } from '@/components/sections/Category/CategoryList';
 import { AboutUs } from '@/components/sections/Contact/AboutUsSection';
@@ -9,7 +8,6 @@ import { CtaAgility } from '@/components/sections/Cta/CtaAgility';
 import { Hero } from '@/components/sections/Hero/Hero';
 import PartnerLogos from '@/components/sections/Partner/PartnerLogos';
 import { StoreList } from '@/components/sections/Store/StoreList';
-import Typography from '@/components/Typography';
 import { getAllCategories, getAllStores, getSiteSettings } from '@/libs/sanity/fetcher';
 import { CONTACT } from '@/utils/Constants';
 
@@ -56,17 +54,6 @@ export default async function Index(props: IIndexProps) {
         </section>
         <section>
           <Container className="flex flex-col gap-10">
-            <span className="flex gap-3 flex-wrap justify-between">
-              {' '}
-              <Typography variant="h3">Categorias mais procuradas</Typography>
-              <Button variant="primary-outlined" href="/categorias?cinquenta-mais" type="link">
-                {' '}
-                <Typography variant="body">Buscar categorias com soluções </Typography>
-                {' '}
-                <FiftyPlus />
-              </Button>
-
-            </span>
             <CategoryList categories={categories} limit={9} />
             <div className="w-full flex justify-center">
               <Button href="/categorias" variant="primary" type="link"> Ver todas as categorias</Button>

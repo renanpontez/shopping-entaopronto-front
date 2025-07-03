@@ -56,7 +56,6 @@ export const StoreList = ({
 
   return (
     <div className="w-full flex flex-col gap-8">
-      <ToggleButton label="Apenas soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
         {!hideSidebar && (
           <div className="lg:w-[30%] flex flex-col gap-2">
@@ -69,6 +68,7 @@ export const StoreList = ({
           </div>
         )}
         <div className={`${hideSidebar ? 'w-full' : 'lg:w-[70%]'} grid ${gridCols[cols]} gap-6`}>
+          <ToggleButton className="items-center justify-center text-center" label="Apenas soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
           {filteredStores?.slice(0, limit === -1 ? filteredStores.length : limit).map(store => (
             <Link
               href={buildStoreUrl(store.slug)}
