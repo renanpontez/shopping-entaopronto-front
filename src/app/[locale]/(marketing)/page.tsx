@@ -7,10 +7,12 @@ import { ContactInfo } from '@/components/sections/Contact/ContactInfoSection';
 import { ContactUs } from '@/components/sections/Contact/ContactUsSection';
 import { CtaAgility } from '@/components/sections/Cta/CtaAgility';
 import { Hero } from '@/components/sections/Hero/Hero';
+import PartnerLogos from '@/components/sections/Partner/PartnerLogos';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import Typography from '@/components/Typography';
 import { getAllCategories, getAllStores, getSiteSettings } from '@/libs/sanity/fetcher';
 import { CONTACT } from '@/utils/Constants';
+
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 type IIndexProps = {
@@ -43,8 +45,15 @@ export default async function Index(props: IIndexProps) {
 
   return (
     <>
-      <Hero.Primary title="Conecte-se sua marca ao Shopping EntãoPronto" />
+      <Hero.Primary
+        title="Conecte-se sua marca ao Shopping EntãoPronto"
+        // videoUrl="https://media.cleanshot.cloud/media/31388/UTPA73WrWnFONyS03D3I12eLJYDYq1RueGL7DZee.mp4?Expires=1748904724&Signature=DunApc5oohk4Yhr1ZLsV0UnIyTuqtooF2s--uzM~081IPdZHgREJQsrMQvWqrXUvWHfyZ4w9OnfJi7yoR8fjQ5npb81Sjhq14xVcvSByuZsfW5Hn1Ru8y80~MILSD-XOjy5ZVj1hBvI1Mpqdt0hjjCH8vmSQQEybR~CWZI9zUDpM5CEeFN2seazCpuyNpoQ3yS6Y7Puqqcgu~TCfzRYtvIFVYWBybg0H7VECTh4EdsvK~lahEnIWRWax0TgG1ED7UYxaXghdTmI~SC6SF8viL8oEaccoL-EIaS4lrLf6wTUIKN7d8hpaqdFCi1hHRQLZBIDjNppaHVSdSWfcV-8sUg__&Key-Pair-Id=K269JMAT9ZF4GZ"
+        videoUrl="/assets/images/testt.mp4"
+      />
       <div className="flex flex-col gap-8">
+        <section id="Parceiros">
+          <PartnerLogos stores={stores} />
+        </section>
         <section>
           <Container className="flex flex-col gap-10">
             <span className="flex gap-3 flex-wrap justify-between">
@@ -58,7 +67,7 @@ export default async function Index(props: IIndexProps) {
               </Button>
 
             </span>
-            <CategoryList categories={categories} limit={8} />
+            <CategoryList categories={categories} limit={9} />
             <div className="w-full flex justify-center">
               <Button href="/categorias" variant="primary" type="link"> Ver todas as categorias</Button>
             </div>
@@ -66,11 +75,7 @@ export default async function Index(props: IIndexProps) {
         </section>
         <section id="Parceiros">
           <Container className="flex flex-col gap-10">
-            <Typography variant="h3">Parceiros em destaque</Typography>
             <StoreList stores={stores} limit={6} />
-            <div className="w-full flex justify-center">
-              <Button href="/parceiros" variant="primary" type="link"> Ver todas os parceiros</Button>
-            </div>
           </Container>
         </section>
         <section>
