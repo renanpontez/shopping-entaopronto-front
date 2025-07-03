@@ -1,12 +1,12 @@
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import { StoreTag } from '@/components/atoms/StoreTag';
 import Container from '@/components/Container';
-import { ProductOrServiceCard } from '@/components/ProductOrServiceCard';
 import { AboutUs } from '@/components/sections/Contact/AboutUsSection';
 import { ContactInfo } from '@/components/sections/Contact/ContactInfoSection';
 import { ContactUs } from '@/components/sections/Contact/ContactUsSection';
 import { CtaAgility } from '@/components/sections/Cta/CtaAgility';
 import { Hero } from '@/components/sections/Hero/Hero';
+import { SolutionCard } from '@/components/SolutionCard';
 import Typography from '@/components/Typography';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storeBySlugQuery } from '@/libs/sanity/queries';
@@ -75,8 +75,8 @@ export default async function StorePage({
       </section>
       <section id="Products">
         <Container className="flex flex-wrap gap-20 justify-around">
-          {store.productsOrServices?.map(product => (
-            <ProductOrServiceCard
+          {store.solution?.map(product => (
+            <SolutionCard
               key={product._key}
               storeName={store.title}
               name={product.name}

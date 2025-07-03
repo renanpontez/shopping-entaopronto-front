@@ -1,7 +1,10 @@
+'use client';
 import type { CategorySchema } from '@/libs/sanity/types';
+import { ToggleButton } from '@/components/atoms/ToggleButton';
 import Loader from '@/components/Loader';
 import Typography from '@/components/Typography';
 import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import SVG from 'react-inlinesvg';
 
 type Props = {
@@ -9,14 +12,29 @@ type Props = {
   limit?: number;
 };
 
-export const CategoryList = ({ categories, limit = 9 }: Props) => {
-  if (!categories.length) {
+export const CategoryList = ({ categories, limit = 12 }: Props) => {
+  const [isFiftyPlus, setIsFiftyPlus] = useState(false);
+
+  const filteredCategories = useMemo(() => {
+    if (!isFiftyPlus) {
+      return categories;
+    }
+
+    return categories.filter(category => category.stores.filter(store => store.solution && store.solution.some(solution => solution.fiftyPlus === true)).length > 0);
+  }, [categories, isFiftyPlus]);
+
+  if (!filteredCategories.length) {
     return (
-      <Typography variant="body">
-        Nenhuma categoria foi cadastrada ainda nestes critérios
-      </Typography>
+      <div className="space-y-6">
+        <ToggleButton label="Categorias com soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
+
+        <Typography variant="body">
+          Nenhuma categoria foi cadastrada ainda nestes critérios
+        </Typography>
+      </div>
     );
   }
+  ;
 
   return (
     <div className="w-full flex flex-col gap-8">
@@ -31,7 +49,8 @@ export const CategoryList = ({ categories, limit = 9 }: Props) => {
           </Typography>
         </div>
         <div className="lg:w-[70%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {categories?.slice(0, limit === -1 ? categories.length : limit)?.map(category => (
+          <ToggleButton label="Categorias com soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
+          {filteredCategories?.slice(0, limit === -1 ? filteredCategories.length : limit)?.map(category => (
             <Link
               href={`/categoria/${category.slug}`}
               key={category._id}

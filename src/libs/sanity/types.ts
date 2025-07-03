@@ -34,6 +34,8 @@ export type CategorySchema = {
   subCategories?: SubCategorySchema[];
   icon: string;
   storesCount: number;
+  fiftyPlusStoresCount: number;
+  stores: StoreSchemaResponse[];
 };
 
 export type Link = {
@@ -59,13 +61,14 @@ export type StoreSchemaResponse = {
   title: string;
   slug: string;
   categories: CategorySchema[];
-  productsOrServices: {
+  solution: {
     _key: string;
     _id: string;
     name: string;
     description: string;
     price: number;
     image: string;
+    fiftyPlus: boolean;
     whatsappContact: string;
   }[];
   about: PortableTextBlock;

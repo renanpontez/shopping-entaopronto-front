@@ -1,3 +1,4 @@
+import { Button } from '@/components/atoms/Button';
 import Container from '@/components/Container';
 import { CategoryList } from '@/components/sections/Category/CategoryList';
 import { AboutUs } from '@/components/sections/Contact/AboutUsSection';
@@ -54,6 +55,9 @@ export default async function Index(props: IIndexProps) {
         <section>
           <Container className="flex flex-col gap-10">
             <CategoryList categories={categories} limit={9} />
+            <div className="w-full flex justify-center">
+              <Button href="/categorias" variant="primary" type="link"> Ver todas as categorias</Button>
+            </div>
           </Container>
         </section>
         <section id="Parceiros">
