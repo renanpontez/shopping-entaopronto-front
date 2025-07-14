@@ -93,6 +93,16 @@ export default async function RootLayout(props: {
   // which dynamically adds a `style` attribute to the body tag.
   return (
     <html lang={locale} className={classNames(montserratFont.className, 'scroll-smooth')}>
+      <head>
+        {/* og meta tags */}
+        <meta property="og:image" content="/assets/images/entao-pronto-logo.svg" />
+        <meta property="og:title" content="Então Pronto" />
+        <meta property="og:description" content="Então Pronto é uma plataforma de compras online para pessoas 50+." />
+        <meta property="og:url" content="https://entaopronto.com.br" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt-BR" />
+        <meta property="og:site_name" content="Então Pronto" />
+      </head>
       <body suppressHydrationWarning>
         <NextIntlClientProvider
           locale={locale}
