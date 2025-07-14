@@ -21,7 +21,7 @@ const PartnerLogos = ({ stores }: Props) => {
     <div className="w-full">
       <div className="relative overflow-hidden">
         <motion.div
-          className="flex gap-32 py-4"
+          className="flex gap-10 md:gap-32 py-4"
           animate={{
             x: ['0%', '-50%'],
           }}
