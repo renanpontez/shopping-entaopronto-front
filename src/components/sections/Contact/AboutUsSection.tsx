@@ -16,23 +16,13 @@ type Props = {
 
 export const AboutUs = ({ about, imageUrl }: Props) => {
   return (
-    <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-between items-stretch w-full relative">
-      <div className="relative w-full md:max-w-[450px] aspect-square">
-        <Image
-          alt=""
-          aria-hidden="true"
-          className="w-full h-auto rounded-lg aspect-square"
-          src={imageUrl ?? AgilityAboutUsImage}
-          sizes="100vw"
-          fill
-          objectFit="cover"
-        />
-      </div>
-      <div className="w-full md:w-[50%] flex flex-col justify-around gap-2">
-        <div>
-          <Typography variant="h3" className="pb-4 text-dark">
-            QUEM SOMOS
+    <div className="flex flex-col md:flex-row gap-2 md:gap-20 justify-between items-start w-full relative">
+      <div className="flex flex-col gap-2 w-1/2">
+        <div className="flex flex-col gap-4 pb-5">
+          <Typography variant="h2" className="text-dark">
+            Quem Somos
           </Typography>
+
           {about && (
             <Typography variant="body" tag="span" className="pb-3">
               <PortableTextRenderer value={about} />
@@ -45,6 +35,17 @@ export const AboutUs = ({ about, imageUrl }: Props) => {
             <FaExternalLinkAlt size="14" className="ml-2" />
           </Button>
         </div>
+      </div>
+      <div className="relative w-full md:w-[40%] aspect-square">
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="w-full h-auto rounded-lg aspect-square"
+          src={imageUrl ?? AgilityAboutUsImage}
+          sizes="100vw"
+          fill
+          objectFit="cover"
+        />
       </div>
     </div>
   );

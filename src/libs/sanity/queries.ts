@@ -64,6 +64,7 @@ export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title
 export const storesQuery = defineQuery(`*[_type == "store"] ${storeFields}`);
 export const storeBySlugQuery = defineQuery(`*[_type == "store" && slug.current == $slug][0] ${storeFields}`);
 export const storesByCategoryIdQuery = defineQuery(`*[_type == "store" && $categoryId in categories[]._ref] ${storeFields}`);
+export const storesQueryWithFiftyPlus = defineQuery(`*[_type == "store" && count(solution[fiftyPlus == true]) > 0] ${storeFields}`);
 
 /* Site Settings */
 export const siteSettingsFields = `{

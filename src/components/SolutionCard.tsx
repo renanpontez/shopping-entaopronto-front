@@ -22,17 +22,17 @@ export const SolutionCard = ({ name, description, price, image, discount, whatsa
   const handleContactStore = () => openWhatsAppChat(whatsappContact, whatsAppMessage);
 
   return (
-    <div className="flex flex-col max-w-[382px]">
+    <div className="flex flex-col w-full gap-3">
       {image && (
         <Image
           src={image}
-          className="rounded-lg max-h-64 object-cover"
+          className="rounded-lg max-h-96 object-cover w-full"
           alt={`Product: ${name} image`}
           width={382}
           height={269}
         />
       )}
-      <Typography variant="h4" className="pt-2 pb-1 text-dark">
+      <Typography variant="h4" className="pt-3 text-dark">
         {name}
       </Typography>
       <Typography variant="bodySmall" tag="p" className=" text-secondary">{description}</Typography>

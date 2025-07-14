@@ -1,12 +1,10 @@
 'use client';
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
-import { ToggleButton } from '@/components/atoms/ToggleButton';
 import Typography from '@/components/Typography';
 import { getPartnershipDuration } from '@/utils/Helpers';
 import { buildStoreUrl } from '@/utils/URLs';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
 import { FaRegClock } from 'react-icons/fa';
 import SVG from 'react-inlinesvg';
 
@@ -27,19 +25,9 @@ export const StoreList = ({
   hideSidebar = false,
   cols = 2,
 }: Props) => {
-  const [isFiftyPlus, setIsFiftyPlus] = useState(false);
-
-  const filteredStores = useMemo(() => {
-    if (!isFiftyPlus) {
-      return stores;
-    }
-    return stores.filter(store => store.solution && store.solution.some(solution => solution.fiftyPlus === true));
-  }, [stores, isFiftyPlus]);
-
-  if (!filteredStores.length) {
+  if (!stores.length) {
     return (
       <div className="space-y-6">
-        <ToggleButton label="Apenas soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
         <Typography variant="body">
           Nenhuma loja foi cadastrada ainda nestes critérios.
         </Typography>
@@ -68,8 +56,7 @@ export const StoreList = ({
           </div>
         )}
         <div className={`${hideSidebar ? 'w-full' : 'lg:w-[70%]'} grid ${gridCols[cols]} gap-6`}>
-          <ToggleButton className="items-center justify-center text-center" label="Apenas soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
-          {filteredStores?.slice(0, limit === -1 ? filteredStores.length : limit).map(store => (
+          {stores?.slice(0, limit === -1 ? stores.length : limit).map(store => (
             <Link
               href={buildStoreUrl(store.slug)}
               key={store._id}

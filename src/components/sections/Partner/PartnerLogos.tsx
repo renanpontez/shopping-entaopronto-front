@@ -26,7 +26,7 @@ const PartnerLogos = ({ stores, limit = 4 }: Props) => {
         ease: 'linear',
       },
     );
-  }, [stores.length]);
+  }, [animate, scope, stores.length]);
 
   if (!stores.length) {
     return null;
@@ -53,7 +53,7 @@ const PartnerLogos = ({ stores, limit = 4 }: Props) => {
             >
               <Link
                 href={`/parceiro/${store.slug}`}
-                className="group flex items-center justify-center py-4 bg-white rounded-xl transition-all duration-300 rounded-full"
+                className="group flex items-center justify-center py-4 bg-white transition-all duration-300 rounded-full"
               >
                 <Image
                   src={store.logo ?? COMPANY_PLACEHOLDER}

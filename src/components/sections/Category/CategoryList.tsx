@@ -1,10 +1,8 @@
 'use client';
 import type { CategorySchema } from '@/libs/sanity/types';
-import { ToggleButton } from '@/components/atoms/ToggleButton';
 import Loader from '@/components/Loader';
 import Typography from '@/components/Typography';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
 import SVG from 'react-inlinesvg';
 
 type Props = {
@@ -13,21 +11,9 @@ type Props = {
 };
 
 export const CategoryList = ({ categories, limit = 12 }: Props) => {
-  const [isFiftyPlus, setIsFiftyPlus] = useState(false);
-
-  const filteredCategories = useMemo(() => {
-    if (!isFiftyPlus) {
-      return categories;
-    }
-
-    return categories.filter(category => category.stores.filter(store => store.solution && store.solution.some(solution => solution.fiftyPlus === true)).length > 0);
-  }, [categories, isFiftyPlus]);
-
-  if (!filteredCategories.length) {
+  if (!categories.length) {
     return (
       <div className="space-y-6">
-        <ToggleButton label="Categorias com soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
-
         <Typography variant="body">
           Nenhuma categoria foi cadastrada ainda nestes critérios
         </Typography>
@@ -49,8 +35,25 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
           </Typography>
         </div>
         <div className="lg:w-[70%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <ToggleButton label="Categorias com soluções 50+" variant="primary-outlined" onChange={() => setIsFiftyPlus(!isFiftyPlus)} />
-          {filteredCategories?.slice(0, limit === -1 ? filteredCategories.length : limit)?.map(category => (
+          <Link href="/parceiros/50-mais" className="group col-span-3 flex items-center shadow-sm p-3 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100 w-full">
+            <div className="rounded-full p-5 transition-all duration-300">
+              <SVG
+                src="/assets/images/couple.svg"
+                className="h-6 w-6 !fill-primary"
+                loader={<Loader />}
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <Typography variant="body" className="font-semibold text-dark group-hover:text-primary transition-all duration-300">
+                Soluções 50+
+              </Typography>
+              <Typography variant="bodySmall" className="text-gray-500">
+                Você pode encontrar soluções específicas para pessoas 50+ em nossas categorias.
+              </Typography>
+            </div>
+
+          </Link>
+          {categories?.slice(0, limit === -1 ? categories.length : limit)?.map(category => (
             <Link
               href={`/categoria/${category.slug}`}
               key={category._id}
@@ -70,20 +73,11 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
                 >
                   {category.title}
                 </Typography>
-                {category.storesCount > 0 && (
-                  <Typography
-                    variant="caption"
-                    className="text-gray-500 mt-2 text-normal"
-                  >
-                    {category.storesCount}
-                    {' '}
-                    parceiros
-                  </Typography>
-                )}
               </div>
 
             </Link>
           ))}
+
         </div>
       </div>
       {limit !== -1 && (
