@@ -3,24 +3,36 @@ import { Button } from '@/components/atoms/Button';
 import Container from '@/components/Container';
 import Typography from '@/components/Typography';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 
 type Props = {
   title: string;
   videoUrl?: string;
+  imageUrl?: string;
 };
 
-const HeroPrimary = ({ title, videoUrl = '/assets/images/test.mp4' }: Props) => (
+const HeroPrimary = ({ title, videoUrl = '/assets/images/test.mp4', imageUrl = '/assets/images/bg-mall.webp' }: Props) => (
   <div className="relative py-24 overflow-hidden pt-32">
-    <video
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="absolute inset-0 w-full h-full object-cover z-0"
-    >
-      <source src={videoUrl} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    {videoUrl && (
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src={videoUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    )}
+    {imageUrl && (
+      <Image
+        src={imageUrl}
+        alt="Hero"
+        fill
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
+    )}
     <div className="absolute inset-0 bg-black/70 z-10" />
     <div className="relative z-20">
       <Container>

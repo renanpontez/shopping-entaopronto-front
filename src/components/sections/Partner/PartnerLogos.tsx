@@ -1,59 +1,46 @@
 'use client';
 
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
-import { motion, useAnimate } from 'motion/react';
+import Typography from '@/components/Typography';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
 
 const COMPANY_PLACEHOLDER = '/assets/images/company-placeholder.svg';
 
 type Props = {
   stores: StoreSchemaResponse[];
-  limit?: number;
 };
 
-const PartnerLogos = ({ stores, limit = 4 }: Props) => {
-  const [scope, animate] = useAnimate();
-
-  useEffect(() => {
-    animate(
-      scope.current,
-      { x: [0, -100 * stores.length] },
-      {
-        duration: 50,
-        repeat: Infinity,
-        ease: 'linear',
-      },
-    );
-  }, [animate, scope, stores.length]);
-
+const PartnerLogos = ({ stores }: Props) => {
   if (!stores.length) {
     return null;
   }
 
-  // Duplicate the stores array to create a seamless loop
-  const duplicatedStores = [...stores, ...stores, ...stores];
-
   return (
-    <div className="w-full py-8 bg-gray-50">
-      <div className="overflow-hidden">
+    <div className="w-full">
+      <div className="relative overflow-hidden">
         <motion.div
-          ref={scope}
           className="flex gap-32 py-4"
-          style={{
-            width: 'fit-content',
+          animate={{
+            x: ['0%', '-50%'],
+          }}
+          transition={{
+            duration: 50,
+            ease: 'linear',
+            repeat: Infinity,
           }}
         >
-          {duplicatedStores.slice(0, limit).map((store, index) => (
+          {/* First set of logos */}
+          {stores.map((store, index) => (
             <motion.div
               key={`${store._id}-${index}`}
               whileHover={{ scale: 1.1 }}
-              className="flex-shrink-0 gap-10"
+              className="flex-shrink-0"
             >
               <Link
                 href={`/parceiro/${store.slug}`}
-                className="group flex items-center justify-center py-4 bg-white transition-all duration-300 rounded-full"
+                className="group flex items-center justify-center py-4 transition-all duration-300 flex-col gap-1"
               >
                 <Image
                   src={store.logo ?? COMPANY_PLACEHOLDER}
@@ -62,6 +49,33 @@ const PartnerLogos = ({ stores, limit = 4 }: Props) => {
                   height={120}
                   className="w-12 h-12 rounded-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                 />
+                <Typography variant="extraSmall" tag="p" className="text-dark text-center max-w-24">
+                  {store.title}
+                </Typography>
+              </Link>
+            </motion.div>
+          ))}
+          {/* Second set of logos for seamless loop */}
+          {stores.map((store, index) => (
+            <motion.div
+              key={`${store._id}-${index}-duplicate`}
+              whileHover={{ scale: 1.1 }}
+              className="flex-shrink-0"
+            >
+              <Link
+                href={`/parceiro/${store.slug}`}
+                className="group flex items-center justify-center py-4 transition-all duration-300 flex-col gap-1"
+              >
+                <Image
+                  src={store.logo ?? COMPANY_PLACEHOLDER}
+                  alt={store.title}
+                  width={120}
+                  height={120}
+                  className="w-12 h-12 rounded-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <Typography variant="extraSmall" tag="p" className="text-dark text-center max-w-24">
+                  {store.title}
+                </Typography>
               </Link>
             </motion.div>
           ))}

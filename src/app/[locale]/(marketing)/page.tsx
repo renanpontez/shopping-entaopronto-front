@@ -44,12 +44,14 @@ export default async function Index(props: IIndexProps) {
     <>
       <Hero.Primary
         title="Conecte-se sua marca ao Shopping EntãoPronto"
-        // videoUrl="https://media.cleanshot.cloud/media/31388/UTPA73WrWnFONyS03D3I12eLJYDYq1RueGL7DZee.mp4?Expires=1748904724&Signature=DunApc5oohk4Yhr1ZLsV0UnIyTuqtooF2s--uzM~081IPdZHgREJQsrMQvWqrXUvWHfyZ4w9OnfJi7yoR8fjQ5npb81Sjhq14xVcvSByuZsfW5Hn1Ru8y80~MILSD-XOjy5ZVj1hBvI1Mpqdt0hjjCH8vmSQQEybR~CWZI9zUDpM5CEeFN2seazCpuyNpoQ3yS6Y7Puqqcgu~TCfzRYtvIFVYWBybg0H7VECTh4EdsvK~lahEnIWRWax0TgG1ED7UYxaXghdTmI~SC6SF8viL8oEaccoL-EIaS4lrLf6wTUIKN7d8hpaqdFCi1hHRQLZBIDjNppaHVSdSWfcV-8sUg__&Key-Pair-Id=K269JMAT9ZF4GZ"
-        videoUrl="/assets/images/testt.mp4"
+        // videoUrl="https://videos.openai.com/vg-assets/assets%2Ftask_01jnc96zqsfhpbm0q8w0pqtx1f%2Ftask_01jnc96zqsfhpbm0q8w0pqtx1f_genid_ef1d0b10-0133-422b-a09c-182e2f3328e5_25_03_02_20_37_508349%2Fvideos%2F00000_93576231%2Fmd.mp4?st=2025-07-14T13%3A40%3A50Z&se=2025-07-20T14%3A40%3A50Z&sks=b&skt=2025-07-14T13%3A40%3A50Z&ske=2025-07-20T14%3A40%3A50Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=pukayKWl0oGqY88O2jpXBFeQY9kdKBg3D%2FBzJTjgBaE%3D&az=oaivgprodscus"
+        imageUrl="/assets/images/bg_mall.webp"
       />
       <div className="flex flex-col gap-8">
         <section id="Parceiros">
-          <PartnerLogos stores={stores} />
+          <Container>
+            <PartnerLogos stores={stores} />
+          </Container>
         </section>
         <section>
           <Container className="flex flex-col gap-10">

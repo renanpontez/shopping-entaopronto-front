@@ -96,6 +96,7 @@ export default async function StorePage({
                 price={product.price}
                 image={product.image}
                 whatsappContact={store.contact.phone}
+                fiftyPlus={product.fiftyPlus}
               />
             ))}
           </Container>
@@ -113,7 +114,7 @@ export default async function StorePage({
               <ContactInfo email={store.contact.email} phone={store.contact.phone} address={store.contact.address} instagram={store.contact.instagram} />
             */}
             <ContactInfo />
-            <ContactUs whatsappPhoneNumber={CONTACT.shoppingPhoneNumber} />
+            <ContactUs whatsappPhoneNumber={CONTACT.shoppingPhoneNumber} storeName={store.title} />
           </section>
         </Container>
         <CtaAgility variant="purple" />

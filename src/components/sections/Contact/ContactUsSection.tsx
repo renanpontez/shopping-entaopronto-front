@@ -7,9 +7,10 @@ import { useState } from 'react';
 
 type ContactUsProps = {
   whatsappPhoneNumber?: string;
+  storeName?: string;
 };
 
-export const ContactUs = ({ whatsappPhoneNumber }: ContactUsProps) => {
+export const ContactUs = ({ whatsappPhoneNumber, storeName }: ContactUsProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -42,7 +43,7 @@ export const ContactUs = ({ whatsappPhoneNumber }: ContactUsProps) => {
       />
       <TextArea
         label="Mensagem"
-        placeholder="Aqui vai uma mensagem que o usuário deseja enviar para o cliente ou para a própria equipe.."
+        placeholder={storeName ? `Enviar mensagem para ${storeName}` : 'Enviar mensagem para a equipe'}
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
