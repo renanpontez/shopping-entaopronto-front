@@ -11,6 +11,7 @@ export type BaseProps = {
   icon?: React.ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type: React.InputHTMLAttributes<HTMLInputElement>['type'];
+  className?: string;
 };
 
 export type InputFieldProps = BaseProps &
@@ -26,6 +27,7 @@ export const InputField = ({
   value,
   onChange,
   icon,
+  className,
   ...props
 }: InputFieldProps) => {
   const inputId = useId();
@@ -36,6 +38,7 @@ export const InputField = ({
       'border-error': isInvalid,
       'pr-10': icon,
     },
+    className,
   );
 
   return (

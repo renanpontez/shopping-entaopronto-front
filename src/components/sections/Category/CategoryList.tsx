@@ -138,7 +138,7 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
           initial="hidden"
           animate={isLinkInView ? 'show' : 'hidden'}
         >
-          <Link href="/categorias" className="text-primary hover:underline text-sm">
+          <Link href="/categorias" className="text-primary-700 hover:underline text-sm">
             Ver Todas
           </Link>
         </motion.div>

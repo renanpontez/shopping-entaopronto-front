@@ -36,7 +36,7 @@ export const BaseTemplate = ({
                 <div className=" gap-4 flex flex-col">
                   <div className="relative w-auto h-full">
                     <Image
-                      src="/assets/images/entao-pronto-logo-white.svg"
+                      src="/assets/images/entao-pronto-logo.svg"
                       alt="Logo"
                       layout="intrinsic"
                       width={120}

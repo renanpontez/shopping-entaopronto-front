@@ -48,6 +48,19 @@ const HeroPrimary = ({ title, videoUrl = '/assets/images/test.mp4', imageUrl = '
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
             >
+              <Image
+                src="/assets/images/entao-pronto-logo-white.svg"
+                alt="Logo"
+                width={350}
+                height={100}
+                className="h-16 w-auto"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+            >
               <Typography variant="h1" className="text-white">{title}</Typography>
             </motion.div>
             <motion.div

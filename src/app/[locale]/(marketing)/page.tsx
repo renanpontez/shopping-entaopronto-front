@@ -49,8 +49,8 @@ export default async function Index(props: IIndexProps) {
       />
       <div className="flex flex-col gap-3 md:gap-8">
         <section id="Parceiros">
-          <Container>
-            <PartnerLogos stores={stores} />
+          <Container className="flex flex-col gap-10">
+            <StoreList stores={stores} limit={12} />
           </Container>
         </section>
         <section>
@@ -58,9 +58,9 @@ export default async function Index(props: IIndexProps) {
             <CategoryList categories={categories} limit={9} />
           </Container>
         </section>
-        <section id="Parceiros">
-          <Container className="flex flex-col gap-10">
-            <StoreList stores={stores} limit={6} />
+        <section id="ParceirosSlide">
+          <Container>
+            <PartnerLogos stores={stores} />
           </Container>
         </section>
         <section>

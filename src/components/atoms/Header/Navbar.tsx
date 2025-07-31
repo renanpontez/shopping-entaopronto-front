@@ -6,10 +6,10 @@ export const Navbar = (): React.ReactNode => {
     <div className="relative">
       {/* Desktop Main Nav */}
       <nav className="text-white hidden md:flex">
-        <ul className="flex flex-wrap gap-x-8 text-dark">
+        <ul className="flex flex-wrap gap-x-8 text-white">
           {MENU_LINKS_MOCK.map(({ label, href }) => (
             <li key={href} className="flex">
-              <Link href={href} className="text-sm font-semibold uppercase hover:text-darker">{label}</Link>
+              <Link href={href} className="text-sm font-semibold uppercase hover:text-primary-200">{label}</Link>
             </li>
           ))}
         </ul>
