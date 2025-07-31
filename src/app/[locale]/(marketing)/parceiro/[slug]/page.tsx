@@ -11,6 +11,8 @@ import Typography from '@/components/Typography';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storeBySlugQuery } from '@/libs/sanity/queries';
 import { CONTACT } from '@/utils/Constants';
+import Link from 'next/link';
+import { FaExclamationTriangle } from 'react-icons/fa';
 
 export default async function StorePage({
   params,
@@ -43,7 +45,7 @@ export default async function StorePage({
           />
         </section>
         <section id="StoreHighlightedInfoSection">
-          <Container className="grid grid-cols-3 justify-center gap-64 py-10 pb-24 sm:justify-around items-center flex-wrap">
+          <Container className="grid grid-cols-1 md:grid-cols-3 justify-center gap-10 md:gap-64 py-10 pb-24 sm:justify-around items-center flex-wrap px-16 md:px-0">
             <StoreTag
               title="Parcerias que Transformam"
               description="Conexões estratégicas que geram crescimento e inovação."
@@ -99,6 +101,20 @@ export default async function StorePage({
                 fiftyPlus={product.fiftyPlus}
               />
             ))}
+
+          </Container>
+          <Container>
+            {!store.solution?.length && (
+              <div className="p-5 bg-gray-300 rounded-lg flex gap-3 items-center">
+                <FaExclamationTriangle size="18" className="text-primary" />
+                <Typography variant="bodySmall" className="text-dark">
+                  Nenhuma solução cadastrada ainda. Volte depois ou visite
+                  {' '}
+                  <Link href="/parceiros" className="text-primary-700 hover:underline">outros parceiros</Link>
+                </Typography>
+              </div>
+
+            )}
           </Container>
         </section>
         <section id="CtaAgility1">
