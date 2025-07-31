@@ -17,7 +17,7 @@ type Props = {
 export const AboutUs = ({ about, imageUrl }: Props) => {
   return (
     <div className="flex flex-col md:flex-row gap-2 md:gap-20 justify-between items-start w-full relative">
-      <div className="flex flex-col gap-2 w-1/2">
+      <div className="flex flex-col gap-2 w-fullmd:w-1/2">
         <div className="flex flex-col gap-4 pb-5">
           <Typography variant="h2" className="text-dark">
             Quem Somos
