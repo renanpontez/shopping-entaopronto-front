@@ -116,7 +116,7 @@ export const StoreList = ({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Typography variant="h6" className="text-dark group-hover:text-primary transition-all duration-300">
+              <Typography variant="h6" className="text-dark group-hover:text-darker transition-all duration-300">
                 {store.title}
               </Typography>
               <div className="flex flex-col gap-1">

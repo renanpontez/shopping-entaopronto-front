@@ -91,7 +91,7 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <Typography variant="body" className="font-semibold text-dark group-hover:text-primary transition-all duration-300">
+                  <Typography variant="body" className="font-semibold text-dark group-hover:text-darker transition-all duration-300">
                     Soluções 50+
                   </Typography>
                   <Typography variant="bodySmall" className="text-gray-500">
@@ -119,7 +119,7 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
                   <div>
                     <Typography
                       variant="body"
-                      className="font-semibold text-dark group-hover:text-primary transition-all duration-300"
+                      className="font-semibold text-dark group-hover:text-darker transition-all duration-300"
                     >
                       {category.title}
                     </Typography>

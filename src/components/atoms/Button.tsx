@@ -35,7 +35,7 @@ export const Button = ({
   href,
 }: ButtonProps) => {
   const baseClasses
-    = 'rounded-full font-normal p-3.5 hover:brightness-85 disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
+    = 'rounded-full font-[600] p-3.5  disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
 
   const stylesByVariant = {
     'primary-dark': 'bg-primary-700 text-white',
