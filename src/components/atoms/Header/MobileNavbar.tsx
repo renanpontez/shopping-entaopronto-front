@@ -40,9 +40,9 @@ export const MobileNavbar = ({ mainNav }: Props) => {
   }, []);
 
   return (
-    <div className="md:hidden text-dark">
+    <div className="md:hidden text-white">
       <div ref={navbarToggleRef}>
-        <Button variant="link" onClick={handleMenuToggle} className="pr-0!">
+        <Button variant="link" onClick={handleMenuToggle} className="pr-0! text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -65,16 +65,15 @@ export const MobileNavbar = ({ mainNav }: Props) => {
         hidden: !isOpened,
       })}
       >
-        <div className="backdrop bg-backdrop size-full left-0 top-0 fixed" />
         <div className="relative bg-white z-50 py-3 px-6 w-full rounded-2xl" ref={navbarWrapperRef}>
           <div className="relative w-full mt-1 mb-3 flex flex-row justify-between items-center">
             <Image
               src="/assets/images/entao-pronto-logo.svg"
               alt="Logo"
               layout="intrinsic"
-              width={200}
-              height={64}
-              className="h-full w-auto"
+              width={150}
+              height={32}
+              className="h-32 w-[180px]"
             />
 
             <Button variant="link" onClick={handleMenuToggle} className="pr-0!">
