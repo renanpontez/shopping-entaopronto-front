@@ -40,7 +40,8 @@ const storeFields = `{
     description,
     price,
     fiftyPlus,
-    "image": image.asset->url
+    "image": image.asset->url,
+    whatsappContact
   },
   about[],
   "aboutImage": aboutImage.asset->url,

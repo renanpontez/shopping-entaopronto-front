@@ -97,7 +97,7 @@ export default async function StorePage({
                 description={product.description}
                 price={product.price}
                 image={product.image}
-                whatsappContact={store.contact.phone}
+                whatsappContact={product.whatsappContact}
                 fiftyPlus={product.fiftyPlus}
               />
             ))}

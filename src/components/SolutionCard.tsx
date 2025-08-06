@@ -22,7 +22,7 @@ type SolutionProps = {
 export const SolutionCard = ({ name, description, price, image, discount, whatsappContact, storeName, fiftyPlus }: SolutionProps) => {
   const formattedPrice = formatCurrency(price);
   const whatsAppMessage = getStoreWhatsAppMessage(storeName, name, description, formattedPrice);
-  const handleContactStore = () => openWhatsAppChat(whatsappContact, whatsAppMessage);
+  const handleContactStore = () => whatsappContact && openWhatsAppChat(whatsappContact.toString(), whatsAppMessage);
 
   return (
     <div className="flex flex-col w-full gap-3">
@@ -64,7 +64,9 @@ export const SolutionCard = ({ name, description, price, image, discount, whatsa
             {formattedPrice}
           </span>
         </div>
-        <Button variant="primary" onClick={handleContactStore}>Quero contratar</Button>
+        {whatsappContact && (
+          <Button variant="primary-dark" onClick={handleContactStore}>Quero contratar</Button>
+        )}
       </div>
     </div>
   );
