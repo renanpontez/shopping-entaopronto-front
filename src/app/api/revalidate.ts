@@ -1,19 +1,17 @@
 import { Env } from '@/libs/Env';
+import { logger } from '@/libs/Logger';
 import { parseBody } from 'next-sanity/webhook';
 import { revalidatePath } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 // Skip revalidation for asset types
 const SKIP_TYPES = ['sanity.imageAsset', 'sanity.fileAsset', 'sanity.imagePalette'];
 
 export async function POST(req: NextRequest) {
-  if (req.method !== 'POST') {
-    console.error('❌ Method Not Allowed');
-    return new NextResponse('Method Not Allowed', { status: 405 });
-  }
+  logger.info('Received revalidation request', { method: req.method });
 
   // Track revalidated routes for logging
   const revalidatedRoutes: string[] = [];
@@ -24,32 +22,34 @@ export async function POST(req: NextRequest) {
       Env.SANITY_REVALIDATE_SECRET,
     );
 
+    logger.info('Parsed webhook body', { type: body?._type, id: body?._id });
+
     if (!isValidSignature) {
-      console.error('❌ Invalid signature');
+      logger.error('Invalid signature');
       return new NextResponse('Invalid signature', { status: 401 });
     }
 
     if (!body?._type) {
-      console.error('❌ Bad Request - Missing _type');
+      logger.error('Bad Request - Missing _type');
       return new NextResponse('Bad Request - Missing _type', { status: 400 });
     }
 
     // Skip asset types
     if (SKIP_TYPES.includes(body._type)) {
-      console.warn('Skipping revalidation for asset:', body._type);
+      logger.info('Skipping revalidation for asset', { type: body._type });
       return NextResponse.json({ message: 'Skipped revalidation for asset' });
     }
 
-    console.warn('Revalidation request received for:', body);
+    logger.info('Processing revalidation', { type: body._type, id: body._id });
 
     // Helper function to revalidate a path and track it
     const revalidate = (path: string) => {
       try {
-        console.warn('Revalidating:', path);
+        logger.info('Revalidating path', { path });
         revalidatePath(path);
         revalidatedRoutes.push(path);
       } catch (error) {
-        console.error(`❌ Failed to revalidate ${path}:`, error);
+        logger.error('Failed to revalidate path', { path, error });
       }
     };
 
@@ -93,12 +93,12 @@ export async function POST(req: NextRequest) {
       }
 
       default: {
-        console.warn('Unknown document type:', body._type);
+        logger.warn('Unknown document type', { type: body._type });
         return new NextResponse(`Unknown document type: ${body._type}`, { status: 400 });
       }
     }
 
-    console.warn('Successfully revalidated routes:', revalidatedRoutes);
+    logger.info('Successfully revalidated routes', { routes: revalidatedRoutes });
 
     return NextResponse.json({
       message,
@@ -107,10 +107,22 @@ export async function POST(req: NextRequest) {
       documentId: body._id,
     });
   } catch (err) {
-    console.error('❌ Revalidation error:', err);
+    logger.error('Revalidation error', { error: err });
     return new NextResponse(
       err instanceof Error ? err.message : 'Internal Server Error',
       { status: 500 },
     );
   }
+}
+
+// Handle OPTIONS request for CORS
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
 }
