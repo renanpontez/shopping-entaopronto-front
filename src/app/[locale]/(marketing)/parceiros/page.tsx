@@ -5,6 +5,10 @@ import { StoreList } from '@/components/sections/Store/StoreList';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storesQuery } from '@/libs/sanity/queries';
 
+// Revalidate this page every 5 minutes
+// This allows for a good balance between performance and content freshness
+export const revalidate = 300;
+
 export default async function StoresPage() {
   const storesRes = await sanityFetch({
     query: storesQuery,

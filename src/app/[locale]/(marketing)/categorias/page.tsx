@@ -5,6 +5,9 @@ import { Hero } from '@/components/sections/Hero/Hero';
 import { sanityFetch } from '@/libs/sanity/live';
 import { categoriesQuery } from '@/libs/sanity/queries';
 
+// Categories change less frequently
+export const revalidate = 3600; // 1 hour
+
 export default async function CategoriesPage() {
   const categoriesRes = await sanityFetch({
     query: categoriesQuery,

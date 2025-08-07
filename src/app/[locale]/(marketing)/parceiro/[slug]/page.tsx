@@ -14,6 +14,9 @@ import { CONTACT } from '@/utils/Constants';
 import Link from 'next/link';
 import { FaExclamationTriangle } from 'react-icons/fa';
 
+// Individual partner pages update when their details change
+export const revalidate = 1800; // 30 minutes
+
 export default async function StorePage({
   params,
 }: {

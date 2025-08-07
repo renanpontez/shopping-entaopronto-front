@@ -5,7 +5,9 @@ import { StoreList } from '@/components/sections/Store/StoreList';
 import { sanityFetch } from '@/libs/sanity/live';
 import { storesQueryWithFiftyPlus } from '@/libs/sanity/queries';
 
-export default async function StoresPage() {
+export const revalidate = 300; // 5 minutes
+
+export default async function FiftyPlusPage() {
   const storesRes = await sanityFetch({
     query: storesQueryWithFiftyPlus,
   }) as { data: StoreSchemaResponse[] };
