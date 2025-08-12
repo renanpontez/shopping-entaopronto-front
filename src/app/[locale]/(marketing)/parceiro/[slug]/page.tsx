@@ -92,18 +92,20 @@ export default async function StorePage({
           </Container>
 
           <Container className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-30 justify-around">
-            {store.solution?.map(product => (
-              <SolutionCard
-                key={product._key}
-                storeName={store.title}
-                name={product.name}
-                description={product.description}
-                price={product.price}
-                image={product.image}
-                whatsappContact={product.whatsappContact}
-                fiftyPlus={product.fiftyPlus}
-              />
-            ))}
+            {store.solution
+              ?.slice(-2)
+              .map(product => (
+                <SolutionCard
+                  key={product._key}
+                  storeName={store.title}
+                  name={product.name}
+                  description={product.description}
+                  price={product.price}
+                  image={product.image}
+                  whatsappContact={product.whatsappContact}
+                  fiftyPlus={product.fiftyPlus}
+                />
+              ))}
 
           </Container>
           <Container>
