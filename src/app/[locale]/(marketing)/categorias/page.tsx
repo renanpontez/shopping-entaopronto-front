@@ -31,6 +31,6 @@ export default async function CategoriesPage() {
 export async function generateMetadata() {
   return {
     title: 'Categorias | Shopping EntãoPronto!',
-    description: 'Uma lista de todas as categorias que os parceiros podem ser cadastrados no Shopping EntãoPronto',
+    description: 'Uma lista de todas as categorias que os vitrines podem ser cadastrados no Shopping EntãoPronto',
   };
 }

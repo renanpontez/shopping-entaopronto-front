@@ -22,7 +22,7 @@ type Props = {
 export const StoreList = ({
   stores,
   limit = 12,
-  title = 'Parceiros em Destaque',
+  title = 'Vitrines em Destaque',
 }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -78,7 +78,7 @@ export const StoreList = ({
           <div className="flex-1">
             <Input.Field
               type="text"
-              placeholder="Buscar parceiros..."
+              placeholder="Buscar vitrines..."
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               className="h-12"
@@ -146,7 +146,7 @@ export const StoreList = ({
 
       {limit !== -1 && filteredStores.length > limit && (
         <div className="flex justify-end">
-          <Link href="/parceiros" className="text-primary hover:underline text-sm">
+          <Link href="/vitrines" className="text-primary hover:underline text-sm">
             Ver Todos
           </Link>
         </div>

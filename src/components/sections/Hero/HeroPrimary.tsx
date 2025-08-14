@@ -78,8 +78,8 @@ const HeroPrimary = ({ title, videoUrl = '/assets/images/test.mp4', imageUrl = '
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
             >
-              <Button href="#Parceiros" variant="white" type="link">
-                Conhecer parceiros
+              <Button href="#Vitrines" variant="white" type="link">
+                Conhecer vitrines
               </Button>
               <Button href="/contato" variant="white-outlined">
                 Cadastre sua marca

@@ -39,7 +39,7 @@ const PartnerLogos = ({ stores }: Props) => {
               className="flex-shrink-0"
             >
               <Link
-                href={`/parceiro/${store.slug}`}
+                href={`/vitrine/${store.slug}`}
                 className="group flex items-center justify-center py-4 transition-all duration-300 flex-col gap-1"
               >
                 <Image
@@ -63,7 +63,7 @@ const PartnerLogos = ({ stores }: Props) => {
               className="flex-shrink-0"
             >
               <Link
-                href={`/parceiro/${store.slug}`}
+                href={`/vitrine/${store.slug}`}
                 className="group flex items-center justify-center py-4 transition-all duration-300 flex-col gap-1"
               >
                 <Image

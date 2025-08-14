@@ -16,7 +16,7 @@ export default async function FiftyPlusPage() {
 
   return (
     <>
-      <Hero.Minimal title="Soluções 50+" subtitle="Parceiros que oferecem soluções específicas para pessoas 50+" />
+      <Hero.Minimal title="Soluções 50+" subtitle="Vitrines que oferecem soluções específicas para pessoas 50+" />
       <section>
         <Container>
           <StoreList stores={stores} limit={-1} />
@@ -29,7 +29,7 @@ export default async function FiftyPlusPage() {
 
 export async function generateMetadata() {
   return {
-    title: 'Parceiros | Shopping EntãoPronto!',
-    description: 'Uma lista de todos os parceiros cadastrados no Shopping EntãoPronto',
+    title: 'Vitrines | Shopping EntãoPronto!',
+    description: 'Uma lista de todos os vitrines cadastrados no Shopping EntãoPronto',
   };
 }

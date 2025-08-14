@@ -3,7 +3,7 @@ import Typography from '@/components/Typography';
 import Image from 'next/image';
 
 const COMPANY_PLACEHOLDER = '/assets/images/company-placeholder.svg';
-const BANNER_PLACEHOLDER = '/assets/images/bg-mall.webp';
+// const BANNER_PLACEHOLDER = '/assets/images/bg-mall.webp';
 
 type Props = {
   title: string;
@@ -14,15 +14,15 @@ type Props = {
 
 const HeroStore = ({
   title,
-  backgroundUrl = BANNER_PLACEHOLDER,
+  // backgroundUrl = BANNER_PLACEHOLDER,
   logoUrl = COMPANY_PLACEHOLDER,
   // description,
 }: Props) => (
   <div
-    className="relative pt-32 flex flex-col justify-center py-10 sm:py-16 w-full text-white text-center overflow-hidden bg-primary bg-cover bg-center"
-    style={{ backgroundImage: `url(${backgroundUrl})` }}
+    className="relative pt-32 flex flex-col justify-center py-10 sm:py-16 w-full text-white text-center overflow-hidden bg-white bg-center"
+    // style={{ backgroundImage: `url(${backgroundUrl})` }}
   >
-    <div className="absolute inset-0 bg-black/60" />
+    <div className="absolute inset-0 bg-black/80" />
     <div className="relative z-10 pt-10">
       {logoUrl && (
         <div className="flex justify-center my-5">

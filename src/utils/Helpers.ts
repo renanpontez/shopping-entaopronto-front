@@ -34,14 +34,14 @@ export const getPartnershipDuration = (startDate: string) => {
   const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
 
   if (diffInDays < 30) {
-    return `Parceiro há ${diffInDays}d`;
+    return `Vitrine há ${diffInDays}d`;
   }
 
   const diffInMonths = Math.floor(diffInDays / 30);
   if (diffInMonths < 12) {
-    return `Parceiro há ${diffInMonths}m`;
+    return `Vitrine há ${diffInMonths}m`;
   }
 
   const diffInYears = Math.floor(diffInMonths / 12);
-  return `Parceiro há ${diffInYears}a`;
+  return `Vitrine há ${diffInYears}a`;
 };

@@ -69,7 +69,7 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
           </motion.div>
           <motion.div variants={item}>
             <Typography variant="bodySmall" className="text-gray-500">
-              Encontre os melhores parceiros para o seu negócio com base em suas categorias.
+              Encontre os melhores vitrines para o seu negócio com base em suas categorias.
             </Typography>
           </motion.div>
         </motion.div>
@@ -82,7 +82,7 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
         >
           <div className="sm:col-span-1 md:col-span-2 lg:col-span-3">
             <motion.div variants={item}>
-              <Link href="/parceiros/50-mais" className="group col-span-3 flex items-center shadow-sm p-3 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100 w-full">
+              <Link href="/vitrines/50-mais" className="group col-span-3 flex items-center shadow-sm p-3 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100 w-full">
                 <div className="rounded-full p-5 transition-all duration-300">
                   <SVG
                     src="/assets/images/couple.svg"

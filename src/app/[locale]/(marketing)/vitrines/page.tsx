@@ -18,7 +18,7 @@ export default async function StoresPage() {
 
   return (
     <>
-      <Hero.Minimal title="Todos os parceiros" />
+      <Hero.Minimal title="Todos os vitrines" />
       <section>
         <Container>
           <StoreList stores={stores} limit={-1} />
@@ -31,7 +31,7 @@ export default async function StoresPage() {
 
 export async function generateMetadata() {
   return {
-    title: 'Parceiros | Shoppinh EntãoPronto!',
-    description: 'Uma lista de todos os parceiros cadastrados no Shopping EntãoPronto',
+    title: 'Vitrines | Shoppinh EntãoPronto!',
+    description: 'Uma lista de todos os vitrines cadastrados no Shopping EntãoPronto',
   };
 }
