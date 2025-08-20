@@ -93,7 +93,7 @@ export default async function StorePage({
 
           <Container className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-30 justify-around">
             {store.solution
-              ?.slice(0,2)
+              ?.slice(0, 2)
               .map(product => (
                 <SolutionCard
                   key={product._key}

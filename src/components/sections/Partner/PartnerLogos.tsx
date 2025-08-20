@@ -32,9 +32,9 @@ const PartnerLogos = ({ stores }: Props) => {
           }}
         >
           {/* First set of logos */}
-          {stores.map((store, index) => (
+          {stores.map(store => (
             <motion.div
-              key={`${store._id}-${index}`}
+              key={store._id}
               whileHover={{ scale: 1.1 }}
               className="flex-shrink-0"
             >
@@ -56,9 +56,9 @@ const PartnerLogos = ({ stores }: Props) => {
             </motion.div>
           ))}
           {/* Second set of logos for seamless loop */}
-          {stores.map((store, index) => (
+          {stores.map(store => (
             <motion.div
-              key={`${store._id}-${index}-duplicate`}
+              key={`${store._id}-duplicate`}
               whileHover={{ scale: 1.1 }}
               className="flex-shrink-0"
             >
