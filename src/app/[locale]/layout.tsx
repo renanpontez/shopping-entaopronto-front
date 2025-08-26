@@ -109,8 +109,8 @@ export default async function RootLayout(props: {
           messages={messages}
         >
           {props.children}
-          <SanityLive />
         </NextIntlClientProvider>
+        <SanityLive />
       </body>
     </html>
   );
