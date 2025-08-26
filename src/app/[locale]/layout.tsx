@@ -97,11 +97,16 @@ export default async function RootLayout(props: {
         {/* og meta tags */}
         <meta property="og:image" content="/assets/images/entao-pronto-logo.svg" />
         <meta property="og:title" content="Então Pronto" />
-        <meta property="og:description" content="Então Pronto é uma plataforma de compras online para pessoas 50+." />
+        <meta property="og:description" content="Então Pronto é uma plataforma para conectar negócios a clientes. Entre na rede e tenha sua vitrine online, conheça a EntãoPronto!" />
         <meta property="og:url" content="https://entaopronto.com.br" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt-BR" />
-        <meta property="og:site_name" content="Então Pronto" />
+        <meta property="og:site_name" content="Shopping EntãoPronto!" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Shopping EntãoPronto!" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:secure_url" content="https://www.shoppingentaopronto.com.br/assets/images/ogimage.svg" />
       </head>
       <body suppressHydrationWarning>
         <NextIntlClientProvider
