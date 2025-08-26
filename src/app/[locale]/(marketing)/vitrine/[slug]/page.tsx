@@ -10,6 +10,7 @@ import Typography from '@/components/Typography';
 import { getStoreBySlug } from '@/libs/sanity/fetcher';
 import { CONTACT } from '@/utils/Constants';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { FaExclamationTriangle } from 'react-icons/fa';
 
 export default async function StorePage({
@@ -21,12 +22,7 @@ export default async function StorePage({
   const store = await getStoreBySlug(slug);
 
   if (!store) {
-    return (
-      <div>
-        <Typography variant="h1">Nenhuma loja encontrada</Typography>
-        <Typography variant="body" tag="p">A loja que você buscou parece não existir...</Typography>
-      </div>
-    );
+    return notFound();
   }
 
   return (
