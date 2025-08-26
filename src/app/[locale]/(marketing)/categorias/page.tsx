@@ -1,19 +1,10 @@
-import type { CategorySchema } from '@/libs/sanity/types';
 import Container from '@/components/Container';
 import { CategoryList } from '@/components/sections/Category/CategoryList';
 import { Hero } from '@/components/sections/Hero/Hero';
-import { sanityFetch } from '@/libs/sanity/live';
-import { categoriesQuery } from '@/libs/sanity/queries';
-
-// Categories change less frequently
-export const revalidate = 3600; // 1 hour
+import { getAllCategories } from '@/libs/sanity/fetcher';
 
 export default async function CategoriesPage() {
-  const categoriesRes = await sanityFetch({
-    query: categoriesQuery,
-  }) as { data: CategorySchema[] };
-
-  const categories = categoriesRes?.data as CategorySchema[];
+  const categories = await getAllCategories();
 
   return (
     <>

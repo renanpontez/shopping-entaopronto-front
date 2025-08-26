@@ -29,14 +29,10 @@ export async function generateMetadata(props: IIndexProps) {
   };
 }
 
-// Homepage should revalidate frequently as it shows latest content
-export const revalidate = 300; // 5 minutes
-
 export default async function Index(props: IIndexProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
   // const t = await getTranslations({
-  //   locale,
   //   namespace: 'Index',
   // });
   const settings = await getSiteSettings();

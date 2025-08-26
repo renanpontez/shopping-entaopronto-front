@@ -1,20 +1,10 @@
-import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import Container from '@/components/Container';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
-import { sanityFetch } from '@/libs/sanity/live';
-import { storesQuery } from '@/libs/sanity/queries';
-
-// Revalidate this page every 5 minutes
-// This allows for a good balance between performance and content freshness
-export const revalidate = 300;
+import { getAllStores } from '@/libs/sanity/fetcher';
 
 export default async function StoresPage() {
-  const storesRes = await sanityFetch({
-    query: storesQuery,
-  }) as { data: StoreSchemaResponse[] };
-
-  const stores = storesRes?.data as StoreSchemaResponse[];
+  const stores = await getAllStores();
 
   return (
     <>

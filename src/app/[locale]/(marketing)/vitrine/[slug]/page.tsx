@@ -1,4 +1,3 @@
-import type { StoreSchemaResponse } from '@/libs/sanity/types';
 import { StoreTag } from '@/components/atoms/StoreTag';
 import Container from '@/components/Container';
 import { AboutUs } from '@/components/sections/Contact/AboutUsSection';
@@ -8,14 +7,10 @@ import { CtaAgility } from '@/components/sections/Cta/CtaAgility';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { SolutionCard } from '@/components/SolutionCard';
 import Typography from '@/components/Typography';
-import { sanityFetch } from '@/libs/sanity/live';
-import { storeBySlugQuery } from '@/libs/sanity/queries';
+import { getStoreBySlug } from '@/libs/sanity/fetcher';
 import { CONTACT } from '@/utils/Constants';
 import Link from 'next/link';
 import { FaExclamationTriangle } from 'react-icons/fa';
-
-// Individual partner pages update when their details change
-export const revalidate = 1800; // 30 minutes
 
 export default async function StorePage({
   params,
@@ -23,11 +18,7 @@ export default async function StorePage({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const storeRes = await sanityFetch({
-    query: storeBySlugQuery,
-    params: { slug },
-  }) as { data: StoreSchemaResponse };
-  const store = storeRes?.data;
+  const store = await getStoreBySlug(slug);
 
   if (!store) {
     return (

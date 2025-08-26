@@ -3,9 +3,6 @@ import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import { getCategoryBySlug, getStoresByCategoryId } from '@/libs/sanity/fetcher';
 
-// Individual category pages update when stores are added/removed
-export const revalidate = 1800; // 30 minutes
-
 export default async function StoresByCategoryPage({
   params,
 }: {
