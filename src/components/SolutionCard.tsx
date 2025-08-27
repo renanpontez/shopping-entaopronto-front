@@ -74,7 +74,7 @@ export const SolutionCard = ({
           </span>
         </div>
         {whatsappContact && (
-          <Button variant="primary-dark" onClick={handleContactStore}>Quero contratar</Button>
+          <Button variant="primary-dark" id="ContratarSolucao" onClick={handleContactStore}>Quero contratar</Button>
         )}
       </div>
     </div>

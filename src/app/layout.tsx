@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { routing } from '@/libs/i18nNavigation';
 import { SanityLive } from '@/libs/sanity/live';
+import { GoogleTagManager } from '@next/third-parties/google';
 import classNames from 'classnames';
 import { Montserrat } from 'next/font/google';
+
 import '@/styles/global.css';
 
 const montserratFont = Montserrat({
@@ -75,6 +77,7 @@ export default async function RootLayout(props: {
 }) {
   return (
     <html lang="pt-BR" className={classNames(montserratFont.className, 'scroll-smooth')}>
+      <GoogleTagManager gtmId="GTM-TRK8N8Z5" />
       <body suppressHydrationWarning>
         {props.children}
         <SanityLive />

@@ -22,6 +22,7 @@ type ButtonProps = {
   classNames?: string;
   type?: 'button' | 'submit' | 'link';
   href?: string;
+  id?: string;
 };
 
 export const Button = ({
@@ -33,6 +34,7 @@ export const Button = ({
   className,
   type = 'button',
   href,
+  id,
 }: ButtonProps) => {
   const baseClasses
     = 'rounded-full font-[600] p-3.5  disabled:opacity-100 disabled:brightness-85 transition-all duration-200 cursor-pointer';
@@ -74,6 +76,7 @@ export const Button = ({
       href={type === 'link' ? href : undefined}
       disabled={isLoading}
       className={buttonClasses}
+      id={id}
     >
       <span className="flex items-center justify-center gap-2.5">
         {children}
