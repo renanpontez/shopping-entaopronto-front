@@ -56,7 +56,7 @@ export const SolutionCard = ({
           )}
         </div>
       )}
-      <Typography variant="h4" className="pt-3 text-dark">
+      <Typography variant="h4" className="pt-3 text-dark" id="solution-name">
         {name}
       </Typography>
       <Typography variant="bodySmall" tag="p" className=" text-secondary">{description}</Typography>
@@ -69,12 +69,12 @@ export const SolutionCard = ({
             </span>
           )}
           <Typography variant="bodySmall" tag="p" className="italic">a partir de</Typography>
-          <span className="text-2xl font-medium">
+          <span className="text-2xl font-medium" id="solution-price-value">
             {formattedPrice}
           </span>
         </div>
         {whatsappContact && (
-          <Button variant="primary-dark" id="ContratarSolucao" onClick={handleContactStore}>Quero contratar</Button>
+          <Button variant="primary-dark" id="solution-main-cta" onClick={handleContactStore}>Quero contratar</Button>
         )}
       </div>
     </div>

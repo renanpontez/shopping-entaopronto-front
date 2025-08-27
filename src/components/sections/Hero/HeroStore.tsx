@@ -30,7 +30,7 @@ const HeroStore = ({
         </div>
       )}
       <Container className="flex flex-col gap-4 pb-1 items-center">
-        <Typography variant="h2">
+        <Typography variant="h2" id="store-title">
           {title}
         </Typography>
         {/* TODO: CREATE PORTABLETEXT */}

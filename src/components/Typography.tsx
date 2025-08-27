@@ -8,6 +8,7 @@ type TypographyProps = {
   tag?: Tag;
   className?: string;
   children: React.ReactNode;
+  id?: string;
 };
 
 const sharedClasses = 'my-0 p-0 font-primary';
@@ -31,12 +32,13 @@ const Typography: React.FC<TypographyProps> = ({
   tag = 'p',
   className = '',
   children,
+  id,
 }) => {
   const combinedClasses = `${variantClasses[variant]} ${sharedClasses} ${className}`;
   const Tag = tag;
 
   return (
-    <Tag className={combinedClasses}>
+    <Tag className={combinedClasses} id={id}>
       {children}
     </Tag>
   );
