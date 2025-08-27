@@ -73,7 +73,6 @@ export function generateStaticParams() {
 
 export default async function RootLayout(props: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
 }) {
   return (
     <html lang="pt-BR" className={classNames(montserratFont.className, 'scroll-smooth')}>
