@@ -13,6 +13,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaExclamationTriangle } from 'react-icons/fa';
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const slug = (await params).slug;
+  const store = await getStoreBySlug(slug);
+  return {
+    title: store.title,
+  };
+}
+
 export default async function StorePage({
   params,
 }: {
