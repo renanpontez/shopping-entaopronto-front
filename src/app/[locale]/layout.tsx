@@ -7,7 +7,6 @@ import classNames from 'classnames';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Montserrat } from 'next/font/google';
-import Head from 'next/head';
 import { notFound } from 'next/navigation';
 import '@/styles/global.css';
 
@@ -17,6 +16,19 @@ const montserratFont = Montserrat({
 });
 
 export const metadata: Metadata = {
+  title: {
+    template: '%s | Shopping EntãoPronto!',
+    default: 'Shopping EntãoPronto!',
+  },
+  description: 'O Shopping EntãoPronto! é uma plataforma para conectar negócios a clientes. Entre na rede e tenha sua vitrine online, conheça a EntãoPronto!',
+  metadataBase: new URL('https://shoppingentaopronto.com.br'),
+  alternates: {
+    canonical: 'https://shoppingentaopronto.com.br',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: 'Shopping EntãoPronto!',
     description: 'O Shopping EntãoPronto! é uma plataforma para conectar negócios a clientes. Entre na rede e tenha sua vitrine online, conheça a EntãoPronto!',
@@ -34,7 +46,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   icons: [
     {
       rel: 'apple-touch-icon',
@@ -112,21 +123,6 @@ export default async function RootLayout(props: {
   // which dynamically adds a `style` attribute to the body tag.
   return (
     <html lang={locale} className={classNames(montserratFont.className, 'scroll-smooth')}>
-      <Head>
-        {/* og meta tags */}
-        <meta property="og:image" content="/assets/images/entao-pronto-logo.svg" />
-        <meta property="og:title" content="Shopping EntãoPronto!" />
-        <meta property="og:description" content="Então Pronto é uma plataforma para conectar negócios a clientes. Entre na rede e tenha sua vitrine online, conheça a EntãoPronto!" />
-        <meta property="og:url" content="https://entaopronto.com.br" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="pt-BR" />
-        <meta property="og:site_name" content="Shopping EntãoPronto!" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Shopping EntãoPronto!" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:secure_url" content="https://entaopronto.com.br/assets/images/entao-pronto-logo.svg" />
-      </Head>
       <body suppressHydrationWarning>
         <NextIntlClientProvider
           locale={locale}
