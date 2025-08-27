@@ -13,7 +13,7 @@ export default function RootLayout({
         <title>Então Pronto</title>
         <meta name="description" content="Então Pronto é uma plataforma para conectar negócios a clientes." />
       </head>
-      <body className="bg-dark">
+      <body>
         {children}
       </body>
     </html>
