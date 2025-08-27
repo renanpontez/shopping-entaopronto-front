@@ -19,7 +19,16 @@ type SolutionProps = {
   fiftyPlus: boolean;
 };
 
-export const SolutionCard = ({ name, description, price, image, discount, whatsappContact, storeName, fiftyPlus }: SolutionProps) => {
+export const SolutionCard = ({
+  name,
+  description,
+  price,
+  image,
+  discount,
+  whatsappContact,
+  storeName,
+  fiftyPlus,
+}: SolutionProps) => {
   const formattedPrice = formatCurrency(price);
   const whatsAppMessage = getStoreWhatsAppMessage(storeName, name, description, formattedPrice);
   const handleContactStore = () => whatsappContact && openWhatsAppChat(whatsappContact.toString(), whatsAppMessage);
@@ -30,7 +39,7 @@ export const SolutionCard = ({ name, description, price, image, discount, whatsa
         <div className="relative">
           <Image
             src={image}
-            className="rounded-lg max-h-96 object-cover w-full"
+            className="rounded-lg h-84 object-cover w-full"
             alt={`Product: ${name} image`}
             width={382}
             height={269}

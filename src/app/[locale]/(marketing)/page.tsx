@@ -10,31 +10,13 @@ import { StoreList } from '@/components/sections/Store/StoreList';
 import { getAllCategories, getAllStores, getSiteSettings } from '@/libs/sanity/fetcher';
 import { CONTACT } from '@/utils/Constants';
 
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-
-type IIndexProps = {
-  params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata(props: IIndexProps) {
-  const { locale } = await props.params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'Index',
-  });
-
+export async function generateMetadata() {
   return {
-    title: t('meta_title'),
-    description: t('meta_description'),
+    title: 'Início',
   };
 }
 
-export default async function Index(props: IIndexProps) {
-  const { locale } = await props.params;
-  setRequestLocale(locale);
-  // const t = await getTranslations({
-  //   namespace: 'Index',
-  // });
+export default async function Index() {
   const settings = await getSiteSettings();
   const categories = await getAllCategories();
   const stores = await getAllStores();

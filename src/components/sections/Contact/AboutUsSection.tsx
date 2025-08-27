@@ -17,7 +17,7 @@ type Props = {
 export const AboutUs = ({ about, imageUrl }: Props) => {
   return (
     <div className="flex flex-col md:flex-row gap-2 md:gap-20 justify-between items-start w-full relative">
-      <div className="flex flex-col gap-2 w-fullmd:w-1/2">
+      <div className="flex flex-col gap-2 w-full md:w-1/2">
         <div className="flex flex-col gap-4 pb-5">
           <Typography variant="h2" className="text-dark">
             Quem Somos
@@ -30,13 +30,13 @@ export const AboutUs = ({ about, imageUrl }: Props) => {
           )}
         </div>
         <div>
-          <Button variant="primary-outlined" onClick={() => openWhatsAppChat(CONTACT.shoppingPhoneNumber, getGeneralInfoWhatsAppMessage)}>
-            Quero conhecer mais
+          <Button variant="secondary-outlined" onClick={() => openWhatsAppChat(CONTACT.shoppingPhoneNumber, getGeneralInfoWhatsAppMessage)}>
+            Quero contratar
             <FaExternalLinkAlt size="14" className="ml-2" />
           </Button>
         </div>
       </div>
-      <div className="relative w-full md:w-[40%] aspect-square">
+      <div className="relative w-full md:w-[30%] aspect-square">
         <Image
           alt=""
           aria-hidden="true"
