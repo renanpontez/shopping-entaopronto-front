@@ -9,6 +9,7 @@ import { SolutionCard } from '@/components/SolutionCard';
 import Typography from '@/components/Typography';
 import { getStoreBySlug } from '@/libs/sanity/fetcher';
 import { CONTACT } from '@/utils/Constants';
+import { getOGTagsByStore } from '@/utils/Metadata';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaExclamationTriangle } from 'react-icons/fa';
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const store = await getStoreBySlug(slug);
   return {
     title: store.title,
+    openGraph: getOGTagsByStore(store),
   };
 }
 
