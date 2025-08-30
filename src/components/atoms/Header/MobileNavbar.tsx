@@ -25,6 +25,11 @@ export const MobileNavbar = ({ mainNav }: Props) => {
     setIsOpened(!isOpened);
   };
 
+  const closeNavbar = () => {
+    setIsOpened(false);
+    document.body.classList.remove('overflow-y-hidden');
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
       if (!navbarWrapperRef.current?.contains(event.target as Node) && !navbarToggleRef.current?.contains(event.target as Node)) {
@@ -80,7 +85,14 @@ export const MobileNavbar = ({ mainNav }: Props) => {
               <FaTimes />
             </Button>
           </div>
-          {mainNav}
+          <div
+            onClick={closeNavbar}
+            onKeyDown={e => e.key === 'Enter' && closeNavbar()}
+            role="button"
+            tabIndex={0}
+          >
+            {mainNav}
+          </div>
         </div>
       </div>
     </div>

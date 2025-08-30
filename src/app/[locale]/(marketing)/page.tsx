@@ -31,7 +31,7 @@ export default async function Index() {
       <div className="flex flex-col gap-3 md:gap-8">
         <section id="Vitrines">
           <Container className="flex flex-col gap-10">
-            <StoreList stores={stores} limit={12} />
+            <StoreList stores={stores} limit={16} categories={categories} />
           </Container>
         </section>
         <section>

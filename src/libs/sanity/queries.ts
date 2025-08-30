@@ -67,6 +67,49 @@ export const storeBySlugQuery = defineQuery(`*[_type == "store" && slug.current 
 export const storesByCategoryIdQuery = defineQuery(`*[_type == "store" && $categoryId in categories[]._ref] ${storeFields}`);
 export const storesQueryWithFiftyPlus = defineQuery(`*[_type == "store" && count(solution[fiftyPlus == true]) > 0] ${storeFields}`);
 
+/* Search */
+
+export const searchStoresQueryParams = (query: string) => `
+*[_type == "store" && title match "*${query}*"] {
+    _id,
+    _createdAt,
+    title,
+    "slug": slug.current,
+    "logo": logo.asset->url,
+    categories[]->{ 
+      _id,
+      _key,
+      title,
+      icon,
+      description,
+      "slug": slug.current,
+      "icon": icon.svg,
+      "seo": {
+        title,
+        description,
+        "image": image.asset->url,
+        keywords
+      }
+    },
+    solution[]{
+      _key,
+      name,
+      description,
+      price,
+      fiftyPlus,
+      "image": image.asset->url,
+      whatsappContact
+    },
+    about[],
+    "aboutImage": aboutImage.asset->url,
+    contact {
+      address,
+      phone,
+      email,
+      instagram
+    }
+  }`;
+
 /* Site Settings */
 export const siteSettingsFields = `{
   aboutUs {

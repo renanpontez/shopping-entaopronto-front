@@ -26,9 +26,7 @@ export type SubCategorySchema = {
 export type CategorySchema = {
   _id: string;
   title: string;
-  slug: {
-    current: string;
-  };
+  slug: string;
   description: string;
   seo: SEOSChema;
   subCategories?: SubCategorySchema[];

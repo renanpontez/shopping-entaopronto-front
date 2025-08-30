@@ -82,7 +82,7 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
         >
           <div className="sm:col-span-1 md:col-span-2 lg:col-span-3">
             <motion.div variants={item}>
-              <Link href="/vitrines/50-mais" className="group col-span-3 flex items-center shadow-sm p-3 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100 w-full">
+              <Link href="/vitrines/50-mais" className="group col-span-3 flex items-center shadow-sm p-3 px-1 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100 w-full">
                 <div className="rounded-full p-5 transition-all duration-300">
                   <SVG
                     src="/assets/images/couple.svg"
@@ -107,9 +107,9 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
               <motion.div variants={item}>
                 <Link
                   href={`/categoria/${category.slug}`}
-                  className="group flex items-center shadow-sm p-3 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100"
+                  className="group flex items-center shadow-sm p-5 px-2 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100"
                 >
-                  <div className="rounded-full p-5 transition-all duration-300">
+                  <div className="rounded-full p-2 transition-all duration-300">
                     <SVG
                       src={category?.icon}
                       className="h-10 w-10 !fill-primary"
@@ -117,11 +117,14 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
                     />
                   </div>
                   <div>
-                    <Typography
-                      variant="body"
-                      className="font-semibold text-dark group-hover:text-darker transition-all duration-300"
-                    >
+                    <Typography variant="h6" className="text-dark font-semibold text-sm group-hover:text-darker transition-all duration-300 flex items-center gap-2">
                       {category.title}
+                      {' '}
+                      <Typography variant="bodySmall" tag="span" className="text-gray-500 text-sm">
+                        (
+                        {category.storesCount}
+                        )
+                      </Typography>
                     </Typography>
                   </div>
                 </Link>

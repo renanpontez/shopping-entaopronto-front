@@ -10,7 +10,8 @@ type ButtonVariant =
   | 'secondary'
   | 'secondary-outlined'
   | 'warning'
-  | 'error';
+  | 'error'
+  | 'grey-outlined';
 
 type ButtonProps = {
   children?: string | React.ReactNode;
@@ -52,6 +53,8 @@ export const Button = ({
     'white-outlined':
       'text-white border border-white hover:bg-white hover:text-black',
     'link': 'text-gray',
+    'grey-outlined':
+      'text-gray border border-gray-350 hover:bg-gray-350 hover:text-white',
   };
 
   const buttonClasses = classnames(

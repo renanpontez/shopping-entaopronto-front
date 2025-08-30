@@ -34,7 +34,7 @@ export const BaseTemplate = ({
             <div className="flex flex-col md:flex-row gap-10 justify-between">
               <div className="flex flex-col gap-5 basis-1/4">
                 <div className=" gap-4 flex flex-col">
-                  <div className="relative w-auto h-full">
+                  <div className="relative w-auto h-full max-w-64">
                     <Image
                       src="/assets/images/entao-pronto-logo.svg"
                       alt="Logo"

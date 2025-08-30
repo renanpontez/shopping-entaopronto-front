@@ -1,6 +1,7 @@
 import type { CategorySchema, SiteSettingsSchema, StoreSchemaResponse } from './types';
+import { client } from './client';
 import { sanityFetch } from './live';
-import { categoriesQuery, categoryBySlugQuery, siteSettingsQuery, storeBySlugQuery, storesByCategoryIdQuery, storesQuery, storesQueryWithFiftyPlus } from './queries';
+import { categoriesQuery, categoryBySlugQuery, searchStoresQueryParams, siteSettingsQuery, storeBySlugQuery, storesByCategoryIdQuery, storesQuery, storesQueryWithFiftyPlus } from './queries';
 
 // Store
 
@@ -12,6 +13,11 @@ export const getAllStores = async (): Promise<StoreSchemaResponse[]> => {
   const stores = storeRes?.data as StoreSchemaResponse[] ?? [];
 
   return stores;
+};
+
+export const searchStores = async (query: string): Promise<StoreSchemaResponse[]> => {
+  const stores = await client.fetch(searchStoresQueryParams(query));
+  return stores || [];
 };
 
 export const getStoresByCategoryId = async (categoryId: string): Promise<StoreSchemaResponse[]> => {

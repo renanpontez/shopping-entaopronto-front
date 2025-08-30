@@ -42,6 +42,7 @@ export default async function StorePage({
           <Hero.Store
             title={store.title}
             logoUrl={store.logo}
+            categories={store.categories}
           />
         </section>
         <div className="flex flex-col gap-10">
