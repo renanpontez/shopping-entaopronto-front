@@ -39,7 +39,8 @@ const storeFields = `{
     name,
     description,
     price,
-    fiftyPlus,
+    isFiftyPlus,
+    isImpactEcossystem,
     "image": image.asset->url,
     whatsappContact
   },
@@ -55,7 +56,8 @@ const storeFields = `{
 export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title asc) {
   ${categoryFields},
   "storesCount": count(*[_type == "store" && references(^._id)]),
-  "fiftyPlusStoresCount": count(*[_type == "store" && references(^._id) && count(solution[fiftyPlus == true]) > 0]),
+  "fiftyPlusStoresCount": count(*[_type == "store" && references(^._id) && count(solution[isFiftyPlus == true]) > 0]),
+  "impactEcossystemStoresCount": count(*[_type == "store" && references(^._id) && count(solution[isImpactEcossystem == true]) > 0]),
   "stores": *[_type == "store" && references(^._id)] ${storeFields},
   subCategories[]->{
     ${categoryFields}
@@ -65,10 +67,10 @@ export const categoriesQuery = defineQuery(`*[_type == "category"] | order(title
 export const storesQuery = defineQuery(`*[_type == "store"] ${storeFields}`);
 export const storeBySlugQuery = defineQuery(`*[_type == "store" && slug.current == $slug][0] ${storeFields}`);
 export const storesByCategoryIdQuery = defineQuery(`*[_type == "store" && $categoryId in categories[]._ref] ${storeFields}`);
-export const storesQueryWithFiftyPlus = defineQuery(`*[_type == "store" && count(solution[fiftyPlus == true]) > 0] ${storeFields}`);
+export const storesQueryWithFiftyPlus = defineQuery(`*[_type == "store" && count(solution[isFiftyPlus == true]) > 0] ${storeFields}`);
+export const storesQueryWithImpactEcossystem = defineQuery(`*[_type == "store" && count(solution[isImpactEcossystem == true]) > 0] ${storeFields}`);
 
 /* Search */
-
 export const searchStoresQueryParams = (query: string) => `
 *[_type == "store" && title match "*${query}*"] {
     _id,
@@ -96,7 +98,7 @@ export const searchStoresQueryParams = (query: string) => `
       name,
       description,
       price,
-      fiftyPlus,
+      isFiftyPlus,
       "image": image.asset->url,
       whatsappContact
     },

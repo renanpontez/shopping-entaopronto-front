@@ -102,6 +102,28 @@ export const CategoryList = ({ categories, limit = 12 }: Props) => {
             </motion.div>
           </div>
 
+          <div className="sm:col-span-1 md:col-span-2 lg:col-span-3">
+            <motion.div variants={item}>
+              <Link href="/vitrines/ecossistema-de-impacto" className="group col-span-3 flex items-center shadow-sm p-3 px-1 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-gray-100 w-full">
+                <div className="rounded-full p-5 transition-all duration-300 text-primary">
+                  <SVG
+                    src="/assets/images/exclamation.svg"
+                    className="h-6 w-6"
+                    loader={<Loader />}
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <Typography variant="body" className="font-semibold text-dark group-hover:text-darker transition-all duration-300">
+                    Ecossistema de Impacto
+                  </Typography>
+                  <Typography variant="bodySmall" className="text-gray-500">
+                    Você pode encontrar vitrine que oferecem soluções no Ecossistema de Impacto
+                  </Typography>
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+
           {categories?.slice(0, limit === -1 ? categories.length : limit)?.map(category => (
             <div key={category._id}>
               <motion.div variants={item}>

@@ -5,7 +5,7 @@ const Loader = (): React.ReactNode => {
     <div role="status">
       <svg
         aria-hidden="true"
-        className="w-8 h-8 text-gray-200 animate-spin dark:text-white-600 fill-primary-300"
+        className="w-4 h-4 text-gray-200 animate-spin dark:text-white-600 fill-primary-300"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
