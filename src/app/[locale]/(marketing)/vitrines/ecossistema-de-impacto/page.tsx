@@ -3,13 +3,13 @@ import { Hero } from '@/components/sections/Hero/Hero';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import { getAllCategories, getSpecialtyStores } from '@/libs/sanity/fetcher';
 
-export default async function FiftyPlusPage() {
-  const stores = await getSpecialtyStores('fiftyPlus');
+export default async function ImpactEcossystemPage() {
+  const stores = await getSpecialtyStores('impactEcossystem');
   const categories = await getAllCategories();
 
   return (
     <>
-      <Hero.Minimal title="Soluções 50+" subtitle="Vitrines que oferecem soluções específicas para pessoas 50+" />
+      <Hero.Minimal title="Soluções no Ecossistema de Impacto" subtitle="Vitrines que oferecem soluções para o Ecossistema de Impacto" />
       <section>
         <Container>
           <StoreList stores={stores} limit={-1} categories={categories} />
@@ -23,6 +23,6 @@ export default async function FiftyPlusPage() {
 export async function generateMetadata() {
   return {
     title: 'Vitrines | Shopping EntãoPronto!',
-    description: 'Uma lista de todas as vitrines cadastrados no Shopping EntãoPronto',
+    description: 'Uma lista de vitrines no Ecossistema de Impacto cadastradas no Shopping EntãoPronto',
   };
 }

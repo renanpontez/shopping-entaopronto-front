@@ -16,7 +16,8 @@ type SolutionProps = {
   discount?: number;
   image: string;
   whatsappContact: string;
-  fiftyPlus: boolean;
+  isFiftyPlus: boolean;
+  isImpactEcossystem: boolean;
 };
 
 export const SolutionCard = ({
@@ -27,7 +28,8 @@ export const SolutionCard = ({
   discount,
   whatsappContact,
   storeName,
-  fiftyPlus,
+  isFiftyPlus,
+  isImpactEcossystem,
 }: SolutionProps) => {
   const formattedPrice = formatCurrency(price);
   const whatsAppMessage = getStoreWhatsAppMessage(storeName, name, description, formattedPrice);
@@ -44,16 +46,28 @@ export const SolutionCard = ({
             width={382}
             height={269}
           />
-          {fiftyPlus && (
-            <div className="absolute top-3 right-3 bg-primary text-white px-2 py-1 rounded-lg flex items-center gap-2">
-              <SVG
-                src="/assets/images/couple.svg"
-                className="h-4 w-4 !fill-white"
-                loader={<Loader />}
-              />
-              <Typography variant="bodySmall" tag="p" className="text-white">Solução 50+</Typography>
-            </div>
-          )}
+          <div className="absolute top-3 right-3 flex flex-col items-end gap-2">
+            {isFiftyPlus && (
+              <div className=" bg-primary text-white px-2 py-1 rounded-lg flex items-center gap-2">
+                <SVG
+                  src="/assets/images/couple.svg"
+                  className="h-4 w-4 !fill-white"
+                  loader={<Loader />}
+                />
+                <Typography variant="bodySmall" tag="p" className="text-white font-semibold">Solução 50+</Typography>
+              </div>
+            )}
+            {isImpactEcossystem && (
+              <div className=" bg-primary text-white px-2 py-1 rounded-lg flex items-center gap-2">
+                <SVG
+                  src="/assets/images/impact_2.svg"
+                  className="h-4 w-4"
+                  loader={<Loader />}
+                />
+                <Typography variant="bodySmall" tag="p" className="text-white font-semibold">Ecossistema de Impacto</Typography>
+              </div>
+            )}
+          </div>
         </div>
       )}
       <Typography variant="h4" className="pt-3 text-dark" id="solution-name">

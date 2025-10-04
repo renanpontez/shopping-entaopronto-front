@@ -1,7 +1,7 @@
 import type { CategorySchema, SiteSettingsSchema, StoreSchemaResponse } from './types';
 import { client } from './client';
 import { sanityFetch } from './live';
-import { categoriesQuery, categoryBySlugQuery, searchStoresQueryParams, siteSettingsQuery, storeBySlugQuery, storesByCategoryIdQuery, storesQuery, storesQueryWithFiftyPlus } from './queries';
+import { categoriesQuery, categoryBySlugQuery, searchStoresQueryParams, siteSettingsQuery, storeBySlugQuery, storesByCategoryIdQuery, storesQuery, storesQueryWithFiftyPlus, storesQueryWithImpactEcossystem } from './queries';
 
 // Store
 
@@ -41,9 +41,12 @@ export const getStoreBySlug = async (slug: string): Promise<StoreSchemaResponse>
   return store;
 };
 
-export const get50PlusStores = async (): Promise<StoreSchemaResponse[]> => {
+// Abstracted function for specialty store queries
+export const getSpecialtyStores = async (type: 'fiftyPlus' | 'impactEcossystem'): Promise<StoreSchemaResponse[]> => {
+  const query = type === 'fiftyPlus' ? storesQueryWithFiftyPlus : storesQueryWithImpactEcossystem;
+
   const storesRes = await sanityFetch({
-    query: storesQueryWithFiftyPlus,
+    query,
     tag: 'store',
   }) as { data: StoreSchemaResponse[] };
   const stores = storesRes?.data as StoreSchemaResponse[] ?? [];

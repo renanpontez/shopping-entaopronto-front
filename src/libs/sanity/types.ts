@@ -33,6 +33,7 @@ export type CategorySchema = {
   icon: string;
   storesCount: number;
   fiftyPlusStoresCount: number;
+  impactEcossystemStoresCount: number;
   stores: StoreSchemaResponse[];
 };
 
@@ -66,7 +67,8 @@ export type StoreSchemaResponse = {
     description: string;
     price: number;
     image: string;
-    fiftyPlus: boolean;
+    isFiftyPlus: boolean;
+    isImpactEcossystem: boolean;
     whatsappContact: string;
   }[];
   about: PortableTextBlock;
