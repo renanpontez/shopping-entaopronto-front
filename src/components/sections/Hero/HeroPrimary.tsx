@@ -29,7 +29,7 @@ const HeroPrimary = ({
   const [isBrandModalOpen, setIsBrandModalOpen] = useState(false);
 
   return (
-    <section className="relative isolate overflow-hidden min-h-[88vh] flex items-center">
+    <section className="relative isolate overflow-hidden flex items-center">
       {/* Background media */}
       {videoUrl && (
         <video
@@ -107,7 +107,7 @@ const HeroPrimary = ({
           >
             <Typography
               variant="h1"
-              className="text-white text-balance sm:text-5xl! md:text-6xl! xl:text-7xl! tracking-tight! leading-[1.05]!"
+              className="text-white text-balance sm:text-3xl! md:text-4xl! xl:text-5xl! tracking-tight! leading-[1.05]!"
             >
               {title}
             </Typography>
@@ -150,29 +150,39 @@ const HeroPrimary = ({
 
       {/* Partner credit — bottom right */}
       <motion.div
-        className="absolute z-20 bottom-6 right-6 sm:bottom-8 sm:right-10"
+        className="absolute z-20 sm:bottom-8 sm:right-10 md:w-auto bottom-5 sm:bottom-5 sm:right-5 md:bottom-10 md:right-10 px-4 w-full text-center"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.9, ease: 'easeOut' }}
       >
         <Link
-          href="https://agilitycreative.com.br"
+          href="https://agilitycreative.com"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Em parceria com Agility Creative"
-          className="group inline-flex items-center gap-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 px-3.5 py-2 sm:px-4 sm:py-2.5 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          className="group inline-flex items-center gap-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 px-5 py-2 sm:px-6 sm:py-2.5 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
         >
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-white/60 group-hover:text-white/90 transition-colors whitespace-nowrap">
-            Em parceria com
+          <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-white/60 group-hover:text-white/90 transition-colors whitespace-nowrap">
+            Desenvolvido em Parceria:
           </span>
-          <span className="h-4 w-px bg-white/20" aria-hidden="true" />
-          <Image
-            src="/assets/images/agility-completo-white.svg"
-            alt="Agility Creative"
-            width={197}
-            height={56}
-            className="h-4 sm:h-5 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
-          />
+          <span className="h-auto w-auto bg-white/20" aria-hidden="true" />
+          <div className="flex items-center gap-2 justify-center">
+            <Image
+              src="/assets/images/agility-logo-primary.svg"
+              alt="Agility Creative"
+              width={80}
+              height={80}
+              className="h-6 sm:h-5 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+            />
+            <Image
+              src="/assets/images/agility-completo-white.svg"
+              alt="Agility Creative"
+              width={280}
+              height={80}
+              className="h-4 sm:h-6 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+            />
+          </div>
+
         </Link>
       </motion.div>
 
