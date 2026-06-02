@@ -1,0 +1,3 @@
+#!/bin/sh
+# Mirror the Vercel build step locally so we catch failures before push.
+cd "$(dirname "$0")/.." && npm run build
