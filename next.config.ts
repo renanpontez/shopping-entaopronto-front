@@ -13,11 +13,13 @@ const bundleAnalyzer = withBundleAnalyzer({
 export default withSentryConfig(
   bundleAnalyzer(
     withNextIntl({
-      eslint: {
-        dirs: ['.'],
-      },
       images: {
-        domains: ['cdn.sanity.io'],
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'cdn.sanity.io',
+          },
+        ],
       },
       poweredByHeader: false,
       reactStrictMode: true,

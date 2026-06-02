@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { GrCart } from 'react-icons/gr';
 
 import { Button } from '../components/atoms/Button';

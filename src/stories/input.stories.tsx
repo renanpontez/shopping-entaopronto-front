@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { GrSearch } from 'react-icons/gr';
 import { Input } from '@/components/atoms/Input';
 
