@@ -7,11 +7,31 @@ export type SEOSChema = {
   slug: string;
 };
 
+export type NavLinkSchema = {
+  _key: string;
+  label: string;
+  linkType: 'internal' | 'external';
+  internalHref?: string;
+  externalHref?: string;
+  openInNewTab?: boolean;
+};
+
 export type SiteSettingsSchema = {
   aboutUs: {
     image: string;
     description: PortableTextBlock;
   };
+  contactEntaopronto?: {
+    phone?: string;
+    whatsapp?: string;
+    email?: string;
+  };
+  socialMediaEntaopronto?: {
+    instagram?: string;
+    facebook?: string;
+    youtube?: string;
+  };
+  navigation?: NavLinkSchema[];
 };
 
 export type SubCategorySchema = {

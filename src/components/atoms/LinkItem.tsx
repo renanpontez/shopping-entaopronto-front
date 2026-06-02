@@ -5,16 +5,25 @@ type LinkItemProps = {
   href: string;
   children: React.ReactNode;
   className?: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  rel?: string;
 };
 
-export const LinkItem = ({ href, children, className }: LinkItemProps) => {
+export const LinkItem = ({ href, children, className, target, rel }: LinkItemProps) => {
   const isInternalUrl = href && (href.startsWith('/') || href.startsWith('#'));
-  const Tag = isInternalUrl ? Link : 'a';
-
   const linkItemBaseStyle = classNames('text-sm hover:font-medium', className);
+
+  if (isInternalUrl) {
+    return (
+      <Link href={href} className={linkItemBaseStyle} target={target} rel={rel}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <Tag href={href} className={classNames(linkItemBaseStyle)}>
+    <a href={href} className={linkItemBaseStyle} target={target} rel={rel}>
       {children}
-    </Tag>
+    </a>
   );
 };

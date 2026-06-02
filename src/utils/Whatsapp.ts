@@ -28,4 +28,31 @@ export const getShoppingWhatsAppMessage = (userName: string, userEmail: string, 
 
 export const createStoreInfoWhatsAppMessage = `Olá, estou entrando em contato pelo site Shopping EntãoPronto e gostaria de cadastrar meu estabelecimento no Shopping.`;
 
+type BrandRegistrationPayload = {
+  companyName: string;
+  category: string;
+  personalName: string;
+  email: string;
+};
+
+export const getBrandRegistrationWhatsAppMessage = ({
+  companyName,
+  category,
+  personalName,
+  email,
+}: BrandRegistrationPayload) => {
+  return [
+    '*Novo cadastro de marca — Shopping EntãoPronto*',
+    '',
+    'Olá! Gostaria de cadastrar minha marca no Shopping EntãoPronto.',
+    '',
+    `• *Empresa:* ${companyName}`,
+    `• *Categoria:* ${category}`,
+    `• *Responsável:* ${personalName}`,
+    `• *E-mail:* ${email}`,
+    '',
+    'Aguardo retorno para os próximos passos. Obrigado!',
+  ].join('\n');
+};
+
 export const getGeneralInfoWhatsAppMessage = `Olá, estou entrando em contato pelo site da Shopping EntãoPronto e gostaria de saber mais sobre a organização.`;
