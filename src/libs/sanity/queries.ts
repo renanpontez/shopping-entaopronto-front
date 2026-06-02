@@ -117,6 +117,24 @@ export const siteSettingsFields = `{
   aboutUs {
     description,
     "image": image.asset->url
+  },
+  contactEntaopronto {
+    phone,
+    whatsapp,
+    email
+  },
+  socialMediaEntaopronto {
+    instagram,
+    facebook,
+    youtube
+  },
+  navigation[]{
+    _key,
+    label,
+    linkType,
+    internalHref,
+    externalHref,
+    openInNewTab
   }
 }`;
 
