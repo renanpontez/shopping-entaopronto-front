@@ -4,7 +4,6 @@ import { Button } from '@/components/atoms/Button';
 import PortableTextRenderer from '@/components/atoms/PortableText';
 import Typography from '@/components/Typography';
 import AgilityAboutUsImage from '@/public/assets/images/agility-about-us.svg';
-import { CONTACT } from '@/utils/Constants';
 import { getGeneralInfoWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
 import Image from 'next/image';
 import { FaExternalLinkAlt } from 'react-icons/fa';
@@ -12,9 +11,10 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 type Props = {
   imageUrl?: string;
   about?: PortableTextBlock;
+  whatsappPhone?: string;
 };
 
-export const AboutUs = ({ about, imageUrl }: Props) => {
+export const AboutUs = ({ about, imageUrl, whatsappPhone }: Props) => {
   return (
     <div className="flex flex-col md:flex-row gap-2 md:gap-20 justify-between items-start w-full relative">
       <div className="flex flex-col gap-2 w-full md:w-1/2">
@@ -30,7 +30,10 @@ export const AboutUs = ({ about, imageUrl }: Props) => {
           )}
         </div>
         <div>
-          <Button variant="secondary-outlined" onClick={() => openWhatsAppChat(CONTACT.shoppingPhoneNumber, getGeneralInfoWhatsAppMessage)}>
+          <Button
+            variant="secondary-outlined"
+            onClick={() => openWhatsAppChat(whatsappPhone, getGeneralInfoWhatsAppMessage)}
+          >
             Quero contratar
             <FaExternalLinkAlt size="14" className="ml-2" />
           </Button>

@@ -45,3 +45,14 @@ export const getPartnershipDuration = (startDate: string) => {
   const diffInYears = Math.floor(diffInMonths / 12);
   return `Vitrine há ${diffInYears}a`;
 };
+
+export const getInstagramHandle = (url?: string): string | undefined => {
+  if (!url) {
+    return undefined;
+  }
+  const match = url.match(/instagram\.com\/([^/?#]+)/i);
+  if (!match?.[1]) {
+    return undefined;
+  }
+  return `@${match[1].replace(/\/+$/, '')}`;
+};

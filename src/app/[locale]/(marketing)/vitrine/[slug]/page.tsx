@@ -7,8 +7,7 @@ import { CtaAgility } from '@/components/sections/Cta/CtaAgility';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { SolutionCard } from '@/components/SolutionCard';
 import Typography from '@/components/Typography';
-import { getStoreBySlug } from '@/libs/sanity/fetcher';
-import { CONTACT } from '@/utils/Constants';
+import { getSiteSettings, getStoreBySlug } from '@/libs/sanity/fetcher';
 import { getOGTagsByStore } from '@/utils/Metadata';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -30,6 +29,8 @@ export default async function StorePage({
 }) {
   const slug = (await params).slug;
   const store = await getStoreBySlug(slug);
+  const settings = await getSiteSettings();
+  const contact = settings?.contactEntaopronto;
 
   if (!store) {
     return notFound();
@@ -88,7 +89,7 @@ export default async function StorePage({
 
           <Container>
             <section id="About-us">
-              <AboutUs imageUrl={store.aboutImage} about={store.about} />
+              <AboutUs imageUrl={store.aboutImage} about={store.about} whatsappPhone={contact?.whatsapp} />
             </section>
           </Container>
           <section id="CtaAgility1">
@@ -134,7 +135,7 @@ export default async function StorePage({
               <ContactInfo email={store.contact.email} phone={store.contact.phone} address={store.contact.address} instagram={store.contact.instagram} />
             */}
               <ContactInfo />
-              <ContactUs whatsappPhoneNumber={CONTACT.shoppingPhoneNumber} storeName={store.title} />
+              <ContactUs whatsappPhoneNumber={contact?.whatsapp} storeName={store.title} />
             </section>
           </Container>
           <CtaAgility variant="purple" />

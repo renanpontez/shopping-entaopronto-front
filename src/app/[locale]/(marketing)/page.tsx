@@ -8,7 +8,7 @@ import { Hero } from '@/components/sections/Hero/Hero';
 import PartnerLogos from '@/components/sections/Partner/PartnerLogos';
 import { StoreList } from '@/components/sections/Store/StoreList';
 import { getAllCategories, getAllStores, getSiteSettings } from '@/libs/sanity/fetcher';
-import { CONTACT } from '@/utils/Constants';
+import { getInstagramHandle } from '@/utils/Helpers';
 
 export async function generateMetadata() {
   return {
@@ -20,6 +20,8 @@ export default async function Index() {
   const settings = await getSiteSettings();
   const categories = await getAllCategories();
   const stores = await getAllStores();
+  const contact = settings?.contactEntaopronto;
+  const socials = settings?.socialMediaEntaopronto;
 
   return (
     <>
@@ -54,14 +56,19 @@ export default async function Index() {
             <AboutUs
               about={settings.aboutUs?.description}
               imageUrl={settings?.aboutUs?.image}
+              whatsappPhone={contact?.whatsapp}
             />
           </Container>
         </section>
 
         <section id="Contact">
           <Container className="flex gap-8 flex-col sm:flex-row justify-between items-start sm:items-baseline py-10">
-            <ContactInfo />
-            <ContactUs whatsappPhoneNumber={CONTACT.shoppingPhoneNumber} />
+            <ContactInfo
+              email={contact?.email}
+              phone={contact?.phone}
+              instagram={getInstagramHandle(socials?.instagram)}
+            />
+            <ContactUs whatsappPhoneNumber={contact?.whatsapp} />
           </Container>
         </section>
       </div>
