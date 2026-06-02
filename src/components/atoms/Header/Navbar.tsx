@@ -1,9 +1,12 @@
 import type { ResolvedNavLink } from '@/utils/navigation';
 import Link from 'next/link';
+import { HiArrowUpRight } from 'react-icons/hi2';
 
 type NavbarProps = {
   links: ResolvedNavLink[];
 };
+
+const linkClasses = 'inline-flex items-center gap-1 text-sm font-semibold uppercase hover:text-primary-200';
 
 export const Navbar = ({ links }: NavbarProps): React.ReactNode => {
   return (
@@ -19,9 +22,10 @@ export const Navbar = ({ links }: NavbarProps): React.ReactNode => {
                       href={href}
                       target={openInNewTab ? '_blank' : undefined}
                       rel={openInNewTab ? 'noopener noreferrer' : undefined}
-                      className="text-sm font-semibold uppercase hover:text-primary-200"
+                      className={linkClasses}
                     >
                       {label}
+                      <HiArrowUpRight aria-hidden="true" className="size-3" />
                     </a>
                   )
                 : (
@@ -29,7 +33,7 @@ export const Navbar = ({ links }: NavbarProps): React.ReactNode => {
                       href={href}
                       target={openInNewTab ? '_blank' : undefined}
                       rel={openInNewTab ? 'noopener noreferrer' : undefined}
-                      className="text-sm font-semibold uppercase hover:text-primary-200"
+                      className={linkClasses}
                     >
                       {label}
                     </Link>
