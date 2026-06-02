@@ -1,7 +1,8 @@
 'use client';
 
 import { AnimatePresence, motion } from 'motion/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { FaTimes } from 'react-icons/fa';
 
 type ModalProps = {
@@ -19,6 +20,12 @@ const sizeClasses = {
 };
 
 export const Modal = ({ open, onClose, title, children, size = 'md' }: ModalProps) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (!open) {
       return;
@@ -36,11 +43,15 @@ export const Modal = ({ open, onClose, title, children, size = 'md' }: ModalProp
     };
   }, [open, onClose]);
 
-  return (
+  if (!mounted) {
+    return null;
+  }
+
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[90] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -76,6 +87,7 @@ export const Modal = ({ open, onClose, title, children, size = 'md' }: ModalProp
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 };

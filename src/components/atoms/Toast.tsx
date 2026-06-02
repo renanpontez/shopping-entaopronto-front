@@ -2,7 +2,8 @@
 
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'motion/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { FaCheckCircle, FaTimes } from 'react-icons/fa';
 
 export type ToastVariant = 'success' | 'error';
@@ -24,6 +25,12 @@ export const Toast = ({
   duration = 4000,
   onClose,
 }: ToastProps) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (!open) {
       return;
@@ -37,8 +44,12 @@ export const Toast = ({
     error: 'border-l-4 border-l-error',
   };
 
-  return (
-    <div className="fixed top-6 right-6 z-[100] pointer-events-none">
+  if (!mounted) {
+    return null;
+  }
+
+  return createPortal(
+    <div className="fixed top-6 right-6 z-[10000] pointer-events-none">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -73,6 +84,7 @@ export const Toast = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </div>,
+    document.body,
   );
 };
