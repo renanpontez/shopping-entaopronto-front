@@ -1,6 +1,6 @@
-import Container from '@/components/Container';
 import Image from 'next/image';
 import Link from 'next/link';
+import Container from '@/components/Container';
 import { Button } from '../Button';
 
 const scrollToSection = (sectionId: string) => {

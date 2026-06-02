@@ -1,14 +1,14 @@
 'use client';
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
-import { searchStoresAction } from '@/app/actions/search';
-import { Input } from '@/components/atoms/Input';
-import Typography from '@/components/Typography';
-import { buildStoreUrl } from '@/utils/URLs';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { searchStoresAction } from '@/app/actions/search';
+import { Input } from '@/components/atoms/Input';
+import Typography from '@/components/Typography';
+import { buildStoreUrl } from '@/utils/URLs';
 import { CategoryDropdown } from './CategoryDropdown';
 import { CategorySidebar } from './CategorySidebar';
 import 'placeholder-loading/dist/css/placeholder-loading.min.css';

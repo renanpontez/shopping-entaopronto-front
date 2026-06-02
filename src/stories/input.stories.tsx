@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Input } from '@/components/atoms/Input';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { GrSearch } from 'react-icons/gr';
+import { Input } from '@/components/atoms/Input';
 
 const meta: Meta<typeof Input.Field> = {
   title: 'Components/Input',

@@ -13,11 +13,13 @@ const bundleAnalyzer = withBundleAnalyzer({
 export default withSentryConfig(
   bundleAnalyzer(
     withNextIntl({
-      eslint: {
-        dirs: ['.'],
-      },
       images: {
-        domains: ['cdn.sanity.io'],
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'cdn.sanity.io',
+          },
+        ],
       },
       poweredByHeader: false,
       reactStrictMode: true,
@@ -31,7 +33,7 @@ export default withSentryConfig(
     widenClientFileUpload: true,
     reactComponentAnnotation: { enabled: true },
     tunnelRoute: '/monitoring',
-    hideSourceMaps: true,
+    sourcemaps: { disable: false, deleteSourcemapsAfterUpload: true },
     disableLogger: true,
     automaticVercelMonitors: true,
     telemetry: false,

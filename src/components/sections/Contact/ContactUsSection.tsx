@@ -1,9 +1,9 @@
 'use client';
+import { useState } from 'react';
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { TextArea } from '@/components/atoms/TextArea';
 import { getShoppingWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
-import { useState } from 'react';
 
 type ContactUsProps = {
   whatsappPhoneNumber?: string;

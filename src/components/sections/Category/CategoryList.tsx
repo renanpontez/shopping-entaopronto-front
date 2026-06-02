@@ -1,11 +1,11 @@
 'use client';
 import type { CategorySchema } from '@/libs/sanity/types';
-import Loader from '@/components/Loader';
-import Typography from '@/components/Typography';
 import { motion, useInView } from 'motion/react';
 import Link from 'next/link';
 import { useRef } from 'react';
 import SVG from 'react-inlinesvg';
+import Loader from '@/components/Loader';
+import Typography from '@/components/Typography';
 
 type Props = {
   categories: CategorySchema[];

@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import { Button } from '@/components/atoms/Button';
 import Container from '@/components/Container';
 import Typography from '@/components/Typography';
-import Link from 'next/link';
 
 export default function NotFound() {
   return (

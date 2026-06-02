@@ -1,11 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
 import { Modal } from '@/components/atoms/Modal';
 import { Toast } from '@/components/atoms/Toast';
 import { getBrandRegistrationWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
-import { useState } from 'react';
 
 export type BrandCategoryOption = {
   label: string;

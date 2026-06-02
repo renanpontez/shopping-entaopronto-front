@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import Typography from '@/components/Typography';
 import medalStamp from '@/public/assets/images/achievement-challenge-medal.svg';
-import Image from 'next/image';
 
 const FiftyPlus = () => {
   return (

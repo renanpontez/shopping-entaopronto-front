@@ -1,8 +1,8 @@
 import type { CategorySchema } from '@/libs/sanity/types';
-import Container from '@/components/Container';
-import Typography from '@/components/Typography';
 import Link from 'next/dist/client/link';
 import Image from 'next/image';
+import Container from '@/components/Container';
+import Typography from '@/components/Typography';
 
 const COMPANY_PLACEHOLDER = '/assets/images/company-placeholder.svg';
 // const BANNER_PLACEHOLDER = '/assets/images/bg-mall.webp';

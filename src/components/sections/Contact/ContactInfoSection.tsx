@@ -1,6 +1,6 @@
-import Typography from '@/components/Typography';
 import { FaInstagram, FaLocationDot } from 'react-icons/fa6';
 import { MdOutlineMail, MdOutlinePhoneAndroid } from 'react-icons/md';
+import Typography from '@/components/Typography';
 
 type ContactInfoProps = {
   email?: string;

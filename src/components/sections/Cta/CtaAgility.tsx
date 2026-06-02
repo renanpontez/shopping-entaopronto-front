@@ -1,10 +1,10 @@
-import logoFullWhite from '@/public/assets/images/agility-completo-primary.svg';
-import logoFullPurple from '@/public/assets/images/agility-completo-white.svg';
-import logoWhite from '@/public/assets/images/agility-logo-primary.svg';
-import logoPurple from '@/public/assets/images/agility-logo-white.svg';
-
 import Image from 'next/image';
 import Link from 'next/link';
+import logoFullWhite from '@/public/assets/images/agility-completo-primary.svg';
+import logoFullPurple from '@/public/assets/images/agility-completo-white.svg';
+
+import logoWhite from '@/public/assets/images/agility-logo-primary.svg';
+import logoPurple from '@/public/assets/images/agility-logo-white.svg';
 
 type CtaAgilityProps = {
   variant?: 'light' | 'purple';
