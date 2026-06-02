@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { FaExclamationTriangle } from 'react-icons/fa';
 import { StoreTag } from '@/components/atoms/StoreTag';
 import Container from '@/components/Container';
 import { AboutUs } from '@/components/sections/Contact/AboutUsSection';
@@ -9,9 +12,6 @@ import { SolutionCard } from '@/components/SolutionCard';
 import Typography from '@/components/Typography';
 import { getSiteSettings, getStoreBySlug } from '@/libs/sanity/fetcher';
 import { getOGTagsByStore } from '@/utils/Metadata';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { FaExclamationTriangle } from 'react-icons/fa';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;

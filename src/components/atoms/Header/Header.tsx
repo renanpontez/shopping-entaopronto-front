@@ -1,7 +1,7 @@
 import type { ResolvedNavLink } from '@/utils/navigation';
-import Container from '@/components/Container';
 import Image from 'next/image';
 import Link from 'next/link';
+import Container from '@/components/Container';
 import { MainNav } from './MainNav';
 import { MobileNavbar } from './MobileNavbar';
 import { Navbar } from './Navbar';

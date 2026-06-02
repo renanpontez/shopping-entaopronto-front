@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { routing } from '@/libs/i18nNavigation';
-import { SanityLive } from '@/libs/sanity/live';
 import { GoogleTagManager } from '@next/third-parties/google';
 import classNames from 'classnames';
 import { Montserrat } from 'next/font/google';
+import { routing } from '@/libs/i18nNavigation';
+import { SanityLive } from '@/libs/sanity/live';
 
 import '@/styles/global.css';
 

@@ -1,13 +1,13 @@
 'use client';
 import type { BrandCategoryOption } from '@/components/BrandRegistrationModal';
-import { Button } from '@/components/atoms/Button';
-import { BrandRegistrationModal } from '@/components/BrandRegistrationModal';
-import Container from '@/components/Container';
-import Typography from '@/components/Typography';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Button } from '@/components/atoms/Button';
+import { BrandRegistrationModal } from '@/components/BrandRegistrationModal';
+import Container from '@/components/Container';
+import Typography from '@/components/Typography';
 
 type Props = {
   title: string;

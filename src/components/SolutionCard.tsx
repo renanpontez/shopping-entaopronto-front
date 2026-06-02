@@ -1,9 +1,9 @@
 'use client';
 
-import { formatCurrency } from '@/utils/formatCurrencyBRL';
-import { getStoreWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
 import Image from 'next/image';
 import SVG from 'react-inlinesvg';
+import { formatCurrency } from '@/utils/formatCurrencyBRL';
+import { getStoreWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
 import { Button } from './atoms/Button';
 import Loader from './Loader';
 import Typography from './Typography';

@@ -1,8 +1,8 @@
-import { Env } from '@/libs/Env';
-import { logger } from '@/libs/Logger';
 import { parseBody } from 'next-sanity/webhook';
 import { revalidatePath } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
+import { Env } from '@/libs/Env';
+import { logger } from '@/libs/Logger';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -11,18 +11,22 @@ export const runtime = 'nodejs';
 const SKIP_TYPES = ['sanity.imageAsset', 'sanity.fileAsset', 'sanity.imagePalette'];
 
 export async function POST(req: NextRequest) {
-  logger.info('Received revalidation request', { method: req.method });
+  logger.info({ method: req.method }, 'Received revalidation request');
 
   // Track revalidated routes for logging
   const revalidatedRoutes: string[] = [];
 
   try {
-    const { body, isValidSignature } = await parseBody(
+    const { body, isValidSignature } = await parseBody<{
+      _type?: string;
+      _id?: string;
+      slug?: { current?: string };
+    }>(
       req,
       Env.SANITY_REVALIDATE_SECRET,
     );
 
-    logger.info('Parsed webhook body', { type: body?._type, id: body?._id });
+    logger.info({ type: body?._type, id: body?._id }, 'Parsed webhook body');
 
     if (!isValidSignature) {
       logger.error('Invalid signature');
@@ -36,20 +40,20 @@ export async function POST(req: NextRequest) {
 
     // Skip asset types
     if (SKIP_TYPES.includes(body._type)) {
-      logger.info('Skipping revalidation for asset', { type: body._type });
+      logger.info({ type: body._type }, 'Skipping revalidation for asset');
       return NextResponse.json({ message: 'Skipped revalidation for asset' });
     }
 
-    logger.info('Processing revalidation', { type: body._type, id: body._id });
+    logger.info({ type: body._type, id: body._id }, 'Processing revalidation');
 
     // Helper function to revalidate a path and track it
     const revalidate = (path: string) => {
       try {
-        logger.info('Revalidating path', { path });
+        logger.info({ path }, 'Revalidating path');
         revalidatePath(path);
         revalidatedRoutes.push(path);
       } catch (error) {
-        logger.error('Failed to revalidate path', { path, error });
+        logger.error({ path, error }, 'Failed to revalidate path');
       }
     };
 
@@ -93,12 +97,12 @@ export async function POST(req: NextRequest) {
       }
 
       default: {
-        logger.warn('Unknown document type', { type: body._type });
+        logger.warn({ type: body._type }, 'Unknown document type');
         return new NextResponse(`Unknown document type: ${body._type}`, { status: 400 });
       }
     }
 
-    logger.info('Successfully revalidated routes', { routes: revalidatedRoutes });
+    logger.info({ routes: revalidatedRoutes }, 'Successfully revalidated routes');
 
     return NextResponse.json({
       message,
@@ -107,7 +111,7 @@ export async function POST(req: NextRequest) {
       documentId: body._id,
     });
   } catch (err) {
-    logger.error('Revalidation error', { error: err });
+    logger.error({ error: err }, 'Revalidation error');
     return new NextResponse(
       err instanceof Error ? err.message : 'Internal Server Error',
       { status: 500 },

@@ -1,3 +1,6 @@
+import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
+import { FaFacebookSquare, FaInstagramSquare, FaYoutubeSquare } from 'react-icons/fa';
 import { Header } from '@/components/atoms/Header/Header';
 import { LinkItem } from '@/components/atoms/LinkItem';
 import Container from '@/components/Container';
@@ -5,9 +8,6 @@ import Typography from '@/components/Typography';
 import { getSiteSettings } from '@/libs/sanity/fetcher';
 import { AppConfig } from '@/utils/AppConfig';
 import { resolveNavLinks } from '@/utils/navigation';
-import { getTranslations } from 'next-intl/server';
-import Image from 'next/image';
-import { FaFacebookSquare, FaInstagramSquare, FaYoutubeSquare } from 'react-icons/fa';
 
 type Props = {
   children: React.ReactNode;

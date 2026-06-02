@@ -1,11 +1,11 @@
 'use client';
 
-import Typography from '@/components/Typography';
-import { buildCategoryUrl } from '@/utils/URLs';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { FaFolderOpen } from 'react-icons/fa';
 import SVG from 'react-inlinesvg';
+import Typography from '@/components/Typography';
+import { buildCategoryUrl } from '@/utils/URLs';
 
 type Props = {
   category: any;

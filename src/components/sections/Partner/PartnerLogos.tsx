@@ -1,10 +1,10 @@
 'use client';
 
 import type { StoreSchemaResponse } from '@/libs/sanity/types';
-import Typography from '@/components/Typography';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Typography from '@/components/Typography';
 
 const COMPANY_PLACEHOLDER = '/assets/images/company-placeholder.svg';
 

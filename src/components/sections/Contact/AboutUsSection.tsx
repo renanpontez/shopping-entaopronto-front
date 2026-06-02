@@ -1,12 +1,12 @@
 'use client';
 import type { PortableTextBlock } from '@portabletext/types';
+import Image from 'next/image';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import { Button } from '@/components/atoms/Button';
 import PortableTextRenderer from '@/components/atoms/PortableText';
 import Typography from '@/components/Typography';
 import AgilityAboutUsImage from '@/public/assets/images/agility-about-us.svg';
 import { getGeneralInfoWhatsAppMessage, openWhatsAppChat } from '@/utils/Whatsapp';
-import Image from 'next/image';
-import { FaExternalLinkAlt } from 'react-icons/fa';
 
 type Props = {
   imageUrl?: string;

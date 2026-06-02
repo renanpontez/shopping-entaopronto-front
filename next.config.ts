@@ -31,7 +31,7 @@ export default withSentryConfig(
     widenClientFileUpload: true,
     reactComponentAnnotation: { enabled: true },
     tunnelRoute: '/monitoring',
-    hideSourceMaps: true,
+    sourcemaps: { disable: false, deleteSourcemapsAfterUpload: true },
     disableLogger: true,
     automaticVercelMonitors: true,
     telemetry: false,

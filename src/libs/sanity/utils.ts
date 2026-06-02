@@ -1,8 +1,8 @@
-import type { Link } from '@/libs/sanity/types';
 import type { CreateDataAttributeProps } from 'next-sanity';
-import { dataset, projectId, studioUrl } from '@/libs/sanity/api';
+import type { Link } from '@/libs/sanity/types';
 import createImageUrlBuilder from '@sanity/image-url';
 import { createDataAttribute } from 'next-sanity';
+import { dataset, projectId, studioUrl } from '@/libs/sanity/api';
 
 const imageBuilder = createImageUrlBuilder({
   projectId: projectId || '',

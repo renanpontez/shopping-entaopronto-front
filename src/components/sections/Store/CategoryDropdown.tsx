@@ -1,10 +1,10 @@
 'use client';
 
-import { Button } from '@/components/atoms/Button';
-import Typography from '@/components/Typography';
 import classNames from 'classnames';
 import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
+import { Button } from '@/components/atoms/Button';
+import Typography from '@/components/Typography';
 import { CategoryItem } from './CategoryItem';
 
 type Props = {
