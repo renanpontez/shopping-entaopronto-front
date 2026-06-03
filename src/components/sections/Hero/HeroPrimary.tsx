@@ -3,55 +3,101 @@ import type { BrandCategoryOption } from '@/components/BrandRegistrationModal';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/atoms/Button';
 import { BrandRegistrationModal } from '@/components/BrandRegistrationModal';
 import Container from '@/components/Container';
 import Typography from '@/components/Typography';
 
+type HeroMedia = {
+  type?: 'image' | 'video';
+  image?: string;
+  videoMp4?: string;
+  videoWebm?: string;
+  poster?: string;
+};
+
 type Props = {
   title: string;
-  videoUrl?: string;
-  imageUrl?: string;
+  media?: HeroMedia;
   brandCategories?: BrandCategoryOption[];
   whatsappPhone?: string;
 };
 
 const EMPTY_BRAND_CATEGORIES: BrandCategoryOption[] = [];
+const FALLBACK_IMAGE = '/assets/images/bg-mall.webp';
 
 const HeroPrimary = ({
   title,
-  videoUrl = '/assets/images/test.mp4',
-  imageUrl = '/assets/images/bg-mall.webp',
+  media,
   brandCategories = EMPTY_BRAND_CATEGORIES,
   whatsappPhone,
 }: Props) => {
   const [isBrandModalOpen, setIsBrandModalOpen] = useState(false);
+  const [shouldRenderVideo, setShouldRenderVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const mediaType = media?.type ?? 'image';
+  const isVideo = mediaType === 'video' && Boolean(media?.videoMp4 || media?.videoWebm);
+  // For images: use the configured image. For videos: poster is the cover (required at CMS level).
+  const coverImage = isVideo ? media?.poster : media?.image ?? FALLBACK_IMAGE;
+
+  // Defer video mounting until after first paint and only when the user
+  // hasn't requested reduced motion. The poster image carries the LCP.
+  useEffect(() => {
+    if (!isVideo) {
+      return;
+    }
+
+    const prefersReducedMotion
+      = typeof window !== 'undefined'
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    const idle = (cb: () => void) => {
+      const w = window as Window & { requestIdleCallback?: (cb: () => void) => number };
+      if (typeof w.requestIdleCallback === 'function') {
+        w.requestIdleCallback(cb);
+      } else {
+        window.setTimeout(cb, 250);
+      }
+    };
+
+    idle(() => setShouldRenderVideo(true));
+  }, [isVideo]);
 
   return (
     <section className="relative isolate overflow-hidden flex items-center">
-      {/* Background media */}
-      {videoUrl && (
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src={videoUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      )}
-      {imageUrl && (
+      {/* Cover image — always rendered as the LCP element */}
+      {coverImage && (
         <Image
-          src={imageUrl}
+          src={coverImage}
           alt=""
           aria-hidden="true"
           fill
           priority
+          sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
+      )}
+
+      {/* Background video — mounted after first paint, layered above the poster */}
+      {isVideo && shouldRenderVideo && (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={media?.poster}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          {media?.videoWebm && <source src={media.videoWebm} type="video/webm" />}
+          {media?.videoMp4 && <source src={media.videoMp4} type="video/mp4" />}
+        </video>
       )}
 
       {/* Layered overlays for depth */}

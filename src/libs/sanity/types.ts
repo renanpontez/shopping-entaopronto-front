@@ -16,7 +16,19 @@ export type NavLinkSchema = {
   openInNewTab?: boolean;
 };
 
+export type HeroMediaType = 'image' | 'video';
+
+export type HeroSchema = {
+  title?: string;
+  mediaType?: HeroMediaType;
+  image?: string;
+  videoMp4?: string;
+  videoWebm?: string;
+  poster?: string;
+};
+
 export type SiteSettingsSchema = {
+  hero?: HeroSchema;
   aboutUs: {
     image: string;
     description: PortableTextBlock;
