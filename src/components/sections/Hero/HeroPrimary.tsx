@@ -25,7 +25,7 @@ type Props = {
 };
 
 const EMPTY_BRAND_CATEGORIES: BrandCategoryOption[] = [];
-const FALLBACK_IMAGE = '/assets/images/bg-mall.webp';
+const FALLBACK_IMAGE = '/assets/images/bg_mall.webp';
 
 const HeroPrimary = ({
   title,
