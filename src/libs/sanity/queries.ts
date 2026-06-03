@@ -114,6 +114,14 @@ export const searchStoresQueryParams = (query: string) => `
 
 /* Site Settings */
 export const siteSettingsFields = `{
+  hero {
+    title,
+    mediaType,
+    "image": image.asset->url,
+    "videoMp4": videoMp4.asset->url,
+    "videoWebm": videoWebm.asset->url,
+    "poster": poster.asset->url
+  },
   aboutUs {
     description,
     "image": image.asset->url
