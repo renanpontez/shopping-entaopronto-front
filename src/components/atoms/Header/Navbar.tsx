@@ -7,7 +7,7 @@ type NavbarProps = {
 };
 
 const linkClasses = [
-  'relative inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide',
+  'relative inline-flex items-center gap-1.5 text-sm font-semibold tracking-wide',
   'text-white/90 hover:text-white transition-colors duration-200',
   'after:content-[\'\'] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0',
   'after:bg-white/80 after:transition-all after:duration-300 hover:after:w-full',
